@@ -4,6 +4,9 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 // cmp
 import { Toaster } from "react-hot-toast";
+// providers
+import AntDesignConfigProvider from "@/providers/AntDesignConfigProvider";
+import ReactQueryClientProvider from "@/providers/ReactQueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,13 +20,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-        <div>
-          <Toaster position="top-center" />
-        </div>
-      </body>
-    </html>
+    <ReactQueryClientProvider>
+      <AntDesignConfigProvider>
+        <html lang="en">
+          <body className={inter.className}>
+            {children}
+            <div>
+              <Toaster position="top-center" />
+            </div>
+          </body>
+        </html>
+      </AntDesignConfigProvider>
+    </ReactQueryClientProvider>
   );
 }

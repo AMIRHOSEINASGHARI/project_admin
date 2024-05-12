@@ -1,7 +1,14 @@
 "use client";
 
+// cmp
+import Loader from "@/components/shared/Loader";
+
 const Loading = () => {
-  return <div>Loading</div>;
+  return (
+    <div>
+      <Loader />
+    </div>
+  );
 };
 
 export default Loading;
