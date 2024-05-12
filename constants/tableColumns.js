@@ -1,0 +1,85 @@
+export const ordersColumns = [
+  {
+    title: "Id",
+    dataIndex: "_id",
+    key: "_id",
+  },
+  {
+    title: "User",
+    dataIndex: "userId",
+    key: "userId",
+  },
+  {
+    title: "Date",
+    dataIndex: "createdAt",
+    key: "createdAt",
+  },
+  {
+    title: "Items",
+    dataIndex: "totalProducts",
+    key: "totalProducts",
+  },
+  {
+    title: "Price",
+    dataIndex: "totalPayable",
+    key: "totalPayable",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+  },
+  {
+    title: "Details",
+    dataIndex: "details",
+    key: "details",
+  },
+];
+
+export const productColumn = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "ID",
+    dataIndex: "id",
+    key: "id",
+  },
+  {
+    title: "Stock",
+    dataIndex: "stock",
+    key: "stock",
+  },
+  {
+    title: "Price",
+    dataIndex: "price",
+    key: "price",
+  },
+  {
+    title: "Discount",
+    dataIndex: "discount",
+    key: "discount",
+  },
+  {
+    title: "Orders",
+    dataIndex: "orders",
+    key: "orders",
+  },
+  {
+    title: "Comments",
+    dataIndex: "comments",
+    key: "comments",
+  },
+  {
+    title: "Likes",
+    dataIndex: "likes",
+    key: "likes",
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+];
