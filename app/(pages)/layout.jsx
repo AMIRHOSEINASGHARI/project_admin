@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 // utils
 import { getServerSession } from "@/utils/session";
 import Sidebar from "@/components/shared/layout/Sidebar";
+import Navbar from "@/components/shared/layout/Navbar";
 
 const PagesLayout = async ({ children }) => {
   const session = getServerSession();
@@ -12,6 +13,7 @@ const PagesLayout = async ({ children }) => {
   }
   return (
     <div>
+      <Navbar />
       <Sidebar />
       <div className="pages_spaces">
         {session.roll === "USER" ? (
