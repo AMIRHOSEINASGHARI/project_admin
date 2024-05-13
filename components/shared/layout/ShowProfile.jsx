@@ -35,14 +35,14 @@ const ShowProfile = () => {
       <div className="p-3 space-y-1">
         <Link
           href="/dashboard"
-          className="flex items-center gap-btn rounded-btn hover:bg-lightRose Transition px-2 py-1.5"
+          className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
         >
           <Home className="text-darkGray" size={17} />
           <p>Dashboard</p>
         </Link>
         <Link
           href="/account"
-          className="flex items-center gap-btn rounded-btn hover:bg-lightRose Transition px-2 py-1.5"
+          className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
         >
           <Settings className="text-darkGray" size={17} />
           <p>Account</p>
