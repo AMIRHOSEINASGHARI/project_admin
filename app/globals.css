@@ -61,3 +61,40 @@ body {
 .Transition {
   @apply transition duration-200 ease-in-out;
 }
+
+.h1 {
+  @apply text-h1 font-black;
+}
+
+.h2 {
+  @apply text-h2 font-bold;
+}
+
+.h3 {
+  @apply text-h3 font-bold;
+}
+
+.h4 {
+  @apply text-h4 font-bold;
+}
+
+.boxShadow {
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px,
+    rgba(145, 158, 171, 0.12) 0px;
+}
+
+.cardShadow {
+  @apply shadow-[0_5px_15px_#e2e8f0];
+}
+
+.cardShadow2 {
+  @apply shadow-[0_5px_3px_#e2e8f0];
+}
+
+.cardShadow3 {
+  @apply shadow-[0_10px_50px_-12px_rgba(0,0,0,0.1)];
+}
+
+.box {
+  @apply rounded-box p-6 cardShadow3;
+}
