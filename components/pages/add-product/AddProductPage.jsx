@@ -16,6 +16,7 @@ const AddProductPage = () => {
     price: 0,
     discount: 0,
     keywords: [],
+    published: false,
   });
 
   const onChange = (e) => {

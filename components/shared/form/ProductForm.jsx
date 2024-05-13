@@ -1,10 +1,12 @@
 // cmp
+import { Switch } from "antd";
 import DetailedBox from "../layout/DetailedBox";
 import CustomInput from "./CustomInput";
 import CustomSelect from "./CustomSelect";
 import CustomTextarea from "./CustomTextarea";
 import KeywordsSelection from "./KeywordSelection";
 import UploadImage from "./UploadImage";
+import CustomButton from "../CustomButton";
 
 const ProductForm = ({ type, form, setForm, onChange }) => {
   const basicDetails = (
@@ -93,6 +95,27 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
         children={properties}
       />
       <DetailedBox title="Keywords" children={keywordSelection} />
+      <div className="flex items-center justify-end gap-10">
+        <div className="flex items-center gap-2">
+          <Switch
+            id="publish"
+            defaultChecked
+            onChange={(checked) => {
+              setForm({ ...form, published: checked });
+            }}
+            value={form.published}
+            name="published"
+          />
+          <label htmlFor="publish" className="text-p1">
+            Publish
+          </label>
+        </div>
+        <CustomButton
+          classNames="bg-dark1 flex items-center justify-center text-white w-[150px] h-[50px] rounded-btn text-p1 font-bold"
+          type="button"
+          title={<p>{type === "create" ? "Create Product" : "Edit Product"}</p>}
+        />
+      </div>
     </div>
   );
 };
