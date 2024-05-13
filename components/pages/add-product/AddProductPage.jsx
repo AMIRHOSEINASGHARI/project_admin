@@ -10,11 +10,11 @@ const AddProductPage = () => {
     title: "",
     description: "",
     image: [],
-    stock: "",
+    stock: 0,
     category: "",
     brand: "",
-    price: "",
-    discount: "",
+    price: 0,
+    discount: 0,
     keywords: [],
   });
 

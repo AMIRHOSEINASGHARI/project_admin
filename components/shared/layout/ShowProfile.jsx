@@ -8,6 +8,7 @@ import { images } from "@/constants";
 import { Avatar, Popover } from "antd";
 import { Home, Settings } from "@/components/icons/Icons";
 import SignoutButton from "../SignoutButton";
+import Image from "next/image";
 
 const ShowProfile = () => {
   const session = getServerSession();
@@ -67,10 +68,13 @@ const ShowProfile = () => {
       trigger="click"
       placement="bottomLeft"
     >
-      <Avatar
+      <Image
         src={session.avatar || images.person}
-        className="cursor-pointer"
-        size="large"
+        width={200}
+        height={200}
+        alt="user"
+        priority
+        className="cursor-pointer rounded-full w-[40px] h-[40px]"
       />
     </Popover>
   );

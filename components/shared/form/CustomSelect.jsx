@@ -1,18 +1,10 @@
 "use client";
 
+import { categories } from "@/constants";
 // react
 import { useEffect, useState } from "react";
 
-const CustomInput = ({
-  type,
-  name,
-  label,
-  value,
-  onChange,
-  wrapperClassName,
-  min,
-  max,
-}) => {
+const CustomSelect = ({ name, label, value, onChange, wrapperClassName }) => {
   const [active, setActive] = useState(false);
 
   const onFocus = () => {
@@ -33,16 +25,22 @@ const CustomInput = ({
 
   return (
     <div className={`input-group ${wrapperClassName && wrapperClassName}`}>
-      <input
-        type={type || "text"}
-        name={name || "input"}
+      <select
+        name={name}
+        defaultValue=""
+        className="input w-full"
         value={value}
         onChange={onChange}
-        className="input w-full"
         onFocus={onFocus}
         onBlur={onBlur}
-        min={min && min}
-      />
+      >
+        <option value=""></option>
+        {categories.map((item) => (
+          <option key={item.title} value={item.query}>
+            {item.title}
+          </option>
+        ))}
+      </select>
       {label && (
         <label className={`user-label ${active && "active"}`}>{label}</label>
       )}
@@ -50,4 +48,4 @@ const CustomInput = ({
   );
 };
 
-export default CustomInput;
+export default CustomSelect;
