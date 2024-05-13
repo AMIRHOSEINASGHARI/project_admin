@@ -194,3 +194,45 @@ export const deleteAdmin = async (id) => {
     };
   }
 };
+
+export const getAdmin = async (id) => {
+  try {
+    await connectDB();
+
+    const session = getServerSession();
+
+    // check session
+    if (!session) {
+      return {
+        message: MESSAGES.unAuthorized,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.unAuthorized,
+      };
+    }
+
+    const admin = await Admin.findById(id).select("-password").lean();
+
+    // check admin exist
+    if (!admin) {
+      return {
+        message: MESSAGES.userNotFound,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.not_found,
+      };
+    }
+
+    return {
+      admin,
+      message: MESSAGES.success,
+      status: MESSAGES.success,
+      code: STATUS_CODES.success,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: MESSAGES.server,
+      status: MESSAGES.failed,
+      code: STATUS_CODES.server,
+    };
+  }
+};
