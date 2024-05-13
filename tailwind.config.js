@@ -25,7 +25,7 @@ module.exports = {
         dark1: "#161c24",
         dark2: "#232b33",
         // base color:
-        baseLight: "#d1fae5",
+        baseLight: "#00a76f14",
         baseDark: "#10b981",
       },
       padding: {

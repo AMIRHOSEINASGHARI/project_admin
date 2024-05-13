@@ -9,6 +9,15 @@ body {
   font-optical-sizing: auto;
 }
 
+.sidebarScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebarScroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .input-group {
   position: relative;
 }
@@ -43,4 +52,12 @@ body {
   padding: 0 0.4em;
   color: rgb(57, 57, 57);
   left: 8px;
+}
+
+.pages_spaces {
+  @apply pt-[100px] pl-[280px] lg:pl-[270px] max-md:px-4 md:pr-4 max-lg:pb-[50px] lg:mb-[200px] min-h-screen transition-all duration-150;
+}
+
+.Transition {
+  @apply transition duration-200 ease-in-out;
 }
