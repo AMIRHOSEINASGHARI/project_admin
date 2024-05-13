@@ -31,10 +31,12 @@ module.exports = {
       padding: {
         box: "25px 20px",
         btn: "5px 15px",
+        input: "16.5px 14px",
       },
       borderRadius: {
         box: "30px",
         btn: "8px",
+        input: "10px",
       },
       fontSize: {
         base: "16px",
@@ -49,6 +51,10 @@ module.exports = {
       gap: {
         btn: "8px",
         box: "14px",
+      },
+      borderColor: {
+        inputLight: "#e5e7eb",
+        inputDark: "#6b7280",
       },
     },
   },
