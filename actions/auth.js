@@ -6,83 +6,24 @@ import { redirect } from "next/navigation";
 // utils
 import connectDB from "@/utils/connectDB";
 import { MESSAGES, STATUS_CODES } from "@/utils/messages";
-import { hashPassword, verifyPassword } from "@/utils/functions";
+import { verifyPassword } from "@/utils/functions";
 import { SECRET_KEY, SESSION_EXPIRATION } from "@/utils/vars";
 // models
 import Admin from "@/utils/models/admin";
 // jwt
 import { sign } from "jsonwebtoken";
 
-export const createAdmin = async (data) => {
+export const createToken = (data) => {
   try {
-    await connectDB();
+    const { _id, name, avatar, roll } = data;
 
-    const { username, name, password } = data;
-
-    const admin = await Admin.findOne({ username });
-
-    if (admin) {
-      return {
-        message: MESSAGES.user_exist,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.exist,
-      };
-    }
-
-    const hashedPassword = await hashPassword(password);
-
-    await Admin.create({ username, password: hashedPassword, name });
-
-    return {
-      message: MESSAGES.register,
-      status: MESSAGES.success,
-      code: STATUS_CODES.success,
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      message: MESSAGES.server,
-      status: MESSAGES.failed,
-      code: STATUS_CODES.server,
-    };
-  }
-};
-
-export const loginAdmin = async (data) => {
-  try {
-    await connectDB();
-
-    const { username, password } = data;
-
-    const admin = await Admin.findOne({ username });
-
-    if (!admin) {
-      return {
-        message: MESSAGES.user_no_exist,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.not_found,
-      };
-    }
-
-    // verify password
-    const isValidPassword = await verifyPassword(password, admin.password);
-
-    if (!isValidPassword) {
-      return {
-        message: MESSAGES.user_no_exist,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.not_found,
-      };
-    }
-
-    // creating token
     const accessToken = sign(
       {
         username,
-        userId: admin._id,
-        name: admin.name,
-        avatar: admin.avatar,
-        roll: admin.roll,
+        userId: _id,
+        name: name,
+        avatar: avatar,
+        roll: roll,
       },
       SECRET_KEY,
       {
@@ -98,6 +39,51 @@ export const loginAdmin = async (data) => {
       sameSite: "lax",
       path: "/",
     });
+
+    return {
+      message: MESSAGES.success,
+      status: MESSAGES.success,
+      code: STATUS_CODES.created,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: MESSAGES.server,
+      status: MESSAGES.failed,
+      code: STATUS_CODES.server,
+    };
+  }
+};
+
+export const login = async (data) => {
+  try {
+    await connectDB();
+
+    const { username, password } = data;
+
+    const admin = await Admin.findOne({ username });
+
+    if (!admin) {
+      return {
+        message: MESSAGES.userNotFound,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.not_found,
+      };
+    }
+
+    // verify password
+    const isValidPassword = await verifyPassword(password, admin.password);
+
+    if (!isValidPassword) {
+      return {
+        message: MESSAGES.userNotFound,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.not_found,
+      };
+    }
+
+    // creating token
+    createToken(admin);
 
     return {
       message: MESSAGES.login,

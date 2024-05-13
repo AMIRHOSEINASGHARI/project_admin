@@ -1,16 +1,30 @@
 export const MESSAGES = {
-  server: "Server Error!",
-  user_exist: "Username already Exists!",
-  user_no_exist: "Username or password is In-Correct!",
+  // 200
   success: "success!",
-  failed: "failed!",
   register: "Signed Up successfully!",
   login: "Logged in successfully!",
+  update: "Updated!",
+  // 400
+  badRequest: "Bad Request!",
+  unAuthorized: "You are not authorized!",
+  user_exist: "Username already Exists!",
+  userNotFound: "Username or password is In-Correct!",
+  noMatchPassword: "Current Password is in-correct!",
+  // 500
+  failed: "failed!",
+  server: "Server Error!",
 };
 
 export const STATUS_CODES = {
-  exist: 422,
-  server: 500,
-  not_found: 404,
+  // 200
   success: 200,
+  created: 201,
+  updated: 202,
+  // 400
+  badRequest: 400,
+  unAuthorized: 401,
+  exist: 422,
+  not_found: 404,
+  // 500
+  server: 500,
 };

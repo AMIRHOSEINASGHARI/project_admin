@@ -5,7 +5,6 @@ import { verify } from "jsonwebtoken";
 // vars
 import { SECRET_KEY } from "./vars";
 
-// TODO: add the correct type to session
 export const getServerSession = () => {
   try {
     const cookieStore = cookies();
