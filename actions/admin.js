@@ -269,3 +269,47 @@ export const getAdmins = async () => {
     };
   }
 };
+
+export const getCurrentAdmin = async () => {
+  try {
+    await connectDB();
+
+    const session = getServerSession();
+
+    // check session
+    if (!session) {
+      return {
+        message: MESSAGES.unAuthorized,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.unAuthorized,
+      };
+    }
+
+    const currentAdmin = await Admin.findById(session.userId)
+      .select("-password")
+      .lean();
+
+    // check admin exist
+    if (!currentAdmin) {
+      return {
+        message: MESSAGES.userNotFound,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.not_found,
+      };
+    }
+
+    return {
+      currentAdmin,
+      message: MESSAGES.success,
+      status: MESSAGES.success,
+      code: STATUS_CODES.success,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: MESSAGES.server,
+      status: MESSAGES.failed,
+      code: STATUS_CODES.server,
+    };
+  }
+};
