@@ -313,3 +313,60 @@ export const getCurrentAdmin = async () => {
     };
   }
 };
+
+export const changeRole = async (data) => {
+  try {
+    await connectDB();
+
+    const { role, id } = data;
+
+    const session = getServerSession();
+
+    // check session
+    if (!session) {
+      return {
+        message: MESSAGES.unAuthorized,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.unAuthorized,
+      };
+    }
+
+    const currentAdmin = await Admin.findById(session.userId);
+
+    // check admin role
+    if (currentAdmin.roll !== "OWNER") {
+      return {
+        message: MESSAGES.forbidden,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.forbidden,
+      };
+    }
+
+    const otherAdmin = await Admin.findById(id);
+
+    // check admin exist
+    if (!otherAdmin) {
+      return {
+        message: MESSAGES.userNotFound,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.not_found,
+      };
+    }
+
+    otherAdmin.roll = role;
+    await otherAdmin.save();
+
+    return {
+      message: MESSAGES.update,
+      status: MESSAGES.success,
+      code: STATUS_CODES.updated,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: MESSAGES.server,
+      status: MESSAGES.failed,
+      code: STATUS_CODES.server,
+    };
+  }
+};
