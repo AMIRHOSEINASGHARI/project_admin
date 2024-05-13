@@ -9,7 +9,7 @@ const CustomButton = ({ type, classNames, disabled, title, icon, onClick }) => {
       onClick={onClick || null}
     >
       {icon && icon}
-      {title && <p>{title}</p>}
+      {title && title}
     </button>
   );
 };

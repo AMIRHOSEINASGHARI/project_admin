@@ -5,14 +5,11 @@ import { signOut } from "@/actions/auth";
 // constants
 import { icons } from "@/constants";
 
-const SignoutButton = ({ title }) => {
+const SignoutButton = ({ title, style, btnClassName, titleClassName }) => {
   return (
-    <button
-      onClick={() => signOut()}
-      className="p-2 hover:bg-gray-100 rounded-full Transition text-[22px] flex items-center gap-btn"
-    >
-      <div className="text-darkGray">{icons.power}</div>
-      {title && <p className="text-p1">{title}</p>}
+    <button onClick={() => signOut()} className={style || ""}>
+      <div className={btnClassName || ""}>{icons.power}</div>
+      {title && <p className={titleClassName || ""}>{title}</p>}
     </button>
   );
 };

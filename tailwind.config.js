@@ -49,7 +49,7 @@ module.exports = {
         p3: "10px",
       },
       gap: {
-        btn: "8px",
+        btn: "12px",
         box: "14px",
       },
       borderColor: {
