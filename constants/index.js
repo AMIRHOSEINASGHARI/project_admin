@@ -50,7 +50,6 @@ import {
   TrendUp,
   Truck,
   UpAngle,
-  Upload,
   User,
   Users,
   Camera,
@@ -62,6 +61,7 @@ import {
   Gaming,
   Tablet,
   Watch,
+  UploadIcon,
 } from "@/components/icons/Icons";
 
 export const images = {
@@ -99,7 +99,7 @@ export const icons = {
   trash: <Trash />,
   pen: <Edit />,
   document: <Document />,
-  upload: <Upload />,
+  upload: <UploadIcon />,
   heart: <BorderHeart />,
   leftAngle: <LeftAngle />,
   rightAngle: <RightAngle />,

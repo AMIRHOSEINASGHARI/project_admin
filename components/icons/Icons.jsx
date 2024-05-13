@@ -776,7 +776,7 @@ export const UpAngle = ({
   );
 };
 
-export const Upload = ({
+export const UploadIcon = ({
   wrapperClassName,
   size,
   fill = "currentColor",

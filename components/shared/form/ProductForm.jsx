@@ -1,11 +1,12 @@
-import React from "react";
+// cmp
 import DetailedBox from "../layout/DetailedBox";
 import CustomInput from "./CustomInput";
 import CustomTextarea from "./CustomTextarea";
+import UploadImage from "./UploadImage";
 
 const ProductForm = ({ type, form, setForm, onChange }) => {
   const basicDetails = (
-    <div className="flex flex-col gap-box w-full">
+    <div className="flex flex-col gap-box w-full h-full">
       <CustomInput
         type="text"
         name="title"
@@ -19,6 +20,7 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
         value={form.description}
         onChange={onChange}
       />
+      <UploadImage form={form} setForm={setForm} />
     </div>
   );
 

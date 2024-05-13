@@ -4,10 +4,9 @@
 import { Fragment, useState } from "react";
 // next
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 // constants
-import { icons, images, menuLinks } from "@/constants";
+import { icons, menuLinks } from "@/constants";
 // components
 import { Drawer } from "antd";
 import { Logo } from "@/components/icons/Icons";
