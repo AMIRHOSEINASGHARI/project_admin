@@ -4,7 +4,7 @@ const CustomButton = ({ type, classNames, disabled, title, icon, onClick }) => {
   return (
     <button
       type={type || "button"}
-      className={`p-btn rounded-btn ${classNames && classNames}`}
+      className={`rounded-btn ${classNames && classNames}`}
       disabled={disabled}
       onClick={onClick || null}
     >

@@ -83,7 +83,28 @@ export const login = async (data) => {
     }
 
     // creating token
-    createToken(admin);
+    const accessToken = sign(
+      {
+        username,
+        userId: admin._id,
+        name: admin.name,
+        avatar: admin.avatar,
+        roll: admin.roll,
+      },
+      SECRET_KEY,
+      {
+        expiresIn: SESSION_EXPIRATION,
+      }
+    );
+
+    // setting token in cookie
+    cookies().set("accessToken", accessToken, {
+      httpOnly: true,
+      secure: true,
+      expires: new Date(Date.now() + SESSION_EXPIRATION),
+      sameSite: "lax",
+      path: "/",
+    });
 
     return {
       message: MESSAGES.login,
