@@ -4,12 +4,14 @@ export const MESSAGES = {
   register: "Signed Up successfully!",
   login: "Logged in successfully!",
   update: "Updated!",
+  delete: "Deleted!",
   // 400
   badRequest: "Bad Request!",
   unAuthorized: "You are not authorized!",
   user_exist: "Username already Exists!",
   userNotFound: "Username or password is In-Correct!",
   noMatchPassword: "Current Password is in-correct!",
+  forbidden: "Access Denied!",
   // 500
   failed: "failed!",
   server: "Server Error!",
@@ -23,6 +25,7 @@ export const STATUS_CODES = {
   // 400
   badRequest: 400,
   unAuthorized: 401,
+  forbidden: 403,
   exist: 422,
   not_found: 404,
   // 500

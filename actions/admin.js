@@ -4,6 +4,8 @@
 import connectDB from "@/utils/connectDB";
 import { MESSAGES, STATUS_CODES } from "@/utils/messages";
 import { hashPassword, verifyPassword } from "@/utils/functions";
+// actions
+import { signOut } from "./auth";
 // models
 import Admin from "@/utils/models/admin";
 import { getServerSession } from "@/utils/session";
@@ -61,6 +63,7 @@ export const updateProfile = async (data) => {
 
     const session = getServerSession();
 
+    // check session
     if (!session) {
       return {
         message: MESSAGES.unAuthorized,
@@ -71,6 +74,7 @@ export const updateProfile = async (data) => {
 
     const admin = await Admin.findById(session.userId);
 
+    // check admin exist
     if (!admin) {
       return {
         message: MESSAGES.userNotFound,
@@ -79,6 +83,7 @@ export const updateProfile = async (data) => {
       };
     }
 
+    // check username and name entered
     if (!username || !name) {
       return {
         message: MESSAGES.badRequest,
@@ -121,6 +126,7 @@ export const updateProfile = async (data) => {
       }
     }
 
+    // updating info
     admin.email === email;
     admin.phoneNumber === phoneNumber;
     admin.address === address;
@@ -131,6 +137,51 @@ export const updateProfile = async (data) => {
 
     return {
       message: MESSAGES.update,
+      status: MESSAGES.success,
+      code: STATUS_CODES.updated,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: MESSAGES.server,
+      status: MESSAGES.failed,
+      code: STATUS_CODES.server,
+    };
+  }
+};
+
+export const deleteAdmin = async (id) => {
+  try {
+    await connectDB();
+
+    const session = getServerSession();
+
+    // check session
+    if (!session) {
+      return {
+        message: MESSAGES.unAuthorized,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.unAuthorized,
+      };
+    }
+
+    const currentAdmin = await Admin.findById(id);
+
+    // check admin role
+    if (currentAdmin.roll === "USER") {
+      return {
+        message: MESSAGES.forbidden,
+        status: MESSAGES.failed,
+        code: STATUS_CODES.forbidden,
+      };
+    }
+
+    // delete admin
+    await Admin.findByIdAndDelete(id);
+    signOut();
+
+    return {
+      message: MESSAGES.delete,
       status: MESSAGES.success,
       code: STATUS_CODES.updated,
     };
