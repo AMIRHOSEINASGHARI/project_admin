@@ -1,5 +1,6 @@
 // actions
 import { getProducts } from "@/actions/product";
+import ProductsList from "./ui/ProductsList";
 
 const ProductsPage = async ({ searchParams }) => {
   try {
@@ -14,7 +15,7 @@ const ProductsPage = async ({ searchParams }) => {
     }
     return (
       <div className="cardShadow3 rounded-2xl border overflow-hidden">
-        products
+        <ProductsList products={JSON.parse(JSON.stringify(data.products))} />
       </div>
     );
   } catch (error) {
