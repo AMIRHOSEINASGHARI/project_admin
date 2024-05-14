@@ -38,7 +38,14 @@ const ActiveTab = ({ comments, orders, likes }) => {
       children: <LikesTab likes={likes} />,
     },
   ];
-  return <Tabs defaultActiveKey="Comments" items={items} animated />;
+  return (
+    <Tabs
+      defaultActiveKey="Comments"
+      items={items}
+      animated
+      className="box border"
+    />
+  );
 };
 
 export default ActiveTab;

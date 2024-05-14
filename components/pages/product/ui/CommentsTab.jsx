@@ -7,6 +7,7 @@ import { images } from "@/constants";
 // cmp
 import moment from "moment";
 import { Edit } from "@/components/icons/Icons";
+import CommentAction from "./CommentAction";
 
 const CommentsTab = ({ comments }) => {
   if (comments.length === 0) {
@@ -18,7 +19,7 @@ const CommentsTab = ({ comments }) => {
   }
 
   return (
-    <div className="p-5 space-y-10">
+    <div className="space-y-10">
       {comments?.map((comment, index) => {
         const {
           _id,
@@ -55,7 +56,7 @@ const CommentsTab = ({ comments }) => {
                 </div>
               </div>
               <div className="lg:w-[80%]">
-                <div className="flex gap-2 justify-between items-center mb-4">
+                <div className="flex gap-2 justify-between items-center mb-4 w-full">
                   <div className="flex gap-2">
                     <p
                       className={`py-1 px-2 text-p3 rounded-btn w-fit h-fit ${
@@ -76,7 +77,12 @@ const CommentsTab = ({ comments }) => {
                       {published ? "Published" : "Not-Published"}
                     </p>
                   </div>
-                  <Edit />
+                  <CommentAction
+                    id={_id}
+                    answer={answer}
+                    status={status}
+                    published={published}
+                  />
                 </div>
                 <h4 className="text-h4 font-bold mb-2">{title}</h4>
                 <p className="text-p2">{description}</p>
