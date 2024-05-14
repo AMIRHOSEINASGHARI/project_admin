@@ -6,16 +6,12 @@ import Image from "next/image";
 import { images } from "@/constants";
 // cmp
 import moment from "moment";
-import { Edit } from "@/components/icons/Icons";
 import CommentAction from "./CommentAction";
+import { Empty } from "antd";
 
 const CommentsTab = ({ comments }) => {
   if (comments.length === 0) {
-    return (
-      <div>
-        <p className="text-center text-p1 font-bold">No Comments Yet!</p>
-      </div>
-    );
+    return <Empty description="No Comments" />;
   }
 
   return (

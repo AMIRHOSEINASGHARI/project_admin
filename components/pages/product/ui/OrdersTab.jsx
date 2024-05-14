@@ -1,12 +1,9 @@
+import { Empty } from "antd";
 import React from "react";
 
 const OrdersTab = ({ orders }) => {
   if (orders.length === 0) {
-    return (
-      <div>
-        <p className="text-center text-p1 font-bold">No orders Yet!</p>
-      </div>
-    );
+    return <Empty description="No Orders!" />;
   }
   return <div>OrdersTab</div>;
 };
