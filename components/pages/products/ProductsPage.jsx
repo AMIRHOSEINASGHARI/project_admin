@@ -1,6 +1,7 @@
 // actions
 import { getProducts } from "@/actions/product";
 import ProductsList from "./ui/ProductsList";
+import ProductsFilter from "./ui/ProductsFilter";
 
 const ProductsPage = async ({ searchParams }) => {
   try {
@@ -15,6 +16,7 @@ const ProductsPage = async ({ searchParams }) => {
     }
     return (
       <div className="cardShadow3 rounded-2xl border overflow-hidden">
+        <ProductsFilter />
         <ProductsList products={JSON.parse(JSON.stringify(data.products))} />
       </div>
     );
