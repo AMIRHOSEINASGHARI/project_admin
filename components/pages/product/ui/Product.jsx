@@ -4,7 +4,7 @@ import ProductInformation from "./ProductInformation";
 
 const Product = ({ product }) => {
   return (
-    <div className="space-y-10">
+    <div className="flex flex-col gap-box">
       <ProductActions id={product?._id} />
       <ProductInformation info={product} />
       <ActiveTab

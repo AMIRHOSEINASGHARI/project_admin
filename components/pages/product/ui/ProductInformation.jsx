@@ -9,8 +9,8 @@ import { Clock } from "@/components/icons/Icons";
 
 const ProductInformation = ({ info }) => {
   return (
-    <div className="flex flex-col xl:flex-row gap-10">
-      <div className="w-full xl:w-[60%] h-fit flex justify-center">
+    <div className="flex flex-col xl:flex-row gap-box">
+      <div className="w-full xl:w-[50%] h-fit flex justify-center box border">
         <Image
           src={info?.image}
           width={500}
@@ -19,7 +19,7 @@ const ProductInformation = ({ info }) => {
           priority
         />
       </div>
-      <div className="w-full xl:w-[40%] space-y-5">
+      <div className="w-full xl:w-[50%] space-y-5 box border">
         <div className="flex gap-2 items-center">
           <Clock
             className="text-darkGray"

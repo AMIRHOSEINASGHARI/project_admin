@@ -50,7 +50,7 @@ module.exports = {
       },
       gap: {
         btn: "12px",
-        box: "14px",
+        box: "25px",
       },
       borderColor: {
         inputLight: "#e5e7eb",
