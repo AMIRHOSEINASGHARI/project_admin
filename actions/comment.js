@@ -7,6 +7,8 @@ import connectDB from "@/utils/connectDB";
 import { getServerSession } from "@/utils/session";
 // models
 import { Comment } from "@/utils/models/comment";
+import { Product } from "@/utils/models/product";
+import { User } from "@/utils/models/user";
 
 export const publishCommentStatus = async (data) => {
   try {
@@ -101,6 +103,65 @@ export const changeCommentAnswerStatus = async (data) => {
 
     return {
       message: "Answered changed!",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};
+
+export const deleteComment = async (data) => {
+  try {
+    await connectDB();
+
+    const session = getServerSession();
+
+    // check session
+    if (!session) {
+      return {
+        message: "Un Authorized",
+        status: "failed",
+        code: 401,
+      };
+    }
+    // check user roll
+    if (session.roll === "USER") {
+      return {
+        message: "Access Denied!",
+        status: "failed",
+        code: 403,
+      };
+    }
+
+    const { _id: commentId } = data;
+
+    const comment = await Comment.findByIdAndDelete(commentId);
+    const product = await Product.findById(comment.productId);
+    const user = await User.findById(comment.senderId);
+
+    const product_comment_index = product.comments.findIndex((item) =>
+      item.equals(commentId)
+    );
+    const user_comment_index = user.comments.findIndex((item) =>
+      item.equals(commentId)
+    );
+
+    product.comments.splice(product_comment_index, 1);
+    await product.save();
+    user.comments.splice(user_comment_index, 1);
+    await user.save();
+
+    revalidatePath("/products");
+    revalidatePath("/comments");
+
+    return {
+      message: "Comment Deleted!",
       status: "success",
       code: 200,
     };

@@ -18,6 +18,7 @@ import {
   Edit,
   EyeOpen,
   MenuDots,
+  Trash,
 } from "@/components/icons/Icons";
 import CustomButton from "@/components/shared/CustomButton";
 import Loader from "@/components/shared/Loader";
@@ -57,18 +58,18 @@ const CommentAction = ({ _id, answer, status, published }) => {
     setIsModalOpen(false);
   };
 
-  const content = (
-    <div className="p-2 flex flex-col gap-1 w-[150px]">
+  const popoverContent = (
+    <div className="p-1 flex flex-col gap-1 w-[150px]">
       <CustomButton
         onClick={() => publish()}
         disabled={published || publishLoading}
         classNames="flex justify-center w-full"
         title={
           publishLoading ? (
-            <Loader width={15} height={15} />
+            <Loader width={15} height={15} className="py-1" />
           ) : (
             <div
-              className={`flex w-full items-center hoverable p-btn gap-btn rounded-btn ${
+              className={`flex w-full items-center hoverable py-1 px-2 gap-4 rounded-btn ${
                 published && "bg-gray-200"
               }`}
             >
@@ -84,15 +85,33 @@ const CommentAction = ({ _id, answer, status, published }) => {
         classNames="flex justify-center w-full"
         title={
           draftLoading ? (
-            <Loader width={15} height={15} />
+            <Loader width={15} height={15} className="py-1" />
           ) : (
             <div
-              className={`flex w-full items-center hoverable p-btn gap-btn rounded-btn ${
+              className={`flex w-full items-center hoverable py-1 px-2 gap-4 rounded-btn ${
                 !published && "bg-gray-200"
               }`}
             >
               <Document />
               <p>Draft</p>
+            </div>
+          )
+        }
+      />
+      <hr />
+      <CustomButton
+        // onClick={() => draft()}
+        // disabled={!published || draftLoading}
+        classNames="flex justify-center w-full"
+        title={
+          draftLoading ? (
+            <Loader width={15} height={15} className="py-1" />
+          ) : (
+            <div
+              className={`flex w-full items-center hoverable py-1 px-2 gap-4 rounded-btn hover:bg-lightRose text-darkRose`}
+            >
+              <Trash />
+              <p>Delete</p>
             </div>
           )
         }
@@ -186,7 +205,7 @@ const CommentAction = ({ _id, answer, status, published }) => {
         overlayInnerStyle={{
           padding: "0",
         }}
-        content={content}
+        content={popoverContent}
         trigger="click"
         placement="leftTop"
       >
