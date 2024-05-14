@@ -23,7 +23,7 @@ const ProductInformation = ({ info }) => {
         <div className="flex gap-2 items-center">
           <Clock
             className="text-darkGray"
-            wrapperClassName="cardShadow rounded-lg p-3"
+            wrapperClassName="cardShadow rounded-btn p-3"
           />
           <div>
             <p className="font-bold text-darkGray text-sm">
@@ -35,28 +35,37 @@ const ProductInformation = ({ info }) => {
           </div>
         </div>
         <p
-          className={`text-sm font-bold ${
+          className={`text-p1 font-bold ${
             info?.stock !== 0 ? "text-darkGreen" : "text-darkRose"
           }`}
         >
           {info?.stock !== 0 ? "In Stock" : "Out of Stock"}
         </p>
-        <p className="font-bold text-2xl">{info?.title}</p>
+        <p
+          className={`p-btn text-p2 w-fit rounded-btn font-bold ${
+            info?.published
+              ? "text-darkBlue bg-lightBlue"
+              : "text-darkGray bg-lightGray"
+          }`}
+        >
+          {info?.published ? "Published" : "Draft"}
+        </p>
+        <p className="font-bold text-h3">{info?.title}</p>
         <div className="flex items-center gap-3">
-          <p className="text-sm text-darkGray">
+          <p className="text-p1 text-darkGray">
             ({info?.orders?.length} Orders)
           </p>
           <Avatars orders={JSON.parse(JSON.stringify(info?.orders))} />
         </div>
-        <p className="text-darkGray text-sm">{info?.description}</p>
+        <p className="text-darkGray text-p1">{info?.description}</p>
         <hr />
         {productInformationDetails(info).map((item) => (
           <div key={item.value} className="flex items-center justify-between">
             <div className="flex gap-2 items-center">
               {item.icon}
-              <p className="text-sm text-darkGray">{item.name}</p>
+              <p className="text-p1 text-darkGray">{item.name}</p>
             </div>
-            <p className="text-sm">{item.value}</p>
+            <p className="text-p1">{item.value}</p>
           </div>
         ))}
       </div>

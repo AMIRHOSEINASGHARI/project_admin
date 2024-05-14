@@ -6,7 +6,7 @@ import { Tooltip } from "antd";
 
 const ProductActions = ({ id }) => {
   return (
-    <div className="w-full flex justify-between items-center gap-3 mb-5">
+    <div className="w-full flex justify-between items-center gap-3">
       <Link
         href="/products"
         className="rounded-xl p-2 flex items-center gap-2 hover:bg-lightGray Transition"
