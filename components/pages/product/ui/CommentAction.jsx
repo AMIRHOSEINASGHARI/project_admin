@@ -11,7 +11,6 @@ import { shorterText } from "@/utils/functions";
 // cmp
 import {
   CircleClose,
-  Close,
   Document,
   Edit,
   EyeOpen,
@@ -19,8 +18,8 @@ import {
 } from "@/components/icons/Icons";
 import CustomButton from "@/components/shared/CustomButton";
 import Loader from "@/components/shared/Loader";
-import { Modal, Popover } from "antd";
 import CustomTextarea from "@/components/shared/form/CustomTextarea";
+import { Modal, Popover } from "antd";
 
 const CommentAction = ({ _id, answer, status, published }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
