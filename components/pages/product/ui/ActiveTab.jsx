@@ -1,7 +1,7 @@
 // cmp
-import CommentsTab from "./CommentsTab";
-import OrdersTab from "./OrdersTab";
-import LikesTab from "./LikesTab";
+import CommentsTab from "./comment-tab/CommentsTab";
+import OrdersTab from "./orders-tab/OrdersTab";
+import LikesTab from "./likes-tab/LikesTab";
 import { Tabs } from "antd";
 import { BorderHeart, Comment, Truck } from "@/components/icons/Icons";
 
