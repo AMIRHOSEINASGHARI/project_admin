@@ -1,7 +1,9 @@
 // actions
 import { getProducts } from "@/actions/product";
+// cmp
 import ProductsList from "./ui/ProductsList";
 import ProductsFilter from "./ui/ProductsFilter";
+import ProductsPagination from "./ui/ProductsPagination";
 
 const ProductsPage = async ({ searchParams }) => {
   try {
@@ -18,6 +20,10 @@ const ProductsPage = async ({ searchParams }) => {
       <div className="cardShadow3 rounded-2xl border overflow-hidden">
         <ProductsFilter />
         <ProductsList products={JSON.parse(JSON.stringify(data.products))} />
+        <ProductsPagination
+          totalPages={data.totalPages}
+          searchParams={searchParams}
+        />
       </div>
     );
   } catch (error) {
