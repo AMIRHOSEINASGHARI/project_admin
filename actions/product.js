@@ -4,6 +4,7 @@
 import { Product } from "@/utils/models/product";
 import { Order } from "@/utils/models/order";
 import { Like } from "@/utils/models/like";
+import { User } from "@/utils/models/user";
 import { Comment } from "@/utils/models/comment";
 // utils
 import connectDB from "@/utils/connectDB";
@@ -202,6 +203,11 @@ export const getProduct = async (id) => {
       .populate({
         path: "comments",
         model: Comment,
+        populate: {
+          path: "senderId",
+          model: User,
+          select: "-password",
+        },
       })
       .lean();
 
