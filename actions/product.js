@@ -199,6 +199,11 @@ export const getProduct = async (id) => {
       .populate({
         path: "likes",
         model: Like,
+        populate: {
+          path: "user",
+          model: User,
+          select: "username displayName avatar",
+        },
       })
       .populate({
         path: "comments",
