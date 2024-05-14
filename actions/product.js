@@ -2,9 +2,6 @@
 
 // models
 import { Product } from "@/utils/models/product";
-import { Order } from "@/utils/models/order";
-import { Comment } from "@/utils/models/comment";
-import { User } from "@/utils/models/user";
 // utils
 import connectDB from "@/utils/connectDB";
 import { MESSAGES, STATUS_CODES } from "@/utils/messages";
@@ -34,43 +31,43 @@ export const createProduct = async (data) => {
       };
     }
 
-    console.log(data);
-
     const {
       title,
       description,
-      images,
+      image,
       price,
       stock,
       discount,
       category,
       keywords,
       brand,
+      published,
     } = data;
 
-    await Product.create({
+    const newProduct = await Product.create({
       title,
       description,
-      images,
+      image,
       price,
       stock,
       discount,
       category,
       keywords,
       brand,
+      published,
     });
 
     return {
       message: "Product Created",
-      status: MESSAGES.success,
-      code: STATUS_CODES.created,
+      status: "success",
+      code: 200,
     };
   } catch (error) {
     console.log(error);
     return {
-      message: MESSAGES.server,
-      status: MESSAGES.failed,
-      code: STATUS_CODES.server,
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
     };
   }
 };

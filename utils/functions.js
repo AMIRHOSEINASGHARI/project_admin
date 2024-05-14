@@ -38,8 +38,9 @@ export const resizeFile = (file) =>
   });
 
 export const uploadImage = async (path) => {
-  const cloudName = process.env.NEXT_PUBLIC_COUDINARY_CLOUD_NAME;
-  const uploadPreset = process.env.NEXT_PUBLIC_COUDINARY_UPLOAD_PRESET;
+  const cloudName = process.env.NEXT_PUBLIC_CLOUD_NAME;
+  const uploadPreset = process.env.NEXT_PUBLIC_UPLOAD_PRESET;
+
   const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
   const formData = new FormData();
 

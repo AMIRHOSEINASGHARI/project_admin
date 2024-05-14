@@ -17,21 +17,23 @@ const UploadImage = ({ form, setForm }) => {
 
   const onChange = (e) => {
     const files = e.fileList.map((item) => item.originFileObj);
+    console.log(e);
 
     setForm({
       ...form,
-      images: files,
+      image: files,
     });
   };
 
   return (
     <Dragger
-      defaultFileList={[...form.images]}
+      defaultFileList={[...form.image]}
       listType="picture"
       name="file"
       accept="image/png, image/jpeg"
       onChange={onChange}
       beforeUpload={beforeUpload}
+      maxCount={1}
     >
       <div className="w-full rounded-3xl min-h-[150px] flex flex-col items-center justify-center gap-2 p-3 text-center">
         <div className="bg-gray-200 hover:bg-gray-300 Transition rounded-full w-[70px] h-[70px] text-[30px] flex items-center justify-center">

@@ -9,7 +9,7 @@ const AddProductPage = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    images: "",
+    image: "",
     stock: 0,
     category: "",
     brand: "",
@@ -25,6 +25,7 @@ const AddProductPage = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <ProductForm
       type="create"

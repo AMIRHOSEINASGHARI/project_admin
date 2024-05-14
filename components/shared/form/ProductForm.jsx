@@ -1,4 +1,11 @@
+// react
 import { useState } from "react";
+// next
+import { useRouter } from "next/navigation";
+// utils
+import { uploadImage } from "@/utils/functions";
+// actions
+import { createProduct } from "@/actions/product";
 // cmp
 import { Switch } from "antd";
 import DetailedBox from "../layout/DetailedBox";
@@ -9,9 +16,11 @@ import KeywordsSelection from "./KeywordSelection";
 import UploadImage from "./UploadImage";
 import CustomButton from "../CustomButton";
 import Loader from "../Loader";
+import toast from "react-hot-toast";
 
 const ProductForm = ({ type, form, setForm, onChange }) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const basicDetails = (
     <div className="flex flex-col gap-box w-full h-full">
@@ -86,7 +95,39 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
     </div>
   );
 
-  const create = async () => {};
+  const create = async () => {
+    if (
+      !form.title ||
+      !form.description ||
+      !form.image ||
+      !form.price ||
+      !form.stock ||
+      !form.category ||
+      !form.brand ||
+      form.keywords.length === 0
+    ) {
+      toast.error("Fill all fields!");
+      return;
+    }
+
+    setLoading(true);
+
+    const uploadResult = await uploadImage(form.image[0]);
+
+    const result = await createProduct({
+      ...form,
+      image: uploadResult.imageUrl,
+    });
+
+    setLoading(false);
+
+    if (result.code !== 200) {
+      toast.error(result.message);
+    } else {
+      toast.success(result.message);
+      router.push("/products");
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -117,10 +158,19 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
           </label>
         </div>
         <CustomButton
-          classNames="bg-dark1 flex items-center justify-center text-white w-[150px] h-[50px] rounded-btn text-p1 font-bold"
+          classNames={`${
+            loading ? "bg-lightGray" : "bg-dark1 text-white"
+          } flex items-center justify-center w-[150px] h-[50px] rounded-btn text-p1 font-bold`}
           type="button"
+          disabled={loading}
           onClick={() => create()}
-          title={<p>{type === "create" ? "Create Product" : "Edit Product"}</p>}
+          title={
+            loading ? (
+              <Loader width={15} height={15} />
+            ) : (
+              <p>{type === "create" ? "Create Product" : "Edit Product"}</p>
+            )
+          }
         />
       </div>
     </div>
