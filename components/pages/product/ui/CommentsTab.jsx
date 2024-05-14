@@ -74,10 +74,10 @@ const CommentsTab = ({ comments }) => {
                     </p>
                   </div>
                   <CommentAction
-                    id={_id}
-                    answer={answer}
-                    status={status}
-                    published={published}
+                    _id={JSON.parse(JSON.stringify(_id))}
+                    answer={JSON.parse(JSON.stringify(answer))}
+                    status={JSON.parse(JSON.stringify(status))}
+                    published={JSON.parse(JSON.stringify(published))}
                   />
                 </div>
                 <h4 className="text-h4 font-bold mb-2">{title}</h4>

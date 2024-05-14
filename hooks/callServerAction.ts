@@ -21,7 +21,7 @@ const useServerAction = (
     const result = await asyncAction(fnInput);
     setLoading(() => false);
 
-    if (result.code !== 200 || result.code !== 201 || result.code !== 202) {
+    if (result.code !== 200) {
       toast.error(result.message);
     } else {
       toast.success(result.message);

@@ -5,7 +5,7 @@ import Loader from "@/components/shared/Loader";
 
 const Loading = () => {
   return (
-    <div>
+    <div className="flex w-full justify-center">
       <Loader />
     </div>
   );
