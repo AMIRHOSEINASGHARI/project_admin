@@ -1,5 +1,8 @@
-const Product = () => {
-  return <div>Product</div>;
+// components
+import ProductDetailsPage from "@/components/pages/product/ProductDetailsPage";
+
+const Product = ({ params }) => {
+  return <ProductDetailsPage id={params.id} />;
 };
 
 export default Product;
