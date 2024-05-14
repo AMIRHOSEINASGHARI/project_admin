@@ -1,16 +1,9 @@
 "use client";
 
 // react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const CustomTextarea = ({
-  type,
-  name,
-  label,
-  value,
-  onChange,
-  wrapperClassName,
-}) => {
+const CustomTextarea = ({ name, label, value, onChange, wrapperClassName }) => {
   const [active, setActive] = useState(false);
 
   const onFocus = () => {
@@ -22,6 +15,12 @@ const CustomTextarea = ({
       setActive(() => false);
     }
   };
+
+  useEffect(() => {
+    if (value.length !== 0) {
+      setActive(() => true);
+    }
+  }, []);
   return (
     <div className={`input-group ${wrapperClassName && wrapperClassName}`}>
       <textarea

@@ -5,7 +5,10 @@ import { useState } from "react";
 // hooks
 import useServerAction from "@/hooks/callServerAction";
 // actions
-import { publishCommentStatus } from "@/actions/comment";
+import {
+  changeCommentAnswerStatus,
+  publishCommentStatus,
+} from "@/actions/comment";
 // utils
 import { shorterText } from "@/utils/functions";
 // cmp
@@ -39,6 +42,12 @@ const CommentAction = ({ _id, answer, status, published }) => {
       _id,
       action: "draft",
     }
+  );
+
+  const { loading: answerLoading, fn: changeAnswer } = useServerAction(
+    changeCommentAnswerStatus,
+    { _id, value },
+    () => handleClose()
   );
 
   const showModal = () => {
@@ -95,6 +104,7 @@ const CommentAction = ({ _id, answer, status, published }) => {
     <div className="flex items-center justify-between border-b pb-3">
       <p className="text-p1 font-medium">#{shorterText(_id, 15)}</p>
       <CustomButton
+        disabled={answerLoading}
         icon={<CircleClose />}
         classNames="hoverable"
         onClick={handleClose}
@@ -111,8 +121,16 @@ const CommentAction = ({ _id, answer, status, published }) => {
     },
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (value === answer) return;
+
+    changeAnswer();
+  };
+
   const modalContent = (
-    <div className="space-y-5">
+    <form className="space-y-5" onSubmit={onSubmit}>
       <p
         className={`py-1 px-2 rounded-btn text-p1 font-bold w-fit ${
           status === "Not-Answered"
@@ -129,17 +147,22 @@ const CommentAction = ({ _id, answer, status, published }) => {
       />
       <div className="w-full flex justify-end gap-2">
         <CustomButton
+          disabled={answerLoading}
           title="Cancel"
+          type="button"
           onClick={handleClose}
           classNames="border p-btn rounded-btn text-p1 hoverable"
         />
         <CustomButton
-          title="Submit"
-          onClick={handleClose}
-          classNames="bg-darkBlue text-white p-btn rounded-btn text-p1"
+          disabled={answerLoading}
+          title={answerLoading ? <Loader width={15} height={15} /> : "Submit"}
+          type="submit"
+          classNames={`p-btn rounded-btn text-p1 ${
+            answerLoading ? "bg-lightGray" : "bg-darkBlue text-white"
+          }`}
         />
       </div>
-    </div>
+    </form>
   );
 
   return (

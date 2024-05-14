@@ -1,9 +1,12 @@
 "use server";
 
-import connectDB from "@/utils/connectDB";
-import { Comment } from "@/utils/models/comment";
-import { getServerSession } from "@/utils/session";
+// next
 import { revalidatePath } from "next/cache";
+// utils
+import connectDB from "@/utils/connectDB";
+import { getServerSession } from "@/utils/session";
+// models
+import { Comment } from "@/utils/models/comment";
 
 export const publishCommentStatus = async (data) => {
   try {
