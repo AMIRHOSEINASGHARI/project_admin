@@ -1,5 +1,7 @@
 // action
 import { getProduct } from "@/actions/product";
+// cmp
+import Product from "./ui/Product";
 
 const ProductDetailsPage = async ({ id }) => {
   try {
@@ -9,7 +11,7 @@ const ProductDetailsPage = async ({ id }) => {
       return <p>Error!</p>;
     }
 
-    return "product";
+    return <Product product={data.product} />;
   } catch (error) {
     return <p>Error!</p>;
   }
