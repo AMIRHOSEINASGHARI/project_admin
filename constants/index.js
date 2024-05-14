@@ -62,6 +62,9 @@ import {
   Tablet,
   Watch,
   UploadIcon,
+  Discount,
+  Stock,
+  Brand,
 } from "@/components/icons/Icons";
 
 export const images = {
@@ -250,5 +253,58 @@ export const categories = [
     image: icons.watch,
     title: "Watch",
     query: "watch",
+  },
+];
+
+export const productInformationDetails = (info) => [
+  {
+    name: "Price:",
+    value: `$${info?.price.toLocaleString()}`,
+    icon: (
+      <Dollar
+        className="text-darkGray"
+        wrapperClassName="cardShadow rounded-lg p-3"
+      />
+    ),
+  },
+  {
+    name: "Discount:",
+    value: `%${info?.discount.toLocaleString()}`,
+    icon: (
+      <Discount
+        className="text-darkGray"
+        wrapperClassName="cardShadow rounded-lg p-3"
+      />
+    ),
+  },
+  {
+    name: "Stock:",
+    value: info?.stock.toLocaleString(),
+    icon: (
+      <Stock
+        className="text-darkGray"
+        wrapperClassName="cardShadow rounded-lg p-3"
+      />
+    ),
+  },
+  {
+    name: "Brand:",
+    value: info?.brand,
+    icon: (
+      <Brand
+        className="text-darkGray"
+        wrapperClassName="cardShadow rounded-lg p-3"
+      />
+    ),
+  },
+  {
+    name: "Category:",
+    value: info?.category,
+    icon: (
+      <Category
+        className="text-darkGray"
+        wrapperClassName="cardShadow rounded-lg p-3"
+      />
+    ),
   },
 ];
