@@ -20,13 +20,13 @@ const UploadImage = ({ form, setForm }) => {
 
     setForm({
       ...form,
-      image: files,
+      images: files,
     });
   };
 
   return (
     <Dragger
-      defaultFileList={[...form.image]}
+      defaultFileList={[...form.images]}
       multiple
       listType="picture"
       name="file"

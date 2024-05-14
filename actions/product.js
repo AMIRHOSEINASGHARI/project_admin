@@ -37,7 +37,7 @@ export const createProduct = async (data) => {
     const {
       title,
       description,
-      image,
+      images,
       price,
       stock,
       discount,
@@ -49,7 +49,7 @@ export const createProduct = async (data) => {
     await Product.create({
       title,
       description,
-      image,
+      // TODO:   images,
       price,
       stock,
       discount,

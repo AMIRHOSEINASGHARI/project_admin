@@ -1,15 +1,16 @@
 // next
 import Link from "next/link";
+import Image from "next/image";
 // utils
 import { getServerSession } from "@/utils/session";
 // constants
 import { images } from "@/constants";
 // cmp
-import { Avatar, Popover } from "antd";
+import { Popover } from "antd";
 import { Home, Settings } from "@/components/icons/Icons";
 import SignoutButton from "../SignoutButton";
-import Image from "next/image";
 
+// TODO: handle close popover and open in client side
 const ShowProfile = () => {
   const session = getServerSession();
 
