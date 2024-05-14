@@ -27,7 +27,6 @@ const UploadImage = ({ form, setForm }) => {
   return (
     <Dragger
       defaultFileList={[...form.images]}
-      multiple
       listType="picture"
       name="file"
       accept="image/png, image/jpeg"

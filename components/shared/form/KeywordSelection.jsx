@@ -16,7 +16,7 @@ const KeywordsSelection = ({ form, setForm }) => {
     setValue(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onClick = (e) => {
     e.preventDefault();
 
     if (!value) {
@@ -46,7 +46,7 @@ const KeywordsSelection = ({ form, setForm }) => {
   };
 
   return (
-    <form className="flex flex-col gap-1" onSubmit={onSubmit}>
+    <div className="flex flex-col gap-1">
       <div className="flex flex-col gap-2">
         <CustomInput
           type="text"
@@ -55,8 +55,9 @@ const KeywordsSelection = ({ form, setForm }) => {
           label="Type a Keyword"
         />
         <CustomButton
-          type="submit"
+          type="button"
           title="Add"
+          onClick={onClick}
           classNames="w-fit p-btn bg-lightGray"
         />
       </div>
@@ -88,7 +89,7 @@ const KeywordsSelection = ({ form, setForm }) => {
           />
         </div>
       )}
-    </form>
+    </div>
   );
 };
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 // cmp
 import { Switch } from "antd";
 import DetailedBox from "../layout/DetailedBox";
@@ -7,8 +8,11 @@ import CustomTextarea from "./CustomTextarea";
 import KeywordsSelection from "./KeywordSelection";
 import UploadImage from "./UploadImage";
 import CustomButton from "../CustomButton";
+import Loader from "../Loader";
 
 const ProductForm = ({ type, form, setForm, onChange }) => {
+  const [loading, setLoading] = useState(false);
+
   const basicDetails = (
     <div className="flex flex-col gap-box w-full h-full">
       <CustomInput
@@ -82,6 +86,8 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
     </div>
   );
 
+  const create = async () => {};
+
   return (
     <div className="space-y-8">
       <DetailedBox
@@ -113,6 +119,7 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
         <CustomButton
           classNames="bg-dark1 flex items-center justify-center text-white w-[150px] h-[50px] rounded-btn text-p1 font-bold"
           type="button"
+          onClick={() => create()}
           title={<p>{type === "create" ? "Create Product" : "Edit Product"}</p>}
         />
       </div>

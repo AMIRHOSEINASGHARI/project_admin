@@ -9,7 +9,7 @@ const AddProductPage = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    images: [],
+    images: "",
     stock: 0,
     category: "",
     brand: "",

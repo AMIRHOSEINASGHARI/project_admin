@@ -34,6 +34,8 @@ export const createProduct = async (data) => {
       };
     }
 
+    console.log(data);
+
     const {
       title,
       description,
@@ -49,7 +51,7 @@ export const createProduct = async (data) => {
     await Product.create({
       title,
       description,
-      // TODO:   images,
+      images,
       price,
       stock,
       discount,
