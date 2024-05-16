@@ -1,7 +1,7 @@
-import React from "react";
+import OrdersPage from "@/components/pages/orders/OrdersPage";
 
 const Orders = () => {
-  return <div>Orders</div>;
+  return <OrdersPage />;
 };
 
 export default Orders;

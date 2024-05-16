@@ -8,6 +8,7 @@ export const ordersColumns = [
     title: "User",
     dataIndex: "userId",
     key: "userId",
+    responsive: ["lg"],
   },
   {
     title: "Date",
@@ -30,9 +31,9 @@ export const ordersColumns = [
     key: "status",
   },
   {
-    title: "Details",
-    dataIndex: "details",
-    key: "details",
+    title: "Actions",
+    dataIndex: "actions",
+    key: "actions",
   },
 ];
 
