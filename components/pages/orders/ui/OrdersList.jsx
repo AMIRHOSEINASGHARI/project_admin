@@ -55,9 +55,45 @@ const OrdersList = ({ orders }) => {
       </p>
     ),
     actions: <OrdersActions />,
+    expandedContent: order.items.map((item) => (
+      <div
+        key={item._id}
+        className="bg-lightGray p-2 border flex items-center justify-between"
+      >
+        <div className="flex items-center gap-4">
+          <div className="w-[50px] h-[50px]">
+            <Image
+              src={item.productId.image}
+              width={50}
+              height={50}
+              alt="product image"
+              priority
+              className="rounded-lg object-cover w-full h-full"
+            />
+          </div>
+          <p className="line-clamp-2">{item.productId.title}</p>
+        </div>
+        <div className="flex items-center justify-between gap-10">
+          <p className="text-p1 font-medium">×{item.quantity}</p>
+          <p>${item.quantity * item.cost}</p>
+        </div>
+      </div>
+    )),
   }));
 
-  return <Table columns={ordersColumns} dataSource={dataSourse} />;
+  return (
+    <Table
+      columns={ordersColumns}
+      dataSource={dataSourse}
+      expandable={{
+        expandedRowRender: (record) => (
+          <div className="m-2 rounded-xl overflow-hidden space-y-1">
+            {record.expandedContent}
+          </div>
+        ),
+      }}
+    />
+  );
 };
 
 export default OrdersList;
