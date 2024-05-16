@@ -11,6 +11,7 @@ const Product = ({ product }) => {
         comments={product?.comments}
         orders={product?.orders}
         likes={product?.likes}
+        productId={product._id}
       />
     </div>
   );

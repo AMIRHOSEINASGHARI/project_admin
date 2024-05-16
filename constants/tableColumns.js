@@ -36,6 +36,29 @@ export const ordersColumns = [
   },
 ];
 
+export const productOrdersColumns = [
+  {
+    title: "Order ID",
+    dataIndex: "orderId",
+    key: "orderId",
+  },
+  {
+    title: "Quantity",
+    dataIndex: "qty",
+    key: "qty",
+  },
+  {
+    title: "Discount",
+    dataIndex: "discount",
+    key: "discount",
+  },
+  {
+    title: "Cost",
+    dataIndex: "cost",
+    key: "cost",
+  },
+];
+
 export const productColumn = [
   {
     title: "Name",

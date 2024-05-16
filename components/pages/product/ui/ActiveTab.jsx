@@ -5,7 +5,7 @@ import LikesTab from "./likes-tab/LikesTab";
 import { Tabs } from "antd";
 import { BorderHeart, Comment, Truck } from "@/components/icons/Icons";
 
-const ActiveTab = ({ comments, orders, likes }) => {
+const ActiveTab = ({ comments, orders, likes, productId }) => {
   const items = [
     {
       key: "Comments",
@@ -25,7 +25,12 @@ const ActiveTab = ({ comments, orders, likes }) => {
           <p>Orders</p>
         </div>
       ),
-      children: <OrdersTab orders={orders} />,
+      children: (
+        <OrdersTab
+          orders={JSON.parse(JSON.stringify(orders))}
+          productId={JSON.parse(JSON.stringify(productId))}
+        />
+      ),
     },
     {
       key: "Likes",
