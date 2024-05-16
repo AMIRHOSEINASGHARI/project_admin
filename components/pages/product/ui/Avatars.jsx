@@ -10,12 +10,12 @@ const Avatars = ({ orders }) => {
     return (
       <>
         {orders?.length !== 0 && (
-          <Avatar.Group maxCount={2} maxPopoverTrigger="click" size="large">
+          <Avatar.Group maxCount={2} maxPopoverTrigger="click" size="default">
             {orders.map((item) => (
               <Avatar
                 key={item.orderId._id}
                 src={item?.orderId?.userId?.avatar || images.person}
-                size="small"
+                size="default"
               />
             ))}
           </Avatar.Group>
