@@ -58,3 +58,35 @@ export const getOrders = async () => {
     };
   }
 };
+
+export const getOrder = async (id) => {
+  try {
+    await connectDB();
+
+    const order = await Order.findById(id)
+      .populate({
+        path: "userId",
+        model: User,
+        select: "-password -likes -comments -cart",
+      })
+      .populate({
+        path: "items.productId",
+        model: Product,
+      })
+      .lean();
+
+    return {
+      order,
+      message: "success",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};
