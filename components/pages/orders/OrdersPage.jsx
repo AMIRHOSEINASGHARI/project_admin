@@ -1,4 +1,6 @@
+// actions
 import { getOrders } from "@/actions/order";
+// cmp
 import OrdersList from "./ui/OrdersList";
 
 const OrdersPage = async () => {

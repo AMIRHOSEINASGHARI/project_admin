@@ -1,11 +1,8 @@
 "use client";
 
-// next
-import Link from "next/link";
-// utils
-import { shorterText } from "@/utils/functions";
 // constants
 import { productOrdersColumns } from "@/constants/tableColumns";
+import { productOrdersTabDataSourse } from "@/constants/tableDataSourse";
 // cmp
 import { Empty, Table } from "antd";
 
@@ -22,23 +19,11 @@ const OrdersTab = ({ orders, productId }) => {
     productOrders.push({ ...filtered[0], orderId: i.orderId._id });
   }
 
-  const dataSourse = productOrders.map((order) => ({
-    key: order._id,
-    orderId: (
-      <Link href={`/orders/${order.orderId}`}>
-        {shorterText(order.orderId, 10)}
-      </Link>
-    ),
-    qty: order.quantity.toLocaleString(),
-    discount: order.discount > 0 ? `%${order.discount}` : "_",
-    cost: `$${order.cost.toLocaleString()}`,
-  }));
-
   return (
     <Table
       pagination={false}
       columns={productOrdersColumns}
-      dataSource={dataSourse}
+      dataSource={productOrdersTabDataSourse(productOrders)}
     />
   );
 };
