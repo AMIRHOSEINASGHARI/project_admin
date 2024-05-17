@@ -1,5 +1,7 @@
 "use server";
 
+// next
+import { revalidatePath } from "next/cache";
 // utils
 import connectDB from "@/utils/connectDB";
 import { getServerSession } from "@/utils/session";
@@ -143,6 +145,8 @@ export const updateOrderStatus = async (data) => {
       order.status = "Pending";
     }
     await order.save();
+
+    revalidatePath("/orders");
 
     return {
       message: "Process finished!",

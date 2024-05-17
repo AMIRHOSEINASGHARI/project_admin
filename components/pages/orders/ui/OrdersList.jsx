@@ -57,7 +57,12 @@ const OrdersList = ({ orders }) => {
         {order.status}
       </p>
     ),
-    actions: <OrdersActions orderId={order._id} />,
+    actions: (
+      <OrdersActions
+        orderId={order._id}
+        orderStatus={JSON.parse(JSON.stringify(order.status))}
+      />
+    ),
     expandedContent: order.items.map((item) => (
       <div
         key={item._id}
