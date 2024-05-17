@@ -12,11 +12,14 @@ import { shorterText } from "@/utils/functions";
 import { Table } from "antd";
 import moment from "moment";
 import OrdersActions from "./OrdersActions";
+import { DownAngle, UpAngle } from "@/components/icons/Icons";
 
 const OrdersList = ({ orders }) => {
   const dataSourse = orders.map((order) => ({
     key: order._id,
-    _id: `#${shorterText(order._id, 10)}`,
+    _id: (
+      <Link href={`/orders/${order._id}`}>#{shorterText(order._id, 10)}</Link>
+    ),
     userId: (
       <Link href={`/users/${order.userId._id}`}>
         <div className="flex items-center gap-3">
@@ -54,7 +57,7 @@ const OrdersList = ({ orders }) => {
         {order.status}
       </p>
     ),
-    actions: <OrdersActions />,
+    actions: <OrdersActions orderId={order._id} />,
     expandedContent: order.items.map((item) => (
       <div
         key={item._id}
@@ -81,17 +84,34 @@ const OrdersList = ({ orders }) => {
     )),
   }));
 
+  const expandable = {
+    expandedRowRender: (record) => (
+      <div className="m-2 rounded-xl overflow-hidden space-y-1">
+        {record.expandedContent}
+      </div>
+    ),
+    expandIcon: ({ expanded, onExpand, record }) =>
+      expanded ? (
+        <UpAngle
+          wrapperClassName="hoverable p-3 cursor-pointer rounded-full"
+          size={13}
+          onClick={(e) => onExpand(record, e)}
+        />
+      ) : (
+        <DownAngle
+          wrapperClassName="hoverable p-3 cursor-pointer rounded-full"
+          size={13}
+          onClick={(e) => onExpand(record, e)}
+        />
+      ),
+  };
+
   return (
     <Table
       columns={ordersColumns}
       dataSource={dataSourse}
-      expandable={{
-        expandedRowRender: (record) => (
-          <div className="m-2 rounded-xl overflow-hidden space-y-1">
-            {record.expandedContent}
-          </div>
-        ),
-      }}
+      scroll={{ x: true }}
+      expandable={expandable}
     />
   );
 };

@@ -1,3 +1,5 @@
+import { Table } from "antd";
+
 export const ordersColumns = [
   {
     title: "Id",
@@ -30,8 +32,8 @@ export const ordersColumns = [
     dataIndex: "status",
     key: "status",
   },
+  Table.EXPAND_COLUMN,
   {
-    title: "Actions",
     dataIndex: "actions",
     key: "actions",
   },
