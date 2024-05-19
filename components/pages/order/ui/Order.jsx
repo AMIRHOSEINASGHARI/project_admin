@@ -1,11 +1,19 @@
-import { Document, ShoppingCart } from "@/components/icons/Icons";
+// cmp
+import { Document, LeftAngle, ShoppingCart } from "@/components/icons/Icons";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
 import OrderInformationTable from "./OrderInformationTable";
 import CheckoutTable from "./CheckoutTable";
+import CustomLink from "@/components/shared/CustomLink";
 
 const Order = ({ order }) => {
   return (
     <div className="flex flex-col gap-5">
+      <CustomLink
+        icon={<LeftAngle size={10} />}
+        title="Back"
+        href="/orders"
+        className="backLink w-fit"
+      />
       <DetailedBox
         title="Order Information"
         icon={

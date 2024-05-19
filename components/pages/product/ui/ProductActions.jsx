@@ -3,17 +3,17 @@ import Link from "next/link";
 // components
 import { Edit, EyeOpen, LeftAngle } from "@/components/icons/Icons";
 import { Tooltip } from "antd";
+import CustomLink from "@/components/shared/CustomLink";
 
 const ProductActions = ({ id }) => {
   return (
     <div className="w-full flex justify-between items-center gap-3">
-      <Link
+      <CustomLink
         href="/products"
-        className="rounded-btn flex items-center gap-2 hoverable p-2"
-      >
-        <LeftAngle size={10} />
-        <p className="text-sm font-medium">Back</p>
-      </Link>
+        className="backLink"
+        title="Back"
+        icon={<LeftAngle size={10} />}
+      />
       <div className="flex items-center gap-3">
         <Tooltip placement="bottom" title="Go Live">
           <Link
