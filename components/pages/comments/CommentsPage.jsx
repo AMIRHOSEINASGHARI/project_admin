@@ -20,7 +20,9 @@ const CommentsPage = async () => {
       );
     }
 
-    return <CommentsList comments={data.comments} />;
+    return (
+      <CommentsList comments={JSON.parse(JSON.stringify(data.comments))} />
+    );
   } catch (error) {
     return <p>Error!</p>;
   }

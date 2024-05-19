@@ -8,6 +8,7 @@ import { images } from ".";
 // cmp
 import moment from "moment";
 import OrdersActions from "@/components/pages/orders/ui/OrdersActions";
+import CommentAction from "@/components/pages/shared/CommentAction";
 
 export const productsDataSourse = (products) =>
   products.map((product) => ({
@@ -156,4 +157,63 @@ export const orderCheckoutSummaryDataSourse = (items) =>
     qty: item.quantity,
     unitPrice: `$${item.cost.toLocaleString()}`,
     amount: `$${(item.quantity * item.cost).toLocaleString()}`,
+  }));
+
+export const commentsDataSourse = (comments) =>
+  comments.map((comment) => ({
+    key: comment._id,
+    id: `#${shorterText(comment._id, 10)}`,
+    user: (
+      <Link
+        href={`/users/${comment.senderId._id}`}
+        className="flex items-center gap-3"
+      >
+        <Image
+          src={comment.senderId.avatar || images.person}
+          width={40}
+          height={40}
+          alt="user"
+          priority
+        />
+        <div>
+          <p className="text-p1 font-medium">{comment.senderId.username}</p>
+          {comment.senderId.displayName && (
+            <p className="text-p2 text-darkGray">
+              {comment.senderId.displayName}
+            </p>
+          )}
+        </div>
+      </Link>
+    ),
+    status: (
+      <p
+        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
+          comment.published
+            ? "text-darkGreen bg-lightGreen"
+            : "text-darkOrange bg-lightOrange"
+        }`}
+      >
+        {comment.published ? "Published" : "Draft"}
+      </p>
+    ),
+    isAnswered: (
+      <p
+        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
+          comment.status === "Not-Answered"
+            ? "text-darkOrange bg-lightOrange"
+            : "text-darkGreen bg-lightGreen"
+        }`}
+      >
+        {comment.status}
+      </p>
+    ),
+    date: moment(comment.createdAt).fromNow(),
+    action: (
+      <CommentAction
+        _id={JSON.parse(JSON.stringify(comment._id))}
+        answer={JSON.parse(JSON.stringify(comment.answer))}
+        status={JSON.parse(JSON.stringify(comment.status))}
+        published={JSON.parse(JSON.stringify(comment.published))}
+      />
+    ),
   }));

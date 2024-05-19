@@ -6,8 +6,8 @@ import Image from "next/image";
 import { images } from "@/constants";
 // cmp
 import moment from "moment";
-import CommentAction from "./CommentAction";
 import { Empty } from "antd";
+import CommentAction from "@/components/pages/shared/CommentAction";
 
 const CommentsTab = ({ comments }) => {
   if (comments.length === 0) {

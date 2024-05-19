@@ -132,3 +132,37 @@ export const orderPageCheckoutTableColumns = [
     dataIndex: "amount",
   },
 ];
+
+export const commentsColumns = [
+  {
+    key: "id",
+    dataIndex: "id",
+    title: "ID",
+  },
+  {
+    key: "user",
+    dataIndex: "user",
+    title: "User",
+    responsive: ["lg"],
+  },
+  {
+    key: "status",
+    dataIndex: "status",
+    title: "Status",
+  },
+  {
+    key: "isAnswered",
+    dataIndex: "isAnswered",
+    title: "Is Answered",
+  },
+  {
+    key: "date",
+    dataIndex: "date",
+    title: "Date",
+  },
+  {
+    key: "action",
+    dataIndex: "action",
+    title: "Action",
+  },
+];
