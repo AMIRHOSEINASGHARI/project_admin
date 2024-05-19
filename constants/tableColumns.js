@@ -166,3 +166,46 @@ export const commentsColumns = [
     title: "Action",
   },
 ];
+
+export const usersColumns = [
+  {
+    key: "name",
+    dataIndex: "name",
+    title: "Name",
+  },
+  {
+    key: "phoneNumber",
+    dataIndex: "phoneNumber",
+    title: "Phone Number",
+  },
+  {
+    key: "address",
+    dataIndex: "address",
+    title: "Address",
+  },
+  {
+    key: "orders",
+    dataIndex: "orders",
+    title: "Orders",
+  },
+  {
+    key: "comments",
+    dataIndex: "comments",
+    title: "Comments",
+  },
+  {
+    key: "likes",
+    dataIndex: "likes",
+    title: "Likes",
+  },
+  {
+    key: "cartStatus",
+    dataIndex: "cartStatus",
+    title: "Cart Status",
+  },
+  {
+    key: "date",
+    dataIndex: "date",
+    title: "Joined At",
+  },
+];

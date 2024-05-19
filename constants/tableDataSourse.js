@@ -217,3 +217,44 @@ export const commentsDataSourse = (comments) =>
       />
     ),
   }));
+
+export const usersDataSourse = (users) =>
+  users.map((user) => ({
+    key: user._id,
+    name: (
+      <Link href={`/users/${user._id}`} className="flex items-center gap-3">
+        <Image
+          src={user.avatar || images.person}
+          width={40}
+          height={40}
+          alt="user"
+          priority
+        />
+        <div>
+          <p className="text-p1 font-medium">{user.username}</p>
+          {user.displayName && (
+            <p className="text-p2 text-darkGray">{user.displayName}</p>
+          )}
+        </div>
+      </Link>
+    ),
+    phoneNumber: user.phoneNumber || "_",
+    address: user.address || "_",
+    orders:
+      user.orders.length === 0 ? "_" : user.orders.length.toLocaleString(),
+    comments:
+      user.comments.length === 0 ? "_" : user.comments.length.toLocaleString(),
+    likes: user.likes.length === 0 ? "_" : user.likes.length.toLocaleString(),
+    cartStatus: (
+      <p
+        className={`py-1 px-2 rounded-btn text-p2 w-fit ${
+          user.cart.totalProductsCount === 0
+            ? "bg-lightGray text-darkGray"
+            : "bg-lightOrange text-darkOrange"
+        }`}
+      >
+        {user.cart.totalProductsCount === 0 ? "Empty" : "Has Products"}
+      </p>
+    ),
+    date: moment(user.createdAt).format("L"),
+  }));

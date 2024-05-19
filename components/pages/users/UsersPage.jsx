@@ -2,6 +2,7 @@
 import { getUsers } from "@/actions/user";
 // cmp
 import { Empty } from "antd";
+import UsersList from "./ui/UsersList";
 
 const UsersPage = async () => {
   try {
@@ -18,7 +19,7 @@ const UsersPage = async () => {
         </div>
       );
     }
-    return <div>UsersPage</div>;
+    return <UsersList users={JSON.parse(JSON.stringify(data.users))} />;
   } catch (error) {
     return <p>Error!</p>;
   }
