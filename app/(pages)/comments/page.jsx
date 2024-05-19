@@ -1,5 +1,7 @@
+import CommentsPage from "@/components/pages/comments/CommentsPage";
+
 const Comments = () => {
-  return <div>Comments</div>;
+  return <CommentsPage />;
 };
 
 export default Comments;

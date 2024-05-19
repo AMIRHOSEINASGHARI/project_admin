@@ -10,6 +10,57 @@ import { Comment } from "@/utils/models/comment";
 import { Product } from "@/utils/models/product";
 import { User } from "@/utils/models/user";
 
+export const getComments = async () => {
+  try {
+    await connectDB();
+
+    const session = getServerSession();
+
+    // check session
+    if (!session) {
+      return {
+        message: "Un Authorized",
+        status: "failed",
+        code: 401,
+      };
+    }
+    // check user roll
+    if (session.roll === "USER") {
+      return {
+        message: "Access Denied!",
+        status: "failed",
+        code: 403,
+      };
+    }
+
+    const comments = await Comment.find()
+      .populate({
+        path: "productId",
+        model: Product,
+        select: "image title",
+      })
+      .populate({
+        path: "senderId",
+        model: User,
+        select: "avatar username displayName",
+      });
+
+    return {
+      comments,
+      message: "success",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};
+
 export const publishCommentStatus = async (data) => {
   try {
     await connectDB();
