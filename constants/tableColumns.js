@@ -209,3 +209,31 @@ export const usersColumns = [
     title: "Joined At",
   },
 ];
+
+export const userOrdersColumns = [
+  {
+    title: "Id",
+    dataIndex: "_id",
+    key: "_id",
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+  {
+    title: "Items",
+    dataIndex: "totalProducts",
+    key: "totalProducts",
+  },
+  {
+    title: "Price",
+    dataIndex: "totalPayable",
+    key: "totalPayable",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+  },
+];

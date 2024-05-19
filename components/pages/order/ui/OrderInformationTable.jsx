@@ -126,7 +126,7 @@ const OrderInformationTable = ({
   ];
 
   return (
-    <div className="w-full tableContanier">
+    <div className="w-full tableContainer">
       <Table
         dataSource={dataSourse}
         columns={columns}

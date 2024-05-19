@@ -3,6 +3,7 @@ import { LeftAngle } from "@/components/icons/Icons";
 import CustomLink from "@/components/shared/CustomLink";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
 import GeneralInformation from "./GeneralInformation";
+import UserOrders from "./UserOrders";
 
 const User = ({ user }) => {
   const generalInfoProps = {
@@ -21,10 +22,18 @@ const User = ({ user }) => {
         title="Users"
         className="backLink"
       />
-      <DetailedBox
-        title="General"
-        children={<GeneralInformation {...generalInfoProps} />}
-      />
+      <div className="flex flex-col gap-5">
+        <DetailedBox
+          title="General"
+          children={<GeneralInformation {...generalInfoProps} />}
+        />
+        <DetailedBox
+          title="Orders"
+          children={
+            <UserOrders orders={JSON.parse(JSON.stringify(user.orders))} />
+          }
+        />
+      </div>
     </div>
   );
 };

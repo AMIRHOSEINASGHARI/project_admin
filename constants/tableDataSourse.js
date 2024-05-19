@@ -258,3 +258,32 @@ export const usersDataSourse = (users) =>
     ),
     date: moment(user.createdAt).format("L"),
   }));
+
+export const userOrdersDataSourse = (orders) =>
+  orders.map((order) => ({
+    key: order._id,
+    _id: (
+      <Link href={`/orders/${order._id}`}>#{shorterText(order._id, 8)}</Link>
+    ),
+    date: (
+      <div>
+        <p>{moment(order.createdAt).format("L")}</p>
+        <p className="text-p2 text-darkGray">
+          {moment(order.createdAt).format("LT")}
+        </p>
+      </div>
+    ),
+    totalProducts: order.summary.totalProducts,
+    totalPayable: `$${order.summary.totalPayable.toLocaleString()}`,
+    status: (
+      <p
+        className={`py-1 px-2 rounded-btn text-p2 w-fit ${
+          order.status === "Completed"
+            ? "bg-lightGreen text-darkGreen"
+            : "bg-lightOrange text-darkOrange"
+        }`}
+      >
+        {order.status}
+      </p>
+    ),
+  }));

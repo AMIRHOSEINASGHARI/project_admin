@@ -5,6 +5,9 @@ import connectDB from "@/utils/connectDB";
 import { getServerSession } from "@/utils/session";
 // models
 import { User } from "@/utils/models/user";
+import { Order } from "@/utils/models/order";
+import { Comment } from "@/utils/models/comment";
+import { Like } from "@/utils/models/like";
 
 export const getUsers = async () => {
   try {
@@ -72,7 +75,21 @@ export const getUser = async (id) => {
       };
     }
 
-    const user = await User.findById(id).select("-password").lean();
+    const user = await User.findById(id)
+      .select("-password")
+      .populate({
+        path: "orders",
+        model: Order,
+      })
+      .populate({
+        path: "comments",
+        model: Comment,
+      })
+      .populate({
+        path: "likes",
+        model: Like,
+      })
+      .lean();
 
     return {
       user,

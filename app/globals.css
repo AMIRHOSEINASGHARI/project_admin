@@ -107,6 +107,6 @@ body {
   @apply rounded-btn flex items-center gap-2 hoverable p-2 w-fit;
 }
 
-.tableContanier {
+.tableContainer {
   @apply cardShadow3 rounded-2xl border overflow-hidden;
 }
