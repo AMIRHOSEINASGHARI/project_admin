@@ -36,10 +36,10 @@ const Sidebar = () => {
           {menuLinks.map((item) => (
             <Fragment key={item.title}>
               <li
-                className={`rounded-btn mx-4 Transition mb-[2px] ${
+                className={`rounded-l-btn ml-4 Transition mb-[2px] border-r-4 ${
                   pathname === item.link
-                    ? "bg-baseLight text-baseDark"
-                    : "bg-white text-darkGray hover:bg-lightGray"
+                    ? "bg-baseLight text-baseDark border-darkPurple"
+                    : "bg-white text-black hover:bg-lightGray border-transparent"
                 }`}
               >
                 <Link
