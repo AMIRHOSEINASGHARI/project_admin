@@ -12,6 +12,8 @@ const CustomInput = ({
   wrapperClassName,
   min,
   max,
+  readOnly,
+  disabled,
 }) => {
   const [active, setActive] = useState(false);
 
@@ -34,6 +36,8 @@ const CustomInput = ({
   return (
     <div className={`input-group ${wrapperClassName && wrapperClassName}`}>
       <input
+        disabled={disabled || false}
+        readOnly={readOnly || false}
         type={type || "text"}
         name={name || "input"}
         value={value}

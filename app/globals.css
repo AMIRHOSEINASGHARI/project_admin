@@ -104,5 +104,5 @@ body {
 }
 
 .backLink {
-  @apply rounded-btn flex items-center gap-2 hoverable p-2;
+  @apply rounded-btn flex items-center gap-2 hoverable p-2 w-fit;
 }
