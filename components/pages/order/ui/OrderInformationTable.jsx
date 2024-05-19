@@ -126,7 +126,7 @@ const OrderInformationTable = ({
   ];
 
   return (
-    <div className="w-full box border">
+    <div className="w-full tableContanier">
       <Table
         dataSource={dataSourse}
         columns={columns}

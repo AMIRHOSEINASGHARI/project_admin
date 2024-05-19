@@ -106,3 +106,7 @@ body {
 .backLink {
   @apply rounded-btn flex items-center gap-2 hoverable p-2 w-fit;
 }
+
+.tableContanier {
+  @apply cardShadow3 rounded-2xl border overflow-hidden;
+}

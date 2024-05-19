@@ -6,7 +6,7 @@ import { Table } from "antd";
 
 const CommentsList = ({ comments }) => {
   return (
-    <div className="box border">
+    <div className="tableContanier">
       <Table
         columns={commentsColumns}
         dataSource={commentsDataSourse(comments)}

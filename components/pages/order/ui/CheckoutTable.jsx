@@ -7,7 +7,7 @@ import { Table } from "antd";
 const CheckoutTable = ({ items, summary }) => {
   return (
     <div className="w-full space-y-5">
-      <div className="w-full box border">
+      <div className="w-full tableContanier">
         <Table
           columns={orderPageCheckoutTableColumns}
           dataSource={orderCheckoutSummaryDataSourse(items)}

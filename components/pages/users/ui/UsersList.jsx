@@ -6,7 +6,7 @@ import { Table } from "antd";
 
 const UsersList = ({ users }) => {
   return (
-    <div className="box border">
+    <div className="tableContanier">
       <Table
         pagination={false}
         scroll={{ x: true }}
