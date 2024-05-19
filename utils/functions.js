@@ -14,8 +14,9 @@ export const verifyPassword = async (password, hashedPassword) => {
 };
 
 export const shorterText = (text, maxCharacter) => {
-  if (String(text).length > maxCharacter) {
-    return `${text.substring(0, maxCharacter)}`;
+  const t = String(text);
+  if (t.length > maxCharacter) {
+    return `${t.substring(0, maxCharacter)}`;
   } else {
     return text;
   }
