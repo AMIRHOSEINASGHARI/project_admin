@@ -131,6 +131,7 @@ const OrderInformationTable = ({
         dataSource={dataSourse}
         columns={columns}
         pagination={false}
+        scroll={{ x: true }}
         className="w-full"
       />
     </div>

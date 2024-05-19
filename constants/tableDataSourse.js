@@ -140,3 +140,20 @@ export const ordersListDataSourse = (orders) =>
       </div>
     )),
   }));
+
+export const orderCheckoutSummaryDataSourse = (items) =>
+  items.map((item) => ({
+    key: item.productId._id,
+    product: (
+      <Image
+        src={item.productId.image}
+        width={50}
+        height={50}
+        alt={shorterText(item.productId.title, 20)}
+        priority
+      />
+    ),
+    qty: item.quantity,
+    unitPrice: `$${item.cost.toLocaleString()}`,
+    amount: `$${(item.quantity * item.cost).toLocaleString()}`,
+  }));

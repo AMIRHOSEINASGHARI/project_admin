@@ -1,6 +1,7 @@
-import { Document } from "@/components/icons/Icons";
+import { Document, ShoppingCart } from "@/components/icons/Icons";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
 import OrderInformationTable from "./OrderInformationTable";
+import CheckoutTable from "./CheckoutTable";
 
 const Order = ({ order }) => {
   return (
@@ -17,6 +18,21 @@ const Order = ({ order }) => {
             date={JSON.parse(JSON.stringify(order?.createdAt))}
             paymentMethod={JSON.parse(JSON.stringify(order?.paymentMethod))}
             status={JSON.parse(JSON.stringify(order?.status))}
+          />
+        }
+      />
+      <DetailedBox
+        title="Checkout Summary"
+        icon={
+          <ShoppingCart
+            wrapperClassName="cardShadow rounded-xl p-3"
+            size={20}
+          />
+        }
+        children={
+          <CheckoutTable
+            items={JSON.parse(JSON.stringify(order?.items))}
+            summary={JSON.parse(JSON.stringify(order?.summary))}
           />
         }
       />
