@@ -4,9 +4,17 @@
 import { userOrdersColumns } from "@/constants/tableColumns";
 import { userOrdersDataSourse } from "@/constants/tableDataSourse";
 // cmp
-import { Table } from "antd";
+import { Empty, Table } from "antd";
 
 const UserOrders = ({ orders }) => {
+  if (orders.length === 0) {
+    return (
+      <div className="box w-full">
+        <Empty description="No Orders!" />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full tableContainer border-none">
       <Table

@@ -237,3 +237,31 @@ export const userOrdersColumns = [
     key: "status",
   },
 ];
+
+export const userCommentsColumns = [
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+  {
+    title: "Title",
+    dataIndex: "title",
+    key: "title",
+  },
+  {
+    title: "IsAnswered",
+    dataIndex: "isAnswered",
+    key: "isAnswered",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+  },
+  {
+    title: "Actions",
+    dataIndex: "actions",
+    key: "actions",
+  },
+];

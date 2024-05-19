@@ -287,3 +287,47 @@ export const userOrdersDataSourse = (orders) =>
       </p>
     ),
   }));
+
+export const userCommentsDataSourse = (comments) =>
+  comments.map((comment) => ({
+    key: comment._id,
+    date: (
+      <div>
+        <p>{moment(comment.createdAt).format("L")}</p>
+        <p className="text-p2 text-darkGray">
+          {moment(comment.createdAt).format("LT")}
+        </p>
+      </div>
+    ),
+    title: <p className="text-p2">{shorterText(comment.title, 20)}</p>,
+    isAnswered: (
+      <p
+        className={`py-1 px-2 rounded-btn text-p2 w-fit ${
+          comment.status === "Answered"
+            ? "bg-lightGreen text-darkGreen"
+            : "bg-lightOrange text-darkOrange"
+        }`}
+      >
+        {comment.status}
+      </p>
+    ),
+    status: (
+      <p
+        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
+          comment.published
+            ? "text-darkGreen bg-lightGreen"
+            : "text-darkOrange bg-lightOrange"
+        }`}
+      >
+        {comment.published ? "Published" : "Draft"}
+      </p>
+    ),
+    actions: (
+      <CommentAction
+        _id={JSON.parse(JSON.stringify(comment._id))}
+        answer={JSON.parse(JSON.stringify(comment.answer))}
+        status={JSON.parse(JSON.stringify(comment.status))}
+        published={JSON.parse(JSON.stringify(comment.published))}
+      />
+    ),
+  }));
