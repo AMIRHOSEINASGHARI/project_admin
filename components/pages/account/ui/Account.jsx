@@ -1,9 +1,12 @@
+// cmp
 import AvatarSection from "./AvatarSection";
+import ProfileForm from "./ProfileForm";
 
 const Account = ({ data }) => {
   return (
-    <div>
+    <div className="flex flex-col xl:flex-row gap-5">
       <AvatarSection data={data} />
+      <ProfileForm {...JSON.parse(JSON.stringify(data))} />
     </div>
   );
 };

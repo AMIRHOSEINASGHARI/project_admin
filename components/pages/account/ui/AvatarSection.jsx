@@ -8,7 +8,7 @@ import CustomButton from "@/components/shared/CustomButton";
 
 const AvatarSection = ({ data }) => {
   return (
-    <div className="box flex flex-col items-center gap-5">
+    <div className="box flex flex-col items-center gap-5 w-full xl:w-[40%] h-fit">
       <div>
         <Image
           src={data.avatar || images.person}
