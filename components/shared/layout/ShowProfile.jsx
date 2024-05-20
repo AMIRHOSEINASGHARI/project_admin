@@ -9,6 +9,7 @@ import { images } from "@/constants";
 import { Popover } from "antd";
 import { Home, Settings } from "@/components/icons/Icons";
 import SignoutButton from "../SignoutButton";
+import CustomBadge from "../CustomBadge";
 
 // TODO: handle close popover and open in client side
 const ShowProfile = () => {
@@ -20,17 +21,10 @@ const ShowProfile = () => {
         <p className="text-h4 font-bold">{session.username}</p>
         <p className="capitalize text-p2 text-darkGray">{session.name}</p>
         <div className="flex justify-end">
-          <p
-            className={`text-p2 w-fit px-1 py-.5 rounded-btn ${
-              session.roll === "OWNER"
-                ? "text-darkGreen bg-lightGreen"
-                : session.roll === "ADMIN"
-                ? "text-darkOrange bg-lightOrange"
-                : "text-darkRose bg-lightRose"
-            }`}
-          >
-            {session.roll}
-          </p>
+          <CustomBadge
+            condition={session.roll === "OWNER" || session.roll === "ADMIN"}
+            title={session.roll}
+          />
         </div>
       </div>
       <hr />

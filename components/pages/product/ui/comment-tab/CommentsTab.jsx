@@ -8,6 +8,7 @@ import { images } from "@/constants";
 import moment from "moment";
 import { Empty } from "antd";
 import CommentAction from "@/components/pages/shared/CommentAction";
+import CustomBadge from "@/components/shared/CustomBadge";
 
 const CommentsTab = ({ comments }) => {
   if (comments.length === 0) {
@@ -54,24 +55,14 @@ const CommentsTab = ({ comments }) => {
               <div className="lg:w-[80%]">
                 <div className="flex gap-2 justify-between items-center mb-4 w-full">
                   <div className="flex gap-2">
-                    <p
-                      className={`py-1 px-2 text-p3 rounded-btn w-fit h-fit ${
-                        status === "Not-Answered"
-                          ? "bg-lightOrange text-darkOrange"
-                          : "bg-lightGreen text-darkGreen"
-                      }`}
-                    >
-                      {status}
-                    </p>
-                    <p
-                      className={`py-1 px-2 text-p3 rounded-btn w-fit h-fit ${
-                        published
-                          ? "bg-lightGreen text-darkGreen"
-                          : "bg-lightOrange text-darkOrange"
-                      }`}
-                    >
-                      {published ? "Published" : "Not-Published"}
-                    </p>
+                    <CustomBadge
+                      condition={status === "Answered"}
+                      title={status}
+                    />
+                    <CustomBadge
+                      condition={published}
+                      title={published ? "Published" : "Not-Published"}
+                    />
                   </div>
                   <CommentAction
                     _id={JSON.parse(JSON.stringify(_id))}

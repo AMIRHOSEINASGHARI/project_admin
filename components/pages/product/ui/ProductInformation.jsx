@@ -6,6 +6,7 @@ import { productInformationDetails } from "@/constants";
 import moment from "moment";
 import Avatars from "./Avatars";
 import { Clock } from "@/components/icons/Icons";
+import CustomBadge from "@/components/shared/CustomBadge";
 
 const ProductInformation = ({ info }) => {
   return (
@@ -42,15 +43,10 @@ const ProductInformation = ({ info }) => {
         >
           {info?.stock !== 0 ? "In Stock" : "Out of Stock"}
         </p>
-        <p
-          className={`p-btn text-p2 w-fit rounded-btn font-bold ${
-            info?.published
-              ? "text-darkBlue bg-lightBlue"
-              : "text-darkGray bg-lightGray"
-          }`}
-        >
-          {info?.published ? "Published" : "Draft"}
-        </p>
+        <CustomBadge
+          condition={info?.published}
+          title={info?.published ? "Published" : "Draft"}
+        />
         <p className="font-bold text-h3">{info?.title}</p>
         <div className="flex items-center gap-3">
           <p className="text-p1 text-darkGray">

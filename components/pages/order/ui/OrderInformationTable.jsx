@@ -4,8 +4,6 @@ import Link from "next/link";
 import { images } from "@/constants";
 // cmp
 import {
-  CircleCheck,
-  CircleClose,
   CreditCard,
   Date,
   Dollar,
@@ -16,6 +14,7 @@ import {
 } from "@/components/icons/Icons";
 import { Avatar, Table } from "antd";
 import moment from "moment";
+import CustomBadge from "@/components/shared/CustomBadge";
 
 const OrderInformationTable = ({
   customer,
@@ -72,20 +71,7 @@ const OrderInformationTable = ({
         </div>
       ),
       description: (
-        <div
-          className={`w-fit flex items-center gap-1 rounded-lg py-1 px-2 text-xs ${
-            status === "Pending"
-              ? "bg-lightOrange text-darkOrange"
-              : "bg-lightGreen text-darkGreen"
-          }`}
-        >
-          {status === "Pending" ? (
-            <CircleClose size={12} />
-          ) : (
-            <CircleCheck size={12} />
-          )}
-          <p>{status}</p>
-        </div>
+        <CustomBadge condition={status === "Completed"} title={status} />
       ),
     },
     {

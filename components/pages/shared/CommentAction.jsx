@@ -25,6 +25,7 @@ import CustomButton from "@/components/shared/CustomButton";
 import Loader from "@/components/shared/Loader";
 import CustomTextarea from "@/components/shared/form/CustomTextarea";
 import { Modal, Popover } from "antd";
+import CustomBadge from "@/components/shared/CustomBadge";
 
 const CommentAction = ({ _id, answer, status, published }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -94,15 +95,7 @@ const CommentAction = ({ _id, answer, status, published }) => {
   };
   const modalContent = (
     <form className="space-y-5" onSubmit={onSubmitModal}>
-      <p
-        className={`py-1 px-2 rounded-btn text-p1 font-bold w-fit ${
-          status === "Not-Answered"
-            ? "bg-lightOrange text-darkOrange"
-            : "bg-lightGreen text-darkGreen"
-        }`}
-      >
-        {status}
-      </p>
+      <CustomBadge condition={status === "Answered"} title={status} />
       <CustomTextarea
         label="Your Answer"
         value={value}

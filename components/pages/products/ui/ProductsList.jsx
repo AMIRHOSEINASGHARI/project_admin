@@ -1,7 +1,7 @@
 "use client";
 
 // constants
-import { productColumn } from "@/constants/tableColumns";
+import { productsColumn } from "@/constants/tableColumns";
 import { productsDataSourse } from "@/constants/tableDataSourse";
 // componnets
 import { Table } from "antd";
@@ -12,7 +12,7 @@ const ProductsList = ({ products }) => {
       <Table
         scroll={{ x: true }}
         pagination={false}
-        columns={productColumn}
+        columns={productsColumn}
         dataSource={productsDataSourse(products)}
       />
     </div>

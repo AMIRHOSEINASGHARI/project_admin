@@ -62,7 +62,7 @@ export const productOrdersColumns = [
   },
 ];
 
-export const productColumn = [
+export const productsColumn = [
   {
     title: "Name",
     dataIndex: "name",
@@ -107,6 +107,11 @@ export const productColumn = [
     title: "Date",
     dataIndex: "date",
     key: "date",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
   },
 ];
 

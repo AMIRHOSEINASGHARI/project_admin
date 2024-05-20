@@ -9,6 +9,7 @@ import { images } from ".";
 import moment from "moment";
 import OrdersActions from "@/components/pages/orders/ui/OrdersActions";
 import CommentAction from "@/components/pages/shared/CommentAction";
+import CustomBadge from "@/components/shared/CustomBadge";
 
 export const productsDataSourse = (products) =>
   products.map((product) => ({
@@ -52,6 +53,12 @@ export const productsDataSourse = (products) =>
     comments: product.comments.length || "_",
     likes: product.likes.length || "_",
     date: moment(product.createdAt).calendar(),
+    status: (
+      <CustomBadge
+        condition={product.published}
+        title={product.published ? "Published" : "Draft"}
+      />
+    ),
   }));
 
 export const productOrdersTabDataSourse = (productOrders) =>
@@ -100,15 +107,10 @@ export const ordersListDataSourse = (orders) =>
     totalProducts: order.summary.totalProducts.toLocaleString(),
     totalPayable: `$${order.summary.totalPayable.toLocaleString()}`,
     status: (
-      <p
-        className={`py-.5 px-2 w-fit rounded-btn text-p2 font-medium ${
-          order.status === "Pending"
-            ? "bg-lightOrange text-darkOrange"
-            : "bg-lightGreen text-darkGreen"
-        }`}
-      >
-        {order.status}
-      </p>
+      <CustomBadge
+        condition={order.status === "Completed"}
+        title={order.status}
+      />
     ),
     actions: (
       <OrdersActions
@@ -186,26 +188,16 @@ export const commentsDataSourse = (comments) =>
       </Link>
     ),
     status: (
-      <p
-        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
-          comment.published
-            ? "text-darkGreen bg-lightGreen"
-            : "text-darkOrange bg-lightOrange"
-        }`}
-      >
-        {comment.published ? "Published" : "Draft"}
-      </p>
+      <CustomBadge
+        condition={comment.published}
+        title={comment.published ? "Published" : "Draft"}
+      />
     ),
     isAnswered: (
-      <p
-        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
-          comment.status === "Not-Answered"
-            ? "text-darkOrange bg-lightOrange"
-            : "text-darkGreen bg-lightGreen"
-        }`}
-      >
-        {comment.status}
-      </p>
+      <CustomBadge
+        condition={comment.status === "Answered"}
+        title={comment.status}
+      />
     ),
     date: moment(comment.createdAt).fromNow(),
     action: (
@@ -246,15 +238,10 @@ export const usersDataSourse = (users) =>
       user.comments.length === 0 ? "_" : user.comments.length.toLocaleString(),
     likes: user.likes.length === 0 ? "_" : user.likes.length.toLocaleString(),
     cartStatus: (
-      <p
-        className={`py-1 px-2 rounded-btn text-p2 w-fit ${
-          user.cart.totalProductsCount === 0
-            ? "bg-lightGray text-darkGray"
-            : "bg-lightOrange text-darkOrange"
-        }`}
-      >
-        {user.cart.totalProductsCount === 0 ? "Empty" : "Has Products"}
-      </p>
+      <CustomBadge
+        condition={user.cart.totalProductsCount !== 0}
+        title={user.cart.totalProductsCount === 0 ? "Empty" : "Fill"}
+      />
     ),
     date: moment(user.createdAt).format("L"),
   }));
@@ -276,15 +263,10 @@ export const userOrdersDataSourse = (orders) =>
     totalProducts: order.summary.totalProducts,
     totalPayable: `$${order.summary.totalPayable.toLocaleString()}`,
     status: (
-      <p
-        className={`py-1 px-2 rounded-btn text-p2 w-fit ${
-          order.status === "Completed"
-            ? "bg-lightGreen text-darkGreen"
-            : "bg-lightOrange text-darkOrange"
-        }`}
-      >
-        {order.status}
-      </p>
+      <CustomBadge
+        condition={order.status === "Completed"}
+        title={order.status}
+      />
     ),
   }));
 
@@ -306,26 +288,16 @@ export const userCommentsDataSourse = (comments) =>
     ),
     title: <p className="text-p2">{shorterText(comment.title, 20)}</p>,
     isAnswered: (
-      <p
-        className={`py-1 px-2 rounded-btn text-p2 w-fit ${
-          comment.status === "Answered"
-            ? "bg-lightGreen text-darkGreen"
-            : "bg-lightOrange text-darkOrange"
-        }`}
-      >
-        {comment.status}
-      </p>
+      <CustomBadge
+        condition={comment.status === "Answered"}
+        title={comment.status}
+      />
     ),
     status: (
-      <p
-        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
-          comment.published
-            ? "text-darkGreen bg-lightGreen"
-            : "text-darkOrange bg-lightOrange"
-        }`}
-      >
-        {comment.published ? "Published" : "Draft"}
-      </p>
+      <CustomBadge
+        condition={comment.published}
+        title={comment.published ? "Published" : "Draft"}
+      />
     ),
     actions: (
       <CommentAction
@@ -387,15 +359,10 @@ export const blogsDataSourse = (blogs) =>
     id: <Link href={`/blogs/${blog._id}`}>#{shorterText(blog._id, 8)}</Link>,
     name: <p>{shorterText(blog.title, 50)}</p>,
     status: (
-      <p
-        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
-          blog.published
-            ? "text-darkGreen bg-lightGreen"
-            : "text-darkOrange bg-lightOrange"
-        }`}
-      >
-        {blog.published ? "Published" : "Draft"}
-      </p>
+      <CustomBadge
+        condition={blog.published}
+        title={blog.published ? "Published" : "Draft"}
+      />
     ),
     likes: blog.likes.length === 0 ? "_" : blog.likes.length.toLocaleString(),
     date: (
