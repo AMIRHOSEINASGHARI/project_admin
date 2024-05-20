@@ -11,6 +11,9 @@ import KeywordsSelection from "./KeywordSelection";
 import CustomButton from "../CustomButton";
 import Loader from "../Loader";
 import { Switch } from "antd";
+import { uploadImage } from "@/utils/functions";
+import { createBlog } from "@/actions/blog";
+import toast from "react-hot-toast";
 
 const BlogForm = ({ type, form, setForm, onChange }) => {
   const [loading, setLoading] = useState(false);
@@ -41,6 +44,36 @@ const BlogForm = ({ type, form, setForm, onChange }) => {
     </div>
   );
 
+  const create = async () => {
+    if (
+      !form.title ||
+      !form.description ||
+      !form.image ||
+      form.keywords.length === 0
+    ) {
+      toast.error("Fill all fields!");
+      return;
+    }
+
+    setLoading(true);
+
+    const uploadResult = await uploadImage(form.image[0]);
+
+    const result = await createBlog({
+      ...form,
+      image: uploadResult.imageUrl,
+    });
+
+    setLoading(false);
+
+    if (result.code !== 200) {
+      toast.error(result.message);
+    } else {
+      toast.success(result.message);
+      router.push("/blogs");
+    }
+  };
+
   return (
     <div className="space-y-8">
       <DetailedBox
@@ -70,6 +103,7 @@ const BlogForm = ({ type, form, setForm, onChange }) => {
           } flex items-center justify-center w-[150px] h-[50px] rounded-btn text-p1 font-bold`}
           type="button"
           disabled={loading}
+          onClick={() => create()}
           title={
             loading ? (
               <Loader width={15} height={15} />
