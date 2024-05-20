@@ -4,6 +4,10 @@
 import { useState } from "react";
 // next
 import Link from "next/link";
+// hooks
+import useServerAction from "@/hooks/callServerAction";
+// actions
+import { updateBlogStatus } from "@/actions/blog";
 // cmp
 import {
   DownAngle,
@@ -16,23 +20,41 @@ import {
 import BackLink from "@/components/shared/BackLink";
 import CustomButton from "@/components/shared/CustomButton";
 import { Popover, Tooltip } from "antd";
+import Loader from "@/components/shared/Loader";
 
 const BlogActions = ({ id, isPublished }) => {
   const [openPopover, setOpenPopover] = useState(false);
 
+  const { loading, fn } = useServerAction(updateBlogStatus, {
+    id,
+    action: isPublished ? "draft" : "publish",
+  });
+
   //   Popover FUNCTION's : START   //
   const popoverContent = (
     <div className="popContainer w-[150px]">
-      <CustomButton
-        icon={<Publish />}
-        title="Published"
-        classNames="popButton hoverable"
-      />
-      <CustomButton
-        icon={<Draft />}
-        title="Draft"
-        classNames="popButton hoverable"
-      />
+      {loading ? (
+        <div className="flex items-center justify-center w-full h-[75px]">
+          <Loader width={20} height={20} />
+        </div>
+      ) : (
+        <>
+          <CustomButton
+            icon={<Publish />}
+            title="Published"
+            classNames="popButton hoverable"
+            onClick={() => fn()}
+            disabled={isPublished || loading}
+          />
+          <CustomButton
+            icon={<Draft />}
+            title="Draft"
+            classNames="popButton hoverable"
+            onClick={() => fn()}
+            disabled={!isPublished || loading}
+          />
+        </>
+      )}
     </div>
   );
   const onOpenChange = (newOpen) => {

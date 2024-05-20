@@ -25,7 +25,7 @@ const FullScreenImage = ({ image, title }) => {
       </div>
       {fullScreen && (
         <div
-          className="w-full h-screen fixed z-30 inset-0 bg-black/70 p-8 space-y-5"
+          className="w-full h-screen fixed z-30 inset-0 bg-black/70 p-8 space-y-5 cursor-pointer"
           onClick={() => setFullScreen(false)}
         >
           <div className="w-full flex justify-end">
