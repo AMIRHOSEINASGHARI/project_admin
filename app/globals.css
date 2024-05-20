@@ -110,3 +110,7 @@ body {
 .tableContainer {
   @apply cardShadow3 rounded-2xl border overflow-hidden;
 }
+
+.iconButton {
+  @apply hover:bg-lightGray Transition p-3 rounded-full;
+}

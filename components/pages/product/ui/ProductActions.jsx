@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Edit, EyeOpen, LeftAngle } from "@/components/icons/Icons";
 import { Tooltip } from "antd";
 import CustomLink from "@/components/shared/CustomLink";
+import CustomButton from "@/components/shared/CustomButton";
 
 const ProductActions = ({ id }) => {
   return (
@@ -19,17 +20,19 @@ const ProductActions = ({ id }) => {
           <Link
             href={`https://store-onlineshop.liara.run/products/${id}`}
             target="_blank"
-            className="hoverable p-3 rounded-btn"
           >
-            <EyeOpen className="text-darkGray" />
+            <CustomButton
+              icon={<EyeOpen className="text-darkGray" />}
+              classNames="iconButton"
+            />
           </Link>
         </Tooltip>
         <Tooltip placement="bottom" title="Edit">
-          <Link
-            href={`/products/${id}/edit`}
-            className="hoverable p-3 rounded-btn"
-          >
-            <Edit className="text-darkGray" />
+          <Link href={`/products/${id}/edit`}>
+            <CustomButton
+              icon={<Edit className="text-darkGray" />}
+              classNames="iconButton"
+            />
           </Link>
         </Tooltip>
       </div>

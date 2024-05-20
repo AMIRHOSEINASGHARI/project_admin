@@ -1,15 +1,35 @@
 "use client";
 
-const CustomButton = ({ type, classNames, disabled, title, icon, onClick }) => {
+import Loader from "./Loader";
+
+const CustomButton = ({
+  type,
+  classNames,
+  isLoading,
+  disabled,
+  title,
+  icon,
+  onClick,
+}) => {
+  const bassClassNames = `rounded-lg px-[20px] h-[40px] Transition ${
+    isLoading ? "bg-gray-200" : "bg-baseDark text-white"
+  }`;
+
   return (
     <button
       type={type || "button"}
-      className={`rounded-btn ${classNames && classNames}`}
+      className={classNames ? classNames : bassClassNames}
       disabled={disabled}
       onClick={onClick || null}
     >
-      {icon && icon}
-      {title && title}
+      {isLoading ? (
+        <Loader width={15} height={15} />
+      ) : (
+        <>
+          {icon && icon}
+          {title && title}
+        </>
+      )}
     </button>
   );
 };

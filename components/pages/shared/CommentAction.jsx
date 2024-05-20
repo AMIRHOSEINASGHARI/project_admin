@@ -110,12 +110,10 @@ const CommentAction = ({ _id, answer, status, published }) => {
           classNames="border p-btn rounded-btn text-p1 hoverable"
         />
         <CustomButton
-          disabled={answerLoading}
-          title={answerLoading ? <Loader width={15} height={15} /> : "Submit"}
+          title="Submit"
+          isLoading={answerLoading}
           type="submit"
-          classNames={`p-btn rounded-btn text-p1 ${
-            answerLoading ? "bg-lightGray" : "bg-darkBlue text-white"
-          }`}
+          disabled={answerLoading}
         />
       </div>
     </form>
@@ -191,11 +189,6 @@ const CommentAction = ({ _id, answer, status, published }) => {
 
   return (
     <div className="flex items-center gap-1">
-      <CustomButton
-        onClick={openModal}
-        title={<Edit size={18} />}
-        classNames="hoverable p-2 rounded-btn"
-      />
       <Modal
         title={modalTitle}
         closeIcon={false}
@@ -206,6 +199,11 @@ const CommentAction = ({ _id, answer, status, published }) => {
       >
         {modalContent}
       </Modal>
+      <CustomButton
+        onClick={openModal}
+        icon={<Edit size={18} />}
+        classNames="iconButton"
+      />
       <Popover
         open={isPopoverOpen}
         onOpenChange={onOpenChange}
@@ -219,7 +217,7 @@ const CommentAction = ({ _id, answer, status, published }) => {
         <CustomButton
           type="button"
           icon={<MenuDots size={18} />}
-          classNames="hoverable p-2 rounded-btn"
+          classNames="iconButton"
         />
       </Popover>
     </div>

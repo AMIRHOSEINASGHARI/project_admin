@@ -30,7 +30,7 @@ module.exports = {
       },
       padding: {
         box: "25px 20px",
-        btn: "5px 15px",
+        btn: "8px 20px",
         input: "16.5px 14px",
       },
       borderRadius: {

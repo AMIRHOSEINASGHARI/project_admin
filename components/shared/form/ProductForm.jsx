@@ -157,20 +157,16 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
             Publish
           </label>
         </div>
+
         <CustomButton
           classNames={`${
             loading ? "bg-lightGray" : "bg-dark1 text-white"
           } flex items-center justify-center w-[150px] h-[50px] rounded-btn text-p1 font-bold`}
           type="button"
           disabled={loading}
+          isLoading={loading}
           onClick={() => create()}
-          title={
-            loading ? (
-              <Loader width={15} height={15} />
-            ) : (
-              <p>{type === "create" ? "Create Product" : "Edit Product"}</p>
-            )
-          }
+          title={type === "create" ? "Create Product" : "Edit Product"}
         />
       </div>
     </div>

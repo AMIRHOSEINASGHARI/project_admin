@@ -3,14 +3,16 @@
 // actions
 import { signOut } from "@/actions/auth";
 // constants
-import { icons } from "@/constants";
+import CustomButton from "./CustomButton";
+import { Power } from "../icons/Icons";
 
-const SignoutButton = ({ title, style, btnClassName, titleClassName }) => {
+const SignoutButton = ({ title, btnClassName }) => {
   return (
-    <button onClick={() => signOut()} className={style || ""}>
-      <div className={btnClassName || ""}>{icons.power}</div>
-      {title && <p className={titleClassName || ""}>{title}</p>}
-    </button>
+    <CustomButton
+      onClick={() => signOut()}
+      title={title || <Power />}
+      classNames={btnClassName || "iconButton"}
+    />
   );
 };
 

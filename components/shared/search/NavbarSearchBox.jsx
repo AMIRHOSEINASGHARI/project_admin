@@ -1,13 +1,12 @@
 "use client";
 
-import { icons } from "@/constants";
+import CustomButton from "../CustomButton";
+import { Search } from "@/components/icons/Icons";
 
 const NavbarSearchBox = () => {
   return (
     <div>
-      <button className="p-2 icon_size hover:bg-gray-100 text-darkGray rounded-full Transition">
-        {icons.search}
-      </button>
+      <CustomButton icon={<Search />} classNames="iconButton" />
     </div>
   );
 };

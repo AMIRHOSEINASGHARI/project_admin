@@ -9,7 +9,8 @@ import { usePathname } from "next/navigation";
 import { icons, menuLinks } from "@/constants";
 // components
 import { Drawer } from "antd";
-import { Logo } from "@/components/icons/Icons";
+import { Close, Logo, MenuBars } from "@/components/icons/Icons";
+import CustomButton from "../CustomButton";
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -38,21 +39,22 @@ const MobileNav = () => {
             <span className="text-dark1">Shop</span>
           </div>
         </Link>
-        <button onClick={() => onClose()} className="icon_size text-gray-700">
-          {icons.close}
-        </button>
+        <CustomButton
+          onClick={() => onClose()}
+          icon={<Close />}
+          classNames="iconButton"
+        />
       </div>
     ),
   };
 
   return (
     <div>
-      <button
+      <CustomButton
+        icon={<MenuBars />}
         onClick={() => setOpen(true)}
-        className="hover:bg-gray-50 p-2 rounded-full Transition"
-      >
-        {icons.menu}
-      </button>
+        classNames="iconButton"
+      />
       <Drawer
         placement="left"
         onClose={onClose}

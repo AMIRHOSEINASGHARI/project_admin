@@ -84,10 +84,7 @@ const OrdersActions = ({ orderId, orderStatus }) => {
       trigger="click"
       placement="bottomLeft"
     >
-      <MenuDots
-        wrapperClassName="hoverable p-3 cursor-pointer rounded-full w-fit"
-        size={13}
-      />
+      <CustomButton icon={<MenuDots size={13} />} classNames="iconButton" />
     </Popover>
   );
 };

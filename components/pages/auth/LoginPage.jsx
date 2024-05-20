@@ -107,11 +107,12 @@ const LoginPage = () => {
             />
             <CustomButton
               type="submit"
-              title={loading ? <Loader width={20} height={20} /> : "Login"}
+              title={"Login"}
+              isLoading={loading}
               disabled={loading}
               classNames={`${
                 loading ? "bg-gray-100 text-black" : "bg-black text-white"
-              } w-full h-[50px] font-bold flex items-center justify-center`}
+              } w-full h-[50px] font-bold flex items-center justify-center rounded-btn`}
             />
           </div>
         </div>

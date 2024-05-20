@@ -58,7 +58,7 @@ const KeywordsSelection = ({ form, setForm }) => {
           type="button"
           title="Add"
           onClick={onClick}
-          classNames="w-fit p-btn bg-lightGray"
+          classNames="w-fit p-btn bg-lightGray rounded-btn"
         />
       </div>
       {keywords.length !== 0 && (
@@ -68,7 +68,7 @@ const KeywordsSelection = ({ form, setForm }) => {
               key={keyword}
               type="button"
               onClick={() => removeKeyword(keyword)}
-              classNames="flex items-center gap-btn bg-dark1 hover:bg-dark2 Transition py-[2.5px] px-1.5 group"
+              classNames="rounded-btn flex items-center gap-btn bg-dark1 hover:bg-dark2 Transition py-[2.5px] px-1.5 group"
               title={
                 <>
                   <span className="text-lightGray text-p2">{keyword}</span>
@@ -83,7 +83,7 @@ const KeywordsSelection = ({ form, setForm }) => {
           <CustomButton
             type="button"
             onClick={() => setKeyWords([])}
-            classNames="flex items-center gap-btn text-[#ff5630] hover:bg-lightOrange Transition p-2"
+            classNames="rounded-btn flex items-center gap-btn text-[#ff5630] hover:bg-lightOrange Transition p-2"
             title={<p className="text-p1 font-bold">Clear</p>}
             icon={<Trash />}
           />

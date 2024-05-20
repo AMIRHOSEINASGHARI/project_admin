@@ -13,7 +13,7 @@ const Navbar = () => {
             <MobileNav />
           </div>
         </div>
-        <div className="flex items-center gap-box">
+        <div className="flex items-center gap-3">
           <SignoutButton style="p-2 hover:bg-gray-100 rounded-full Transition text-darkGray text-[22px] flex items-center gap-btn" />
           <NavbarSearchBox />
           <ShowProfile />
