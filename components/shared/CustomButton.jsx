@@ -11,7 +11,7 @@ const CustomButton = ({
   icon,
   onClick,
 }) => {
-  const bassClassNames = `rounded-lg px-[20px] h-[40px] Transition ${
+  const bassClassNames = `rounded-lg px-[20px] h-[40px] Transition flex items-center gap-2 ${
     isLoading ? "bg-gray-200" : "bg-baseDark text-white"
   }`;
 

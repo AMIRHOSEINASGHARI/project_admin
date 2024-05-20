@@ -22,7 +22,7 @@ module.exports = {
         darkSlate: "#64748b",
         darkBlue: "#2563eb",
         darkGreen: "#22c55e",
-        dark1: "#161c24",
+        dark1: "#212b36",
         dark2: "#232b33",
         // base color:
         baseLight: "#ede9fe",

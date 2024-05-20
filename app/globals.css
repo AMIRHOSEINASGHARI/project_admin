@@ -114,3 +114,11 @@ body {
 .iconButton {
   @apply hover:bg-lightGray Transition p-3 rounded-full;
 }
+
+.popContainer {
+  @apply flex flex-col gap-1 p-1;
+}
+
+.popButton {
+  @apply w-full py-1.5 px-3 rounded-btn flex items-center gap-4;
+}
