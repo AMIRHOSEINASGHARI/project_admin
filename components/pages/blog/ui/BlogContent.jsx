@@ -1,0 +1,80 @@
+// next
+import Image from "next/image";
+// utils
+import { shorterText } from "@/utils/functions";
+// cmp
+import { BorderHeart, EyeOpen } from "@/components/icons/Icons";
+import CustomBadge from "@/components/shared/CustomBadge";
+import CustomButton from "@/components/shared/CustomButton";
+import moment from "moment";
+import { Tooltip } from "antd";
+
+const BlogContent = ({
+  _id,
+  title,
+  description,
+  image,
+  keywords,
+  likes,
+  published,
+  createdAt,
+}) => {
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="flex justify-between gap-2">
+        <div>
+          <div className="flex items-center gap-2">
+            <h3 className="text-h3 font-bold">Blog #{shorterText(_id, 5)}</h3>
+            <CustomBadge
+              condition={published}
+              title={published ? "Published" : "Draft"}
+            />
+          </div>
+          <p className="text-p2 text-darkGray">
+            {moment(createdAt).format("LLL")}
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <span>{likes.length}</span>
+          <BorderHeart />
+        </div>
+      </div>
+      <div className="relative rounded-btn overflow-hidden bg-black">
+        <Image
+          src={image}
+          width={2300}
+          height={1080}
+          alt={title}
+          priority
+          className="w-full h-[60vh] object-none object-center"
+        />
+        <div className="w-full py-12 p-8 h-full bg-gradient-to-r flex flex-col justify-between from-black to-transparent absolute inset-0">
+          <h1 className="h1 text-white lg:w-[60%] ">{title}</h1>
+          <div className="w-full flex justify-end absolute bottom-5 right-5">
+            <Tooltip title="Full Screen Image" placement="bottom">
+              <CustomButton
+                icon={<EyeOpen />}
+                classNames="w-fit text-white p-3 bg-white/20 rounded-full"
+              />
+            </Tooltip>
+          </div>
+        </div>
+      </div>
+      <p>{description}</p>
+      {keywords.length !== 0 && (
+        <div className="flex flex-wrap gap-3">
+          {keywords.map((keyword) => (
+            <div
+              key={keyword}
+              className="w-fit h-fit p-btn bg-lightGray hover:bg-gray-200 Transition text-p1 rounded-btn"
+            >
+              {keyword}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BlogContent;

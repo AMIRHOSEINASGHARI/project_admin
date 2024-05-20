@@ -1,12 +1,14 @@
 import BlogActions from "./BlogActions";
+import BlogContent from "./BlogContent";
 
 const Blog = ({ blog }) => {
   return (
-    <div>
+    <div className="space-y-5">
       <BlogActions
         id={JSON.parse(JSON.stringify(blog._id))}
         isPublished={JSON.parse(JSON.stringify(blog.published))}
       />
+      <BlogContent {...JSON.parse(JSON.stringify(blog))} />
     </div>
   );
 };
