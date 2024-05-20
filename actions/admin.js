@@ -279,9 +279,9 @@ export const getCurrentAdmin = async () => {
     // check session
     if (!session) {
       return {
-        message: MESSAGES.unAuthorized,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.unAuthorized,
+        message: "Un Authorized",
+        status: "failed",
+        code: 401,
       };
     }
 
@@ -300,16 +300,16 @@ export const getCurrentAdmin = async () => {
 
     return {
       currentAdmin,
-      message: MESSAGES.success,
-      status: MESSAGES.success,
-      code: STATUS_CODES.success,
+      message: "success",
+      status: "success",
+      code: 200,
     };
   } catch (error) {
     console.log(error);
     return {
-      message: MESSAGES.server,
-      status: MESSAGES.failed,
-      code: STATUS_CODES.server,
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
     };
   }
 };
