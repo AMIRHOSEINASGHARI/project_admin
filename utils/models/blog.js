@@ -5,9 +5,9 @@ const blogSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   image: { type: String, required: true },
-  slug: { type: String, required: true, unique: true },
   keywords: { type: [String], default: [] },
   likes: [{ type: Schema.Types.ObjectId, ref: "Like", default: [] }],
+  published: { type: Boolean, default: false },
   createdAt: {
     type: Date,
     default: () => Date.now(),
