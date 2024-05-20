@@ -5,6 +5,7 @@ import DetailedBox from "@/components/shared/layout/DetailedBox";
 import GeneralInformation from "./GeneralInformation";
 import UserOrders from "./UserOrders";
 import UserComments from "./UserComments";
+import UserLikes from "./UserLikes";
 
 const User = ({ user }) => {
   const generalInfoProps = {
@@ -40,6 +41,12 @@ const User = ({ user }) => {
             <UserComments
               comments={JSON.parse(JSON.stringify(user.comments))}
             />
+          }
+        />
+        <DetailedBox
+          title="Likes"
+          children={
+            <UserLikes likes={JSON.parse(JSON.stringify(user.likes))} />
           }
         />
       </div>

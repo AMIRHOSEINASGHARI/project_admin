@@ -291,6 +291,11 @@ export const userOrdersDataSourse = (orders) =>
 export const userCommentsDataSourse = (comments) =>
   comments.map((comment) => ({
     key: comment._id,
+    product: (
+      <Link href={`/products/${comment.productId._id}`}>
+        #{shorterText(comment.productId._id, 8)}
+      </Link>
+    ),
     date: (
       <div>
         <p>{moment(comment.createdAt).format("L")}</p>
@@ -329,5 +334,49 @@ export const userCommentsDataSourse = (comments) =>
         status={JSON.parse(JSON.stringify(comment.status))}
         published={JSON.parse(JSON.stringify(comment.published))}
       />
+    ),
+  }));
+
+export const userLikesDataSourse = (likes) =>
+  likes.map((like) => ({
+    key: like._id,
+    type: <p className="capitalize">{like.type}</p>,
+    name:
+      like.type === "product" ? (
+        <Link href={`/products/${like.product._id}`}>
+          <div className="flex items-center gap-3">
+            <Image
+              src={like.product.image}
+              width={50}
+              height={50}
+              alt="product"
+              priority
+              className="rounded-lg w-[50px] h-[50px]"
+            />
+            <p>{shorterText(like.product.title, 15)}</p>
+          </div>
+        </Link>
+      ) : (
+        <Link href={`/blogs/${like.blog._id}`}>
+          <div className="flex items-center gap-3">
+            <Image
+              src={like.blog.image}
+              width={50}
+              height={50}
+              alt="product"
+              priority
+              className="rounded-lg w-[50px] h-[50px]"
+            />
+            <p>{shorterText(like.product.title, 15)}</p>
+          </div>
+        </Link>
+      ),
+    date: (
+      <div>
+        <p>{moment(like.createdAt).format("L")}</p>
+        <p className="text-p2 text-darkGray">
+          {moment(like.createdAt).format("LT")}
+        </p>
+      </div>
     ),
   }));

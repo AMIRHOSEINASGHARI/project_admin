@@ -8,6 +8,8 @@ import { User } from "@/utils/models/user";
 import { Order } from "@/utils/models/order";
 import { Comment } from "@/utils/models/comment";
 import { Like } from "@/utils/models/like";
+import { Product } from "@/utils/models/product";
+import { Blog } from "@/utils/models/blog";
 
 export const getUsers = async () => {
   try {
@@ -84,10 +86,29 @@ export const getUser = async (id) => {
       .populate({
         path: "comments",
         model: Comment,
+        populate: {
+          path: "productId",
+          model: Product,
+          select: "_id",
+        },
       })
       .populate({
         path: "likes",
         model: Like,
+        populate: {
+          path: "product",
+          model: Product,
+          select: "image title",
+        },
+      })
+      .populate({
+        path: "likes",
+        model: Like,
+        populate: {
+          path: "blog",
+          model: Blog,
+          select: "image title",
+        },
       })
       .lean();
 

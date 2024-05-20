@@ -240,6 +240,11 @@ export const userOrdersColumns = [
 
 export const userCommentsColumns = [
   {
+    title: "Product",
+    dataIndex: "product",
+    key: "product",
+  },
+  {
     title: "Date",
     dataIndex: "date",
     key: "date",
@@ -263,5 +268,23 @@ export const userCommentsColumns = [
     title: "Actions",
     dataIndex: "actions",
     key: "actions",
+  },
+];
+
+export const userLikesColumns = [
+  {
+    title: "Type",
+    dataIndex: "type",
+    key: "type",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
   },
 ];
