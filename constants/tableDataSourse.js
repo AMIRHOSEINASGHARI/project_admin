@@ -380,3 +380,30 @@ export const userLikesDataSourse = (likes) =>
       </div>
     ),
   }));
+
+export const blogsDataSourse = (blogs) =>
+  blogs.map((blog) => ({
+    key: blog._id,
+    id: <Link href={`/blogs/${blog._id}`}>#{shorterText(blog._id, 8)}</Link>,
+    name: <p>{shorterText(blog.title, 50)}</p>,
+    status: (
+      <p
+        className={`py-1 px-2 text-p2 rounded-btn w-fit ${
+          blog.published
+            ? "text-darkGreen bg-lightGreen"
+            : "text-darkOrange bg-lightOrange"
+        }`}
+      >
+        {blog.published ? "Published" : "Draft"}
+      </p>
+    ),
+    likes: blog.likes.length === 0 ? "_" : blog.likes.length.toLocaleString(),
+    date: (
+      <div>
+        <p>{moment(blog.createdAt).format("L")}</p>
+        <p className="text-p2 text-darkGray">
+          {moment(blog.createdAt).format("LT")}
+        </p>
+      </div>
+    ),
+  }));

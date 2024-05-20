@@ -288,3 +288,31 @@ export const userLikesColumns = [
     key: "date",
   },
 ];
+
+export const blogsColumns = [
+  {
+    title: "ID",
+    dataIndex: "id",
+    key: "id",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+  },
+  {
+    title: "Likes",
+    dataIndex: "likes",
+    key: "likes",
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+];
