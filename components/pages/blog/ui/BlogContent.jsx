@@ -8,6 +8,7 @@ import CustomBadge from "@/components/shared/CustomBadge";
 import CustomButton from "@/components/shared/CustomButton";
 import moment from "moment";
 import { Tooltip } from "antd";
+import FullScreenImage from "./FullScreenImage";
 
 const BlogContent = ({
   _id,
@@ -50,14 +51,10 @@ const BlogContent = ({
         />
         <div className="w-full py-12 p-8 h-full bg-gradient-to-r flex flex-col justify-between from-black to-transparent absolute inset-0">
           <h1 className="h1 text-white lg:w-[60%] ">{title}</h1>
-          <div className="w-full flex justify-end absolute bottom-5 right-5">
-            <Tooltip title="Full Screen Image" placement="bottom">
-              <CustomButton
-                icon={<EyeOpen />}
-                classNames="w-fit text-white p-3 bg-white/20 rounded-full"
-              />
-            </Tooltip>
-          </div>
+          <FullScreenImage
+            image={JSON.parse(JSON.stringify(image))}
+            title={JSON.parse(JSON.stringify(title))}
+          />
         </div>
       </div>
       <p>{description}</p>
