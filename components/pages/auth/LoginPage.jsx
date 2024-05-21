@@ -17,6 +17,7 @@ import { Alert } from "antd";
 import CustomInput from "@/components/shared/form/CustomInput";
 import CustomButton from "@/components/shared/CustomButton";
 import Loader from "@/components/shared/Loader";
+import CustomBadge from "@/components/shared/CustomBadge";
 
 const LoginPage = () => {
   const [form, setForm] = useState({
@@ -81,16 +82,6 @@ const LoginPage = () => {
             </p>
           </div>
           <div className="space-y-5">
-            <Alert
-              description={
-                <p>
-                  Use usernmae : <span className="font-bold">test-demo</span> /
-                  password : <span className="font-bold">demo1234</span>
-                </p>
-              }
-              type="info"
-              showIcon
-            />
             <CustomInput
               name="username"
               type="text"
@@ -113,6 +104,28 @@ const LoginPage = () => {
               classNames={`${
                 loading ? "bg-gray-100 text-black" : "bg-black text-white"
               } w-full h-[50px] font-bold flex items-center justify-center rounded-btn`}
+            />
+            <Alert
+              description={
+                <div className="space-y-2">
+                  <p>
+                    Owner usernmae :{" "}
+                    <span className="font-bold">owner-demo</span> / password :{" "}
+                    <span className="font-bold">demo1234</span>
+                  </p>
+                  <p>
+                    Admin usernmae :{" "}
+                    <span className="font-bold">admin-demo</span> / password :{" "}
+                    <span className="font-bold">demo1234</span>
+                  </p>
+                  <p>
+                    User usernmae : <span className="font-bold">user-demo</span>{" "}
+                    / password : <span className="font-bold">demo1234</span>
+                  </p>
+                </div>
+              }
+              type="info"
+              showIcon
             />
           </div>
         </div>
