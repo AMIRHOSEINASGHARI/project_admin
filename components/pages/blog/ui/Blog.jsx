@@ -6,7 +6,7 @@ const Blog = ({ blog }) => {
     <div className="space-y-5">
       <BlogActions
         id={JSON.parse(JSON.stringify(blog._id))}
-        isPublished={JSON.parse(JSON.stringify(blog.published))}
+        isPublished={blog.published}
       />
       <BlogContent {...JSON.parse(JSON.stringify(blog))} />
     </div>

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { images } from "@/constants";
 // cmp
 import moment from "moment";
-import CustomButton from "@/components/shared/CustomButton";
 
 const AvatarSection = ({ data }) => {
   return (
@@ -22,10 +21,6 @@ const AvatarSection = ({ data }) => {
       <p className="text-p2 text-darkGray">
         Joined {moment(data.createdAt).format("L")}
       </p>
-      <CustomButton
-        title="Delete User"
-        classNames="bg-lightRose text-darkRose py-2 px-4 rounded-lg font-medium text-p1 mt-5"
-      />
     </div>
   );
 };
