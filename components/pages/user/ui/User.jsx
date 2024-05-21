@@ -27,17 +27,17 @@ const User = ({ user }) => {
       <div className="flex flex-col gap-5">
         <DetailedBox
           title="General"
-          children={<GeneralInformation {...generalInfoProps} />}
+          content={<GeneralInformation {...generalInfoProps} />}
         />
         <DetailedBox
           title="Orders"
-          children={
+          content={
             <UserOrders orders={JSON.parse(JSON.stringify(user.orders))} />
           }
         />
         <DetailedBox
           title="Comments"
-          children={
+          content={
             <UserComments
               comments={JSON.parse(JSON.stringify(user.comments))}
             />
@@ -45,9 +45,7 @@ const User = ({ user }) => {
         />
         <DetailedBox
           title="Likes"
-          children={
-            <UserLikes likes={JSON.parse(JSON.stringify(user.likes))} />
-          }
+          content={<UserLikes likes={JSON.parse(JSON.stringify(user.likes))} />}
         />
       </div>
     </div>

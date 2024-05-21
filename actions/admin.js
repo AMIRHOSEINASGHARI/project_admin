@@ -1,14 +1,20 @@
 "use server";
 
+// next
+import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 // utils
 import connectDB from "@/utils/connectDB";
 import { MESSAGES, STATUS_CODES } from "@/utils/messages";
 import { hashPassword, verifyPassword } from "@/utils/functions";
+import { getServerSession } from "@/utils/session";
+import { SECRET_KEY, SESSION_EXPIRATION } from "@/utils/vars";
 // actions
 import { signOut } from "./auth";
 // models
 import Admin from "@/utils/models/admin";
-import { getServerSession } from "@/utils/session";
+// jwt
+import { sign } from "jsonwebtoken";
 
 export const createAdmin = async (data) => {
   try {
@@ -58,7 +64,7 @@ export const updateProfile = async (data) => {
       phoneNumber,
       address,
       country,
-      avatar,
+      image,
     } = data;
 
     const session = getServerSession();
@@ -107,7 +113,7 @@ export const updateProfile = async (data) => {
         };
       } else {
         const hashedPassword = await hashPassword(newPassword);
-        admin.password === hashedPassword;
+        admin.password = hashedPassword;
       }
     }
 
@@ -122,29 +128,53 @@ export const updateProfile = async (data) => {
           code: STATUS_CODES.exist,
         };
       } else {
-        admin.username === username;
+        admin.username = username;
       }
     }
 
     // updating info
-    admin.email === email;
-    admin.phoneNumber === phoneNumber;
-    admin.address === address;
-    admin.avatar === avatar;
-    admin.country === country;
-    // TODO: avatar
+    admin.email = email;
+    admin.phoneNumber = phoneNumber;
+    admin.address = address;
+    admin.avatar = image;
+    admin.country = country;
     await admin.save();
 
+    const accessToken = sign(
+      {
+        username,
+        userId: admin._id,
+        name: name,
+        avatar: image,
+        roll: admin.roll,
+      },
+      SECRET_KEY,
+      {
+        expiresIn: SESSION_EXPIRATION,
+      }
+    );
+
+    // setting token in cookie
+    cookies().set("accessToken", accessToken, {
+      httpOnly: true,
+      secure: true,
+      expires: new Date(Date.now() + SESSION_EXPIRATION),
+      sameSite: "lax",
+      path: "/",
+    });
+
+    revalidatePath("/account");
+
     return {
-      message: MESSAGES.update,
-      status: MESSAGES.success,
-      code: STATUS_CODES.updated,
+      message: "Profile Updated",
+      status: "success",
+      code: 200,
     };
   } catch (error) {
     console.log(error);
     return {
-      message: MESSAGES.server,
-      status: MESSAGES.failed,
+      message: "Server Error!",
+      status: "failed",
       code: STATUS_CODES.server,
     };
   }

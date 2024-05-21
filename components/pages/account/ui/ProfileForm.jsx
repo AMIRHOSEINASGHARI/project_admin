@@ -2,21 +2,21 @@
 
 // react
 import { useState } from "react";
-// hooks
-import useServerAction from "@/hooks/callServerAction";
+// actions
+import { updateProfile } from "@/actions/admin";
+// utils
+import { uploadImage } from "@/utils/functions";
 // cmp
+import { LockClosed } from "@/components/icons/Icons";
 import CustomButton from "@/components/shared/CustomButton";
 import CustomInput from "@/components/shared/form/CustomInput";
 import UploadImage from "@/components/shared/form/UploadImage";
+import toast from "react-hot-toast";
 
-const ProfileForm = ({
-  username,
-  name,
-  email,
-  phoneNumber,
-  address,
-  country,
-}) => {
+const ProfileForm = (props) => {
+  const { username, name, email, phoneNumber, address, country } = props;
+
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     username: username || "",
     name: name || "",
@@ -24,9 +24,11 @@ const ProfileForm = ({
     phoneNumber: phoneNumber || "",
     address: address || "",
     country: country || "",
-    image: "",
+    image: [],
+    currentPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
   });
-  const { loading, fn } = useServerAction();
 
   const onChange = (e) => {
     setForm({
@@ -35,14 +37,66 @@ const ProfileForm = ({
     });
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (form.username.length === 0) {
+      toast.error("Username cannot be empty!");
+      return;
+    }
+
+    if (
+      form.currentPassword.length !== 0 ||
+      form.newPassword.length !== 0 ||
+      form.confirmNewPassword.length !== 0
+    ) {
+      if (
+        form.currentPassword.length === 0 ||
+        form.newPassword.length === 0 ||
+        form.confirmNewPassword.length === 0
+      ) {
+        toast.error("Fill other Fields");
+        return;
+      }
+
+      if (form.newPassword !== form.confirmNewPassword) {
+        toast.error("Confirm New Password is InCorrect!");
+        return;
+      }
+    }
+
+    setLoading(true);
+
+    let newForm = { ...form };
+
+    if (form.image.length !== 0) {
+      const uploadResult = await uploadImage(form.image[0]);
+      console.log(uploadResult);
+      newForm = {
+        ...form,
+        image: uploadResult.imageUrl,
+      };
+    }
+
+    const result = await updateProfile(newForm);
+
+    setLoading(false);
+
+    if (result.code !== 200) {
+      toast.error(result.message);
+    } else {
+      toast.success(result.message);
+    }
+  };
+
   return (
-    <form className="box w-full h-fit flex flex-col gap-5">
+    <form className="box w-full h-fit flex flex-col gap-5" onSubmit={onSubmit}>
       <div className="w-full h-fit flex flex-wrap gap-5">
         <CustomInput
           type="text"
           label="Username"
           name="username"
-          value={username}
+          value={form.username}
           onChange={onChange}
           wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
         />
@@ -50,7 +104,7 @@ const ProfileForm = ({
           type="text"
           label="Name"
           name="name"
-          value={name}
+          value={form.name}
           onChange={onChange}
           wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
         />
@@ -58,7 +112,7 @@ const ProfileForm = ({
           type="email"
           label="Email"
           name="email"
-          value={email}
+          value={form.email}
           onChange={onChange}
           wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
         />
@@ -66,7 +120,7 @@ const ProfileForm = ({
           type="text"
           label="Phone Number"
           name="phoneNumber"
-          value={phoneNumber}
+          value={form.phoneNumber}
           onChange={onChange}
           wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
         />
@@ -74,7 +128,7 @@ const ProfileForm = ({
           type="text"
           label="Address"
           name="address"
-          value={address}
+          value={form.address}
           onChange={onChange}
           wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
         />
@@ -82,15 +136,44 @@ const ProfileForm = ({
           type="text"
           label="Country"
           name="country"
-          value={country}
+          value={form.country}
           onChange={onChange}
           wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
         />
       </div>
       <UploadImage form={form} setForm={setForm} />
+      <div className="flex items-center gap-4">
+        <LockClosed wrapperClassName="cardShadow rounded-lg p-3" />
+        <p className="text-p1 font-medium">Changing Password</p>
+      </div>
+      <CustomInput
+        type="password"
+        label="Current Password"
+        name="currentPassword"
+        value={form.currentPassword}
+        onChange={onChange}
+        wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+      />
+      <CustomInput
+        type="password"
+        label="New Password"
+        name="newPassword"
+        value={form.newPassword}
+        onChange={onChange}
+        wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+      />
+      <CustomInput
+        type="password"
+        label="Confirm New Password"
+        name="confirmNewPassword"
+        value={form.confirmNewPassword}
+        onChange={onChange}
+        wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+      />
       <div className="w-full flex justify-end">
         <CustomButton
           title="Save Changes"
+          type="submit"
           classNames={`w-fit rounded-btn py-2.5 px-5 text-p1 font-medium ${
             loading ? "bg-lightGray" : "bg-dark1 text-white"
           }`}

@@ -134,14 +134,14 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
       <DetailedBox
         title="Basic Details"
         subtitle="Title, description, image"
-        children={basicDetails}
+        content={basicDetails}
       />
       <DetailedBox
         title="Properties"
         subtitle="Price, Stock, Discount, ..."
-        children={properties}
+        content={properties}
       />
-      <DetailedBox title="Keywords" children={keywordSelection} />
+      <DetailedBox title="Keywords" content={keywordSelection} />
       <div className="flex items-center justify-end gap-10">
         <div className="flex items-center gap-2">
           <Switch

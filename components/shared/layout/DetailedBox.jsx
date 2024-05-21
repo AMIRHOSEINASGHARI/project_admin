@@ -1,4 +1,4 @@
-const DetailedBox = ({ title, subtitle, icon, children }) => {
+const DetailedBox = ({ title, subtitle, icon, content }) => {
   return (
     <div className="box lg:flex w-full">
       <div className="w-full lg:w-[500px] max-lg:mb-5 flex gap-2 items-center h-fit">
@@ -8,7 +8,7 @@ const DetailedBox = ({ title, subtitle, icon, children }) => {
           {subtitle && <p className="text-p2 text-darkGray">{subtitle}</p>}
         </div>
       </div>
-      {children}
+      {content}
     </div>
   );
 };

@@ -38,7 +38,7 @@ const Order = ({ order }) => {
         icon={
           <Document wrapperClassName="cardShadow rounded-xl p-3" size={20} />
         }
-        children={
+        content={
           <OrderInformationTable
             address={JSON.parse(JSON.stringify(order?.deliveryAddress))}
             customer={JSON.parse(JSON.stringify(order?.userId))}
@@ -56,7 +56,7 @@ const Order = ({ order }) => {
             size={20}
           />
         }
-        children={
+        content={
           <CheckoutTable
             items={JSON.parse(JSON.stringify(order?.items))}
             summary={JSON.parse(JSON.stringify(order?.summary))}
