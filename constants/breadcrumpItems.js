@@ -126,3 +126,16 @@ export const userPageBread = [
     inActive: true,
   },
 ];
+
+export const tasksPageBread = [
+  {
+    title: <Link href="/dashboard">Dashboard</Link>,
+  },
+  {
+    title: "Tasks",
+  },
+  {
+    title: "List",
+    inActive: true,
+  },
+];

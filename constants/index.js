@@ -192,11 +192,6 @@ export const menuLinks = [
     link: "/crypto",
   },
   {
-    title: "Gallery",
-    image: icons.gallery,
-    link: "/gallery",
-  },
-  {
     title: "Account",
     image: icons.settings,
     link: "/account",

@@ -1,5 +1,7 @@
+import TasksPage from "@/components/pages/tasks/TasksPage";
+
 const Tasks = () => {
-  return <div>Tasks</div>;
+  return <TasksPage />;
 };
 
 export default Tasks;
