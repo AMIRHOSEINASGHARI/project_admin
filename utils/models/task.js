@@ -8,12 +8,15 @@ const taskSchema = new Schema({
   assignees: [{ type: Schema.Types.ObjectId, ref: "Admin" }],
   dueDate: { type: Date, required: true, default: () => Date.now() },
   lables: { type: [String], default: [] },
-  subTasks: [
-    {
-      title: String,
-      status: String,
-    },
-  ],
+  subTasks: {
+    type: [
+      {
+        title: String,
+        status: String,
+      },
+    ],
+    default: [],
+  },
 });
 
 const Task = models?.Task || model("Task", taskSchema);
