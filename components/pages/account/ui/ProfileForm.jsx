@@ -98,7 +98,7 @@ const ProfileForm = (props) => {
           name="username"
           value={form.username}
           onChange={onChange}
-          wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+          wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
         />
         <CustomInput
           type="text"
@@ -106,7 +106,7 @@ const ProfileForm = (props) => {
           name="name"
           value={form.name}
           onChange={onChange}
-          wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+          wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
         />
         <CustomInput
           type="email"
@@ -114,7 +114,7 @@ const ProfileForm = (props) => {
           name="email"
           value={form.email}
           onChange={onChange}
-          wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+          wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
         />
         <CustomInput
           type="text"
@@ -122,7 +122,7 @@ const ProfileForm = (props) => {
           name="phoneNumber"
           value={form.phoneNumber}
           onChange={onChange}
-          wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+          wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
         />
         <CustomInput
           type="text"
@@ -130,7 +130,7 @@ const ProfileForm = (props) => {
           name="address"
           value={form.address}
           onChange={onChange}
-          wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+          wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
         />
         <CustomInput
           type="text"
@@ -138,7 +138,7 @@ const ProfileForm = (props) => {
           name="country"
           value={form.country}
           onChange={onChange}
-          wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+          wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
         />
       </div>
       <UploadImage form={form} setForm={setForm} />
@@ -152,7 +152,7 @@ const ProfileForm = (props) => {
         name="currentPassword"
         value={form.currentPassword}
         onChange={onChange}
-        wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+        wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
       />
       <CustomInput
         type="password"
@@ -160,7 +160,7 @@ const ProfileForm = (props) => {
         name="newPassword"
         value={form.newPassword}
         onChange={onChange}
-        wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+        wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
       />
       <CustomInput
         type="password"
@@ -168,7 +168,7 @@ const ProfileForm = (props) => {
         name="confirmNewPassword"
         value={form.confirmNewPassword}
         onChange={onChange}
-        wrapperClassName="w-full flex flex-1 min-w-[300px] h-fit"
+        wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
       />
       <div className="w-full flex justify-end">
         <CustomButton

@@ -1,6 +1,4 @@
 // cmp
-import { LeftAngle } from "@/components/icons/Icons";
-import CustomLink from "@/components/shared/CustomLink";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
 import GeneralInformation from "./GeneralInformation";
 import UserOrders from "./UserOrders";
@@ -18,36 +16,26 @@ const User = ({ user }) => {
 
   return (
     <div className="flex flex-col gap-5">
-      <CustomLink
-        href="/users"
-        icon={<LeftAngle size={10} />}
-        title="Users"
-        className="backLink"
+      <DetailedBox
+        title="General"
+        content={<GeneralInformation {...generalInfoProps} />}
       />
-      <div className="flex flex-col gap-5">
-        <DetailedBox
-          title="General"
-          content={<GeneralInformation {...generalInfoProps} />}
-        />
-        <DetailedBox
-          title="Orders"
-          content={
-            <UserOrders orders={JSON.parse(JSON.stringify(user.orders))} />
-          }
-        />
-        <DetailedBox
-          title="Comments"
-          content={
-            <UserComments
-              comments={JSON.parse(JSON.stringify(user.comments))}
-            />
-          }
-        />
-        <DetailedBox
-          title="Likes"
-          content={<UserLikes likes={JSON.parse(JSON.stringify(user.likes))} />}
-        />
-      </div>
+      <DetailedBox
+        title="Orders"
+        content={
+          <UserOrders orders={JSON.parse(JSON.stringify(user.orders))} />
+        }
+      />
+      <DetailedBox
+        title="Comments"
+        content={
+          <UserComments comments={JSON.parse(JSON.stringify(user.comments))} />
+        }
+      />
+      <DetailedBox
+        title="Likes"
+        content={<UserLikes likes={JSON.parse(JSON.stringify(user.likes))} />}
+      />
     </div>
   );
 };

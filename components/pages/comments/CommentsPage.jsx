@@ -1,8 +1,12 @@
 // actions
 import { getComments } from "@/actions/comment";
+// constants
+import { commentsPageBread } from "@/constants/breadcrumpItems";
 // cmp
 import { Empty } from "antd";
 import CommentsList from "./ui/CommentsList";
+import PageHeading from "@/components/shared/PageHeading";
+import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 
 const CommentsPage = async () => {
   try {
@@ -12,16 +16,18 @@ const CommentsPage = async () => {
       return <p>Error!</p>;
     }
 
-    if (data.products?.length === 0) {
-      return (
-        <div className="box border">
-          <Empty description="No Comments!" />
-        </div>
-      );
-    }
-
     return (
-      <CommentsList comments={JSON.parse(JSON.stringify(data.comments))} />
+      <>
+        <PageHeading title="Comments" />
+        <CustomBreadcrumb items={commentsPageBread} />
+        {data.products?.length === 0 ? (
+          <div className="box border">
+            <Empty description="No Comments!" />
+          </div>
+        ) : (
+          <CommentsList comments={JSON.parse(JSON.stringify(data.comments))} />
+        )}
+      </>
     );
   } catch (error) {
     return <p>Error!</p>;
