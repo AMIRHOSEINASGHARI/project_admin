@@ -27,7 +27,7 @@ const EditTask = ({ id, session }) => {
       />
       {isModalOpen && (
         <TaskForm
-          type="create"
+          type="edit"
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
           closeModal={closeModal}

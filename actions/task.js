@@ -124,3 +124,34 @@ export const deleteTask = async (id) => {
     };
   }
 };
+
+export const editTask = async (data) => {
+  try {
+    await connectDB();
+
+    const { title, description, status, dueDate } = data;
+
+    const task = await Task.findById(id);
+
+    task.title = title;
+    task.description = description;
+    task.status = status;
+    task.dueDate = dueDate;
+    await task.save();
+
+    revalidatePath("/tasks");
+
+    return {
+      message: "Task Edited!",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};

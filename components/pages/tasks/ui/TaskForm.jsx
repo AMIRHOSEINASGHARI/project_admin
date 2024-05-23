@@ -75,7 +75,11 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
       dueDate: date?.$d || "",
     });
   };
-  const { loading, fn } = useServerAction(createTask, form, () => onCancel());
+  const { loading: createLoading, fn: createFn } = useServerAction(
+    createTask,
+    form,
+    () => onCancel()
+  );
 
   const modalTitle = (
     <div className="flex items-center justify-between border-b pb-3 mb-5">
@@ -86,7 +90,7 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
         icon={<CircleClose />}
         classNames="hoverable"
         onClick={closeModal}
-        disabled={loading}
+        disabled={createLoading}
       />
     </div>
   );
@@ -102,16 +106,21 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      form.title.length === 0 ||
-      form.status.length === 0 ||
-      form.dueDate.length === 0
-    ) {
-      toast.error("Fill all Fields");
-      return;
+    if (type === "create") {
+      if (
+        form.title.length === 0 ||
+        form.status.length === 0 ||
+        form.dueDate.length === 0
+      ) {
+        toast.error("Fill all Fields");
+        return;
+      }
+
+      createFn();
     }
 
-    fn();
+    if (type === "edit") {
+    }
   };
 
   return (
@@ -187,15 +196,17 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
               type="button"
               title="Cancel"
               classNames="border p-btn rounded-btn hoverable"
-              disabled={loading}
+              disabled={createLoading}
               onClick={onCancel}
             />
             <CustomButton
               type="submit"
-              title={loading ? <Loader height={15} width={15} /> : "Submit"}
-              disabled={loading}
+              title={
+                createLoading ? <Loader height={15} width={15} /> : "Submit"
+              }
+              disabled={createLoading}
               classNames={`font-medium p-btn rounded-btn ${
-                loading ? "bg-lightGray" : "bg-dark1 text-white"
+                createLoading ? "bg-lightGray" : "bg-dark1 text-white"
               }`}
             />
           </div>
