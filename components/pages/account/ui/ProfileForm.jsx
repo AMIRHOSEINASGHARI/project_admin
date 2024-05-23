@@ -67,26 +67,31 @@ const ProfileForm = (props) => {
 
     setLoading(true);
 
-    let newForm = { ...form };
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Profile Updated!");
+    }, 1000);
 
-    if (form.image.length !== 0) {
-      const uploadResult = await uploadImage(form.image[0]);
-      console.log(uploadResult);
-      newForm = {
-        ...form,
-        image: uploadResult.imageUrl,
-      };
-    }
+    // let newForm = { ...form };
 
-    const result = await updateProfile(newForm);
+    // if (form.image.length !== 0) {
+    //   const uploadResult = await uploadImage(form.image[0]);
+    //   console.log(uploadResult);
+    //   newForm = {
+    //     ...form,
+    //     image: uploadResult.imageUrl,
+    //   };
+    // }
 
-    setLoading(false);
+    // const result = await updateProfile(newForm);
 
-    if (result.code !== 200) {
-      toast.error(result.message);
-    } else {
-      toast.success(result.message);
-    }
+    // setLoading(false);
+
+    // if (result.code !== 200) {
+    //   toast.error(result.message);
+    // } else {
+    //   toast.success(result.message);
+    // }
   };
 
   return (

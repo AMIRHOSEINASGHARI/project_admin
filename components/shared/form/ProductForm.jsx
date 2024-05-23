@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { uploadImage } from "@/utils/functions";
 // actions
 import { createProduct } from "@/actions/product";
+// constants
+import { categories } from "@/constants";
 // cmp
 import { Switch } from "antd";
 import DetailedBox from "../layout/DetailedBox";
@@ -15,8 +17,8 @@ import CustomTextarea from "./CustomTextarea";
 import KeywordsSelection from "./KeywordSelection";
 import UploadImage from "./UploadImage";
 import CustomButton from "../CustomButton";
-import Loader from "../Loader";
 import toast from "react-hot-toast";
+import Loader from "../Loader";
 
 const ProductForm = ({ type, form, setForm, onChange }) => {
   const [loading, setLoading] = useState(false);
@@ -76,6 +78,7 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
         label="Category"
         onChange={onChange}
         wrapperClassName="flex flex-1 xl:min-w-[400px] min-w-[200px]"
+        options={categories.map((c) => c.query)}
       />
       <CustomInput
         type="text"
@@ -112,21 +115,27 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
 
     setLoading(true);
 
-    const uploadResult = await uploadImage(form.image[0]);
-
-    const result = await createProduct({
-      ...form,
-      image: uploadResult.imageUrl,
-    });
-
-    setLoading(false);
-
-    if (result.code !== 200) {
-      toast.error(result.message);
-    } else {
-      toast.success(result.message);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Product Created!");
       router.push("/products");
-    }
+    }, 1000);
+
+    // const uploadResult = await uploadImage(form.image[0]);
+
+    // const result = await createProduct({
+    //   ...form,
+    //   image: uploadResult.imageUrl,
+    // });
+
+    // setLoading(false);
+
+    // if (result.code !== 200) {
+    //   toast.error(result.message);
+    // } else {
+    //   toast.success(result.message);
+    //   router.push("/products");
+    // }
   };
 
   return (

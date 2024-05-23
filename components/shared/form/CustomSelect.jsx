@@ -42,6 +42,7 @@ const CustomSelect = ({
         onFocus={onFocus}
         onBlur={onBlur}
       >
+        <option value=""></option>
         {options.map((option) => (
           <option key={option} value={option}>
             {option}

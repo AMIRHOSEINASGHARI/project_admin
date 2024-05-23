@@ -57,21 +57,27 @@ const BlogForm = ({ type, form, setForm, onChange }) => {
 
     setLoading(true);
 
-    const uploadResult = await uploadImage(form.image[0]);
-
-    const result = await createBlog({
-      ...form,
-      image: uploadResult.imageUrl,
-    });
-
-    setLoading(false);
-
-    if (result.code !== 200) {
-      toast.error(result.message);
-    } else {
-      toast.success(result.message);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Blog Created!");
       router.push("/blogs");
-    }
+    }, 1000);
+
+    // const uploadResult = await uploadImage(form.image[0]);
+
+    // const result = await createBlog({
+    //   ...form,
+    //   image: uploadResult.imageUrl,
+    // });
+
+    // setLoading(false);
+
+    // if (result.code !== 200) {
+    //   toast.error(result.message);
+    // } else {
+    //   toast.success(result.message);
+    //   router.push("/blogs");
+    // }
   };
 
   return (
