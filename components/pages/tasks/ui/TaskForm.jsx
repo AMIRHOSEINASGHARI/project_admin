@@ -4,6 +4,10 @@
 import { useState } from "react";
 // next
 import Image from "next/image";
+// actions
+import { createTask } from "@/actions/task";
+// hooks
+import useServerAction from "@/hooks/callServerAction";
 // constants
 import { images } from "@/constants";
 // cmp
@@ -14,6 +18,8 @@ import { CircleClose } from "@/components/icons/Icons";
 import { DatePicker, Modal } from "antd";
 import moment from "moment";
 import CustomSelect from "@/components/shared/form/CustomSelect";
+import toast from "react-hot-toast";
+import Loader from "@/components/shared/Loader";
 
 const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
   const initialFormState = {
@@ -25,6 +31,24 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
 
   const [form, setForm] = useState(initialFormState);
 
+  const onCancel = () => {
+    closeModal();
+    setForm(initialFormState);
+  };
+  const onChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const dateChange = (date) => {
+    setForm({
+      ...form,
+      dueDate: date?.$d || "",
+    });
+  };
+  const { loading, fn } = useServerAction(createTask, form, () => onCancel());
+
   const modalTitle = (
     <div className="flex items-center justify-between border-b pb-3 mb-5">
       <p className="text-p1 font-medium">
@@ -34,6 +58,7 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
         icon={<CircleClose />}
         classNames="hoverable"
         onClick={closeModal}
+        disabled={loading}
       />
     </div>
   );
@@ -46,28 +71,20 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
     },
   };
 
-  const onCancel = () => {
-    closeModal();
-    setForm(initialFormState);
-  };
-  const onChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const dateChange = (date) => {
-    setForm({
-      ...form,
-      dueDate: date?.$d || "",
-    });
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(form);
+    if (
+      form.title.length === 0 ||
+      form.description.length === 0 ||
+      form.status.length === 0 ||
+      form.dueDate.length === 0
+    ) {
+      toast.error("Fill all Fields");
+      return;
+    }
+
+    fn();
   };
 
   return (
@@ -131,17 +148,21 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
           </div>
         </div>
         <hr />
-        <div className="flex items-center justify-end gap-3">
+        <div className="flex justify-end gap-3">
           <CustomButton
             type="button"
             title="Cancel"
             classNames="border p-btn rounded-btn hoverable"
+            disabled={loading}
             onClick={onCancel}
           />
           <CustomButton
             type="submit"
-            title="Submit"
-            classNames="bg-dark1 text-white font-medium p-btn rounded-btn"
+            title={loading ? <Loader height={15} width={15} /> : "Submit"}
+            disabled={loading}
+            classNames={`font-medium p-btn rounded-btn ${
+              loading ? "bg-lightGray" : "bg-dark1 text-white"
+            }`}
           />
         </div>
       </form>
