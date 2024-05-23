@@ -10,7 +10,7 @@ import useSession from "@/hooks/session";
 // constants
 import { images } from "@/constants";
 // cmp
-import { Exclamation, Home, Settings } from "@/components/icons/Icons";
+import { Exclamation, Home, Settings, Task } from "@/components/icons/Icons";
 import SignoutButton from "../SignoutButton";
 import CustomBadge from "../CustomBadge";
 import Loader from "../Loader";
@@ -54,6 +54,14 @@ const ShowProfile = () => {
         </Link>
         <Link
           onClick={onClose}
+          href="/tasks"
+          className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
+        >
+          <Task className="text-darkGray" size={17} />
+          <p>Tasks</p>
+        </Link>
+        <Link
+          onClick={onClose}
           href="/account"
           className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
         >
@@ -79,7 +87,7 @@ const ShowProfile = () => {
   if (isError) {
     return (
       <Tooltip title="Failed to fetch data!" placement="left">
-        <Exclamation size={20} />
+        <Exclamation size={20} className="text-darkRose" />
       </Tooltip>
     );
   }
