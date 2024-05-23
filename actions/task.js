@@ -85,8 +85,33 @@ export const updateTaskStatus = async (data) => {
     task.status = status;
     await task.save();
 
+    revalidatePath("/tasks");
+
     return {
       message: "Task Status Updated!",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};
+
+export const deleteTask = async (id) => {
+  try {
+    await connectDB();
+
+    await Task.findByIdAndDelete(id);
+
+    revalidatePath("/tasks");
+
+    return {
+      message: "Task Deleted",
       status: "success",
       code: 200,
     };
