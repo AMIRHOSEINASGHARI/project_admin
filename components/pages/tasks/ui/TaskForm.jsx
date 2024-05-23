@@ -1,39 +1,67 @@
 "use client";
 
 // react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // next
 import Image from "next/image";
 // actions
 import { createTask } from "@/actions/task";
+// react query
+import { useQuery } from "@tanstack/react-query";
+// services
+import { fetchTask } from "@/services/queries";
 // hooks
 import useServerAction from "@/hooks/callServerAction";
 // constants
 import { images } from "@/constants";
 // cmp
+import { CircleClose } from "@/components/icons/Icons";
 import CustomInput from "@/components/shared/form/CustomInput";
 import CustomTextarea from "@/components/shared/form/CustomTextarea";
 import CustomButton from "@/components/shared/CustomButton";
-import { CircleClose } from "@/components/icons/Icons";
-import { DatePicker, Modal } from "antd";
-import moment from "moment";
 import CustomSelect from "@/components/shared/form/CustomSelect";
-import toast from "react-hot-toast";
 import Loader from "@/components/shared/Loader";
+import toast from "react-hot-toast";
+import moment from "moment";
+import { DatePicker, Modal } from "antd";
 
-const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
-  const initialFormState = {
-    title: taskData?.title || "",
-    description: taskData?.description || "",
-    status: taskData?.status || "Todo",
-    dueDate: taskData?.dueDate || "",
-  };
+const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
+  const [form, setForm] = useState({
+    title: "",
+    description: "",
+    status: "Todo",
+    dueDate: "",
+  });
 
-  const [form, setForm] = useState(initialFormState);
+  const { data, isFetching, isError, refetch } = useQuery({
+    queryKey: ["tasks", taskID],
+    queryFn: fetchTask,
+    staleTime: 0,
+    cacheTime: 0,
+    enabled: false,
+    onSuccess: (info) =>
+      setForm({
+        title: info.task.title,
+        description: info.task.description,
+        status: info.task.status,
+        dueDate: info.task.dueDate,
+      }),
+  });
+
+  useEffect(() => {
+    if (!!taskID && isModalOpen) {
+      refetch();
+    }
+  }, [taskID]);
 
   const onCancel = () => {
     closeModal();
-    setForm(initialFormState);
+    setForm({
+      title: taskID ? data?.task?.title : "",
+      description: taskID ? data?.task?.description : "",
+      status: taskID ? data?.task?.status : "Todo",
+      dueDate: taskID ? data?.task?.dueDate : "",
+    });
   };
   const onChange = (e) => {
     setForm({
@@ -95,76 +123,84 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
       footer={false}
       styles={modalStyles}
     >
-      <form className="space-y-5" onSubmit={onSubmit}>
-        <CustomInput
-          type="text"
-          label="Title"
-          name="title"
-          onChange={onChange}
-          value={form.title}
-        />
-        <CustomTextarea
-          label="Description"
-          name="description"
-          onChange={onChange}
-          value={form.description}
-        />
-        <CustomSelect
-          label="Status"
-          name="status"
-          onChange={onChange}
-          value={form.status}
-          options={["Todo", "Progress", "Done"]}
-        />
-        <div className="space-y-2">
-          <p className="font-medium text-p1">Created by</p>
-          <div className="flex items-center gap-3">
-            <Image
-              src={
-                taskData
-                  ? taskData?.createdBy?.avatar || images.person
-                  : session?.avatar || images.person
-              }
-              width={100}
-              height={100}
-              alt="creator"
-              priority
-              className="w-[40px] h-[40px] rounded-full"
+      {isFetching ? (
+        <div className="flex items-center justify-center min-h-[300px]">
+          <Loader />
+        </div>
+      ) : isError ? (
+        <p>Error!</p>
+      ) : (
+        <form className="space-y-5" onSubmit={onSubmit}>
+          <CustomInput
+            type="text"
+            label="Title"
+            name="title"
+            onChange={onChange}
+            value={form.title}
+          />
+          <CustomTextarea
+            label="Description"
+            name="description"
+            onChange={onChange}
+            value={form.description}
+          />
+          <CustomSelect
+            label="Status"
+            name="status"
+            onChange={onChange}
+            value={form.status}
+            options={["Todo", "Progress", "Done"]}
+          />
+          <div className="space-y-2">
+            <p className="font-medium text-p1">Created by</p>
+            <div className="flex items-center gap-3">
+              <Image
+                src={
+                  data
+                    ? data?.task?.createdBy?.avatar || images.person
+                    : session?.avatar || images.person
+                }
+                width={100}
+                height={100}
+                alt="creator"
+                priority
+                className="w-[40px] h-[40px] rounded-full"
+              />
+              <p className="font-medium text-p1">
+                {data ? data?.task?.createdBy?.username : session?.username}
+              </p>
+            </div>
+          </div>
+          <hr />
+          <div className="space-y-2">
+            <p className="font-medium text-p1">Due Date</p>
+            <div className="flex items-center gap-4">
+              <DatePicker onChange={dateChange} />
+              {form.dueDate && (
+                <p className="capitalize">{moment(form.dueDate).fromNow()}</p>
+              )}
+            </div>
+          </div>
+          <hr />
+          <div className="flex justify-end gap-3">
+            <CustomButton
+              type="button"
+              title="Cancel"
+              classNames="border p-btn rounded-btn hoverable"
+              disabled={loading}
+              onClick={onCancel}
             />
-            <p className="font-medium text-p1">
-              {taskData ? taskData?.createdBy?.username : session?.username}
-            </p>
+            <CustomButton
+              type="submit"
+              title={loading ? <Loader height={15} width={15} /> : "Submit"}
+              disabled={loading}
+              classNames={`font-medium p-btn rounded-btn ${
+                loading ? "bg-lightGray" : "bg-dark1 text-white"
+              }`}
+            />
           </div>
-        </div>
-        <hr />
-        <div className="space-y-2">
-          <p className="font-medium text-p1">Due Date</p>
-          <div className="flex items-center gap-4">
-            <DatePicker onChange={dateChange} />
-            {form.dueDate && (
-              <p className="capitalize">{moment(form.dueDate).fromNow()}</p>
-            )}
-          </div>
-        </div>
-        <hr />
-        <div className="flex justify-end gap-3">
-          <CustomButton
-            type="button"
-            title="Cancel"
-            classNames="border p-btn rounded-btn hoverable"
-            disabled={loading}
-            onClick={onCancel}
-          />
-          <CustomButton
-            type="submit"
-            title={loading ? <Loader height={15} width={15} /> : "Submit"}
-            disabled={loading}
-            classNames={`font-medium p-btn rounded-btn ${
-              loading ? "bg-lightGray" : "bg-dark1 text-white"
-            }`}
-          />
-        </div>
-      </form>
+        </form>
+      )}
     </Modal>
   );
 };

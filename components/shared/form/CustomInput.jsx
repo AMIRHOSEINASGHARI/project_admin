@@ -22,13 +22,13 @@ const CustomInput = ({
   };
 
   const onBlur = () => {
-    if (value.length === 0) {
+    if (value?.length === 0) {
       setActive(() => false);
     }
   };
 
   useEffect(() => {
-    if (value.length !== 0) {
+    if (value?.length !== 0) {
       setActive(() => true);
     }
   }, []);

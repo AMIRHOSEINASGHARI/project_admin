@@ -27,14 +27,16 @@ const CreateNewTask = ({ session }) => {
           onClick={openModal}
         />
       </div>
-      <TaskForm
-        type="create"
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        closeModal={closeModal}
-        taskData={null}
-        session={session}
-      />
+      {isModalOpen && (
+        <TaskForm
+          type="create"
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          closeModal={closeModal}
+          taskID={null}
+          session={session}
+        />
+      )}
     </>
   );
 };

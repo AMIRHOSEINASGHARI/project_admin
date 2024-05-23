@@ -25,14 +25,16 @@ const EditTask = ({ id, session }) => {
         classNames="rounded-full w-[35px] h-[35px] flex items-center justify-center hoverable"
         onClick={openModal}
       />
-      <TaskForm
-        type="create"
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        closeModal={closeModal}
-        taskData={null}
-        session={session}
-      />
+      {isModalOpen && (
+        <TaskForm
+          type="create"
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          closeModal={closeModal}
+          taskID={id}
+          session={session}
+        />
+      )}
     </>
   );
 };
