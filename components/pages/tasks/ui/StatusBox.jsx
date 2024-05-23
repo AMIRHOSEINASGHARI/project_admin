@@ -1,5 +1,7 @@
 // next
 import Image from "next/image";
+// utils
+import { getServerSession } from "@/utils/session";
 // constants
 import { images } from "@/constants";
 // cmp
@@ -7,8 +9,11 @@ import { Clock } from "@/components/icons/Icons";
 import { Badge, Empty } from "antd";
 import moment from "moment";
 import TaskActions from "./TaskActions";
+import EditTask from "./EditTask";
 
 const StatusBox = ({ status, taskCount, tasks }) => {
+  const session = getServerSession();
+
   return (
     <div className="flex flex-col gap-5">
       <Badge count={taskCount}>
@@ -27,17 +32,20 @@ const StatusBox = ({ status, taskCount, tasks }) => {
                     size={17}
                     wrapperClassName="cardShadow p-3 rounded-btn"
                   />
-                  <p className="flex gap-3">
-                    <span>Due:</span>
-                    <span className="text-darkGray">
-                      {moment(task.dueDate).fromNow()}
-                    </span>
+                  <p className="text-darkGray text-p1 capitalize">
+                    {moment(task.dueDate).fromNow()}
                   </p>
                 </div>
-                <TaskActions
-                  id={JSON.parse(JSON.stringify(task._id))}
-                  currentStatus={JSON.parse(JSON.stringify(task.status))}
-                />
+                <div className="flex items-center gap-1">
+                  <EditTask
+                    id={JSON.parse(JSON.stringify(task._id))}
+                    session={JSON.parse(JSON.stringify(session))}
+                  />
+                  <TaskActions
+                    id={JSON.parse(JSON.stringify(task._id))}
+                    currentStatus={JSON.parse(JSON.stringify(task.status))}
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col gap-1">
