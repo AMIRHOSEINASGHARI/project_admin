@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // next
 import Image from "next/image";
 // actions
-import { createTask } from "@/actions/task";
+import { createTask, editTask } from "@/actions/task";
 // react query
 import { useQuery } from "@tanstack/react-query";
 // services
@@ -75,9 +75,15 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
       dueDate: date?.$d || "",
     });
   };
+
   const { loading: createLoading, fn: createFn } = useServerAction(
     createTask,
     form,
+    () => onCancel()
+  );
+  const { loading: editLoading, fn: editFn } = useServerAction(
+    editTask,
+    { ...form, id: taskID },
     () => onCancel()
   );
 
@@ -120,6 +126,16 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
     }
 
     if (type === "edit") {
+      if (
+        form.title.length === 0 ||
+        form.status.length === 0 ||
+        form.dueDate.length === 0
+      ) {
+        toast.error("Fill all Fields");
+        return;
+      }
+
+      editFn();
     }
   };
 
@@ -196,17 +212,23 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
               type="button"
               title="Cancel"
               classNames="border p-btn rounded-btn hoverable"
-              disabled={createLoading}
+              disabled={createLoading || editLoading}
               onClick={onCancel}
             />
             <CustomButton
               type="submit"
               title={
-                createLoading ? <Loader height={15} width={15} /> : "Submit"
+                createLoading || editLoading ? (
+                  <Loader height={15} width={15} />
+                ) : (
+                  "Submit"
+                )
               }
-              disabled={createLoading}
+              disabled={createLoading || editLoading}
               classNames={`font-medium p-btn rounded-btn ${
-                createLoading ? "bg-lightGray" : "bg-dark1 text-white"
+                createLoading || editLoading
+                  ? "bg-lightGray"
+                  : "bg-dark1 text-white"
               }`}
             />
           </div>

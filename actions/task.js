@@ -129,7 +129,7 @@ export const editTask = async (data) => {
   try {
     await connectDB();
 
-    const { title, description, status, dueDate } = data;
+    const { title, description, status, dueDate, id } = data;
 
     const task = await Task.findById(id);
 
