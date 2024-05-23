@@ -76,7 +76,6 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
 
     if (
       form.title.length === 0 ||
-      form.description.length === 0 ||
       form.status.length === 0 ||
       form.dueDate.length === 0
     ) {

@@ -1,5 +1,7 @@
 "use server";
 
+// next
+import { revalidatePath } from "next/cache";
 // utils
 import connectDB from "@/utils/connectDB";
 import { getServerSession } from "@/utils/session";
@@ -22,6 +24,8 @@ export const createTask = async (data) => {
       createdBy: session.userId,
       dueDate,
     });
+
+    revalidatePath("/tasks");
 
     return {
       message: "Task Created!",
@@ -51,7 +55,11 @@ export const getTasks = async () => {
       .lean();
 
     return {
-      tasks,
+      tasks: {
+        todo: tasks?.filter((task) => task.status === "Todo"),
+        progress: tasks?.filter((task) => task.status === "Progress"),
+        done: tasks?.filter((task) => task.status === "Done"),
+      },
       message: "success",
       status: "success",
       code: 200,
