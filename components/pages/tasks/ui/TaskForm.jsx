@@ -112,31 +112,16 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (type === "create") {
-      if (
-        form.title.length === 0 ||
-        form.status.length === 0 ||
-        form.dueDate.length === 0
-      ) {
-        toast.error("Fill all Fields");
-        return;
-      }
-
-      createFn();
+    if (
+      form.title.length === 0 ||
+      form.status.length === 0 ||
+      form.dueDate.length === 0
+    ) {
+      toast.error("Fill all Fields");
+      return;
     }
 
-    if (type === "edit") {
-      if (
-        form.title.length === 0 ||
-        form.status.length === 0 ||
-        form.dueDate.length === 0
-      ) {
-        toast.error("Fill all Fields");
-        return;
-      }
-
-      editFn();
-    }
+    type === "create" ? createFn() : editFn();
   };
 
   return (
