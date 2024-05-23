@@ -13,12 +13,13 @@ import CustomButton from "@/components/shared/CustomButton";
 import { CircleClose } from "@/components/icons/Icons";
 import { DatePicker, Modal } from "antd";
 import moment from "moment";
+import CustomSelect from "@/components/shared/form/CustomSelect";
 
 const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
   const initialFormState = {
     title: taskData?.title || "",
     description: taskData?.description || "",
-    status: taskData?.status || "",
+    status: taskData?.status || "Todo",
     dueDate: taskData?.dueDate || "",
   };
 
@@ -63,6 +64,12 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
     });
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(form);
+  };
+
   return (
     <Modal
       title={modalTitle}
@@ -72,7 +79,7 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
       footer={false}
       styles={modalStyles}
     >
-      <form className="space-y-5">
+      <form className="space-y-5" onSubmit={onSubmit}>
         <CustomInput
           type="text"
           label="Title"
@@ -85,6 +92,13 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
           name="description"
           onChange={onChange}
           value={form.description}
+        />
+        <CustomSelect
+          label="Status"
+          name="status"
+          onChange={onChange}
+          value={form.status}
+          options={["Todo", "Progress", "Done"]}
         />
         <div className="space-y-2">
           <p className="font-medium text-p1">Created by</p>
@@ -115,6 +129,20 @@ const TaskForm = ({ type, taskData, isModalOpen, closeModal, session }) => {
               <p className="capitalize">{moment(form.dueDate).fromNow()}</p>
             )}
           </div>
+        </div>
+        <hr />
+        <div className="flex items-center justify-end gap-3">
+          <CustomButton
+            type="button"
+            title="Cancel"
+            classNames="border p-btn rounded-btn hoverable"
+            onClick={onCancel}
+          />
+          <CustomButton
+            type="submit"
+            title="Submit"
+            classNames="bg-dark1 text-white font-medium p-btn rounded-btn"
+          />
         </div>
       </form>
     </Modal>

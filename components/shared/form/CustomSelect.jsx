@@ -4,7 +4,14 @@ import { categories } from "@/constants";
 // react
 import { useEffect, useState } from "react";
 
-const CustomSelect = ({ name, label, value, onChange, wrapperClassName }) => {
+const CustomSelect = ({
+  name,
+  label,
+  value,
+  onChange,
+  wrapperClassName,
+  options,
+}) => {
   const [active, setActive] = useState(false);
 
   const onFocus = () => {
@@ -28,17 +35,16 @@ const CustomSelect = ({ name, label, value, onChange, wrapperClassName }) => {
     <div className={`input-group ${wrapperClassName && wrapperClassName}`}>
       <select
         name={name}
-        defaultValue=""
+        // defaultValue=""
         className="input w-full"
         value={value}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
       >
-        <option value=""></option>
-        {categories.map((item) => (
-          <option key={item.title} value={item.query}>
-            {item.title}
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
           </option>
         ))}
       </select>
