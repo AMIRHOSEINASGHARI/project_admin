@@ -1,35 +1,51 @@
+"use client";
+
+// react
+import { useState } from "react";
 // next
 import Link from "next/link";
 import Image from "next/image";
-// utils
-import { getServerSession } from "@/utils/session";
+// hooks
+import useSession from "@/hooks/session";
 // constants
 import { images } from "@/constants";
 // cmp
-import { Popover } from "antd";
-import { Home, Settings } from "@/components/icons/Icons";
+import { Exclamation, Home, Settings } from "@/components/icons/Icons";
 import SignoutButton from "../SignoutButton";
 import CustomBadge from "../CustomBadge";
+import Loader from "../Loader";
+import { Popover, Tooltip } from "antd";
 
-// TODO: handle close popover and open in client side
 const ShowProfile = () => {
-  const session = getServerSession();
+  const [open, setOpen] = useState(false);
+  const { data, isError, isLoading } = useSession();
 
+  const onOpenChange = (newOpen) => {
+    setOpen(newOpen);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
   const content = (
     <div className="min-w-[250px]">
       <div className="p-5">
-        <p className="text-h4 font-bold">{session.username}</p>
-        <p className="capitalize text-p2 text-darkGray">{session.name}</p>
+        <p className="text-h4 font-bold">{data?.session?.username}</p>
+        <p className="capitalize text-p2 text-darkGray">
+          {data?.session?.name}
+        </p>
         <div className="flex justify-end">
           <CustomBadge
-            condition={session.roll === "OWNER" || session.roll === "ADMIN"}
-            title={session.roll}
+            condition={
+              data?.session?.roll === "OWNER" || data?.session?.roll === "ADMIN"
+            }
+            title={data?.session?.roll}
           />
         </div>
       </div>
       <hr />
       <div className="p-3 space-y-1">
         <Link
+          onClick={onClose}
           href="/dashboard"
           className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
         >
@@ -37,6 +53,7 @@ const ShowProfile = () => {
           <p>Dashboard</p>
         </Link>
         <Link
+          onClick={onClose}
           href="/account"
           className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
         >
@@ -47,12 +64,25 @@ const ShowProfile = () => {
       <hr />
       <div className="p-3">
         <SignoutButton
+          onClick={onClose}
           title="Logout"
           style="flex items-center gap-btn text-darkRose w-full rounded-btn hover:bg-lightRose Transition px-2 py-1.5"
         />
       </div>
     </div>
   );
+
+  if (isLoading) {
+    return <Loader height={20} width={20} />;
+  }
+
+  if (isError) {
+    return (
+      <Tooltip title="Failed to fetch data!" placement="left">
+        <Exclamation size={20} />
+      </Tooltip>
+    );
+  }
 
   return (
     <Popover
@@ -62,9 +92,11 @@ const ShowProfile = () => {
       content={content}
       trigger="click"
       placement="bottomLeft"
+      open={open}
+      onOpenChange={onOpenChange}
     >
       <Image
-        src={session.avatar || images.person}
+        src={data?.session?.avatar || images.person}
         width={200}
         height={200}
         alt="user"

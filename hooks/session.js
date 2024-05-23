@@ -6,18 +6,17 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchSession } from "@/services/queries";
 
 const useSession = () => {
-  const {
-    data: session,
-    isLoading,
-    isError,
-    Error,
-  } = useQuery({
+  const { data, isLoading, isError, Error } = useQuery({
     queryKey: ["session"],
     queryFn: fetchSession,
+    retry: 1,
+    staleTime: 1 * 60 * 60,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
 
   return {
-    session,
+    data,
     isLoading,
     isError,
     Error,
