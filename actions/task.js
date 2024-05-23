@@ -12,18 +12,14 @@ export const createTask = async (data) => {
 
     const session = getServerSession();
 
-    const { title, description, status, assignees, dueDate, lables, subTasks } =
-      data;
+    const { title, description, status, dueDate } = data;
 
     const newTask = await Task.create({
       title,
       description,
       status,
       createdBy: session.userId,
-      assignees,
       dueDate,
-      lables,
-      subTasks,
     });
 
     return {

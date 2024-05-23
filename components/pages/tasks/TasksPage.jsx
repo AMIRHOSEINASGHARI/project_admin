@@ -1,3 +1,5 @@
+// utils
+import { getServerSession } from "@/utils/session";
 // constants
 import { tasksPageBread } from "@/constants/breadcrumpItems";
 // cmp
@@ -7,11 +9,13 @@ import CreateNewTask from "./ui/CreateNewTask";
 import TasksList from "./ui/TasksList";
 
 const TasksPage = () => {
+  const session = getServerSession();
+
   return (
     <>
       <PageHeading title="Tasks" />
       <CustomBreadcrumb items={tasksPageBread} />
-      <CreateNewTask />
+      <CreateNewTask session={session} />
       <TasksList />
     </>
   );
