@@ -73,3 +73,29 @@ export const getTasks = async () => {
     };
   }
 };
+
+export const updateTaskStatus = async (data) => {
+  try {
+    await connectDB();
+
+    const { id, status } = data;
+
+    const task = await Task.findById(id);
+
+    task.status = status;
+    await task.save();
+
+    return {
+      message: "Task Status Updated!",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};
