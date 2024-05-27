@@ -2,6 +2,7 @@
 import { getCurrentAdmin } from "@/actions/admin";
 // constants
 import { accountPageBread } from "@/constants/breadcrumpItems";
+// cmp
 import Account from "./ui/Account";
 import PageHeading from "@/components/shared/PageHeading";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
