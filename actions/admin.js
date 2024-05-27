@@ -20,7 +20,16 @@ export const createAdmin = async (data) => {
   try {
     await connectDB();
 
-    const { username, name, password } = data;
+    const {
+      username,
+      name,
+      password,
+      email,
+      phoneNumber,
+      address,
+      country,
+      roll,
+    } = data;
 
     const admin = await Admin.findOne({ username });
 
@@ -34,7 +43,16 @@ export const createAdmin = async (data) => {
 
     const hashedPassword = await hashPassword(password);
 
-    await Admin.create({ username, password: hashedPassword, name });
+    await Admin.create({
+      username,
+      password: hashedPassword,
+      name,
+      email,
+      phoneNumber,
+      address,
+      country,
+      roll,
+    });
 
     return {
       message: MESSAGES.register,
