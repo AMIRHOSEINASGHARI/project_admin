@@ -1,7 +1,7 @@
-export const dynamic = "force-dynamic";
+import DashboardPage from "@/components/pages/dashboard/DashboardPage";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return <DashboardPage />;
 };
 
 export default Dashboard;
