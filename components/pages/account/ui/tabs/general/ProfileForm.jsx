@@ -14,7 +14,8 @@ import UploadImage from "@/components/shared/form/UploadImage";
 import toast from "react-hot-toast";
 
 const ProfileForm = (props) => {
-  const { username, name, email, phoneNumber, address, country } = props;
+  const { username, name, email, phoneNumber, address, country } =
+    props.currentAdmin;
 
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
