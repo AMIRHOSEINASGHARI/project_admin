@@ -374,3 +374,40 @@ export const blogsDataSourse = (blogs) =>
       </div>
     ),
   }));
+
+export const adminsDataSourse = (admins) =>
+  admins.map((admin) => ({
+    key: admin._id,
+    name: (
+      <div className="flex items-center gap-3">
+        <Image
+          src={admin.avatar || images.person}
+          width={100}
+          height={100}
+          alt="admin"
+          priority
+          className="rounded-full w-[50px] h-[50px]"
+        />
+        <div>
+          <p className="text-p1 font-medium">{admin.username}</p>
+          {admin.name && <p className="text-p2 text-darkGray">{admin.name}</p>}
+        </div>
+      </div>
+    ),
+    phone: admin.phoneNumber || "_",
+    roll: (
+      <CustomBadge
+        condition={admin.roll === "OWNER" || admin.roll === "ADMIN"}
+        title={admin.roll}
+      />
+    ),
+    date: (
+      <div>
+        <p>{moment(admin.createdAt).format("L")}</p>
+        <p className="text-p2 text-darkGray">
+          {moment(admin.createdAt).format("LT")}
+        </p>
+      </div>
+    ),
+    action: "",
+  }));

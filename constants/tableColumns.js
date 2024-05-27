@@ -321,3 +321,31 @@ export const blogsColumns = [
     key: "date",
   },
 ];
+
+export const adminsColumns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Phone",
+    dataIndex: "phone",
+    key: "phone",
+  },
+  {
+    title: "Roll",
+    dataIndex: "roll",
+    key: "roll",
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+  {
+    title: "Action",
+    dataIndex: "action",
+    key: "action",
+  },
+];

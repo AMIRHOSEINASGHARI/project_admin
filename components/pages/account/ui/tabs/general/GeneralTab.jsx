@@ -1,5 +1,6 @@
-// cmp
+// actions
 import { getCurrentAdmin } from "@/actions/admin";
+// cmp
 import AvatarSection from "./AvatarSection";
 import ProfileForm from "./ProfileForm";
 
