@@ -11,6 +11,7 @@ const LikesTab = ({ likes }) => {
   if (likes.length === 0) {
     return <Empty description="No Likes!" />;
   }
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-box">
       {likes.map((like) => {
