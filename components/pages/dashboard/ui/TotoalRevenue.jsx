@@ -7,7 +7,7 @@ import ReactApexChart from "react-apexcharts";
 
 const TotoalRevenue = () => {
   return (
-    <div className="w-full cardShadow rounded-xl p-4 bg-white flex flex-col flex-1">
+    <div className="w-full box bg-white flex flex-col flex-1">
       <h1 className="h3 mb-3">Totoal Revenue</h1>
       <div className="w-full h-full flex items-center justify-center">
         <ReactApexChart
