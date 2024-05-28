@@ -4,6 +4,8 @@
 import { useState } from "react";
 // actions
 import { updateProfile } from "@/actions/admin";
+// react query
+import { useQueryClient } from "@tanstack/react-query";
 // utils
 import { uploadImage } from "@/utils/functions";
 // cmp
@@ -17,6 +19,7 @@ const ProfileForm = (props) => {
   const { username, name, email, phoneNumber, address, country } =
     props.currentAdmin;
 
+  const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     username: username || "",
@@ -68,31 +71,32 @@ const ProfileForm = (props) => {
 
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Profile Updated!");
-    }, 1000);
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   toast.success("Profile Updated!");
+    // }, 1000);
 
-    // let newForm = { ...form };
+    let newForm = { ...form };
 
-    // if (form.image.length !== 0) {
-    //   const uploadResult = await uploadImage(form.image[0]);
-    //   console.log(uploadResult);
-    //   newForm = {
-    //     ...form,
-    //     image: uploadResult.imageUrl,
-    //   };
-    // }
+    if (form.image.length !== 0) {
+      const uploadResult = await uploadImage(form.image[0]);
+      console.log(uploadResult);
+      newForm = {
+        ...form,
+        image: uploadResult.imageUrl,
+      };
+    }
 
-    // const result = await updateProfile(newForm);
+    const result = await updateProfile(newForm);
 
-    // setLoading(false);
+    setLoading(false);
 
-    // if (result.code !== 200) {
-    //   toast.error(result.message);
-    // } else {
-    //   toast.success(result.message);
-    // }
+    if (result.code !== 200) {
+      toast.error(result.message);
+    } else {
+      toast.success(result.message);
+      queryClient.invalidateQueries("session");
+    }
   };
 
   return (

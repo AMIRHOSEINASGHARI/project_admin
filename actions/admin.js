@@ -84,6 +84,7 @@ export const updateProfile = async (data) => {
       country,
       image,
     } = data;
+    console.log(data);
 
     const session = getServerSession();
 
@@ -150,11 +151,15 @@ export const updateProfile = async (data) => {
       }
     }
 
+    if (image.length !== 0) {
+      admin.avatar = image;
+    }
+
     // updating info
+    admin.name = name;
     admin.email = email;
     admin.phoneNumber = phoneNumber;
     admin.address = address;
-    admin.avatar = image;
     admin.country = country;
     await admin.save();
 
@@ -163,7 +168,7 @@ export const updateProfile = async (data) => {
         username,
         userId: admin._id,
         name: name,
-        avatar: image,
+        avatar: image.length !== 0 ? image : admin.avatar,
         roll: admin.roll,
       },
       SECRET_KEY,
