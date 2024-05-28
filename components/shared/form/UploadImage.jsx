@@ -30,7 +30,7 @@ const UploadImage = ({ form, setForm }) => {
       defaultFileList={[...form.image]}
       listType="picture"
       name="file"
-      accept="image/png, image/jpeg"
+      accept="image/png, image/jpeg, image/webp"
       onChange={onChange}
       beforeUpload={beforeUpload}
       maxCount={1}

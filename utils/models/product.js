@@ -28,6 +28,7 @@ const productSchema = new Schema({
     default: () => Date.now(),
     immutabale: true,
   },
+  createdBy: { type: Schema.Types.ObjectId, ref: "Admin" },
 });
 
 export const Product = models?.Product || model("Product", productSchema);

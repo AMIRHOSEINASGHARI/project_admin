@@ -1,5 +1,7 @@
 "use server";
 
+// next
+import { revalidatePath } from "next/cache";
 // models
 import { Product } from "@/utils/models/product";
 import { Order } from "@/utils/models/order";
@@ -59,7 +61,10 @@ export const createProduct = async (data) => {
       keywords,
       brand,
       published,
+      createdBy: session.userId,
     });
+
+    revalidatePath("/products");
 
     return {
       message: "Product Created",
