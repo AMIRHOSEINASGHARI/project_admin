@@ -18,7 +18,7 @@ const ProductActions = ({ id }) => {
       <div className="flex items-center gap-3">
         <Tooltip placement="bottom" title="Go Live">
           <Link
-            href={`https://store-onlineshop.liara.run/products/${id}`}
+            href={`${process.env.NEXT_PUBLIC_LIVE_URL}/products/${id}`}
             target="_blank"
           >
             <CustomButton

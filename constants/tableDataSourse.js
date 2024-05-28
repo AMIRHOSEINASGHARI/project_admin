@@ -6,7 +6,7 @@ import { shorterText } from "@/utils/functions";
 // constants
 import { images } from ".";
 // cmp
-import { Image } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
 import moment from "moment";
 import OrdersActions from "@/components/pages/orders/ui/OrdersActions";
 import CommentAction from "@/components/pages/shared/CommentAction";

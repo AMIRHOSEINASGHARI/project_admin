@@ -8,7 +8,7 @@ import moment from "moment";
 import Avatars from "./Avatars";
 import CustomBadge from "@/components/shared/CustomBadge";
 import { Clock } from "@/components/icons/Icons";
-import { Image } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
 
 const ProductInformation = ({ info }) => {
   return (
