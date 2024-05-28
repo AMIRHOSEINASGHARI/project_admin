@@ -10,6 +10,8 @@ const adminSchema = new Schema({
   country: { type: String, default: "" },
   avatar: { type: String, default: "" },
   roll: { type: String, default: "USER" },
+  productsCreated: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+  blogsCreated: [{ type: Schema.Types.ObjectId, ref: "Blog" }],
   createdAt: {
     type: Date,
     default: () => Date.now(),

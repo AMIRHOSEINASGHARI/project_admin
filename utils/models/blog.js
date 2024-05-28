@@ -8,6 +8,7 @@ const blogSchema = new Schema({
   keywords: { type: [String], default: [] },
   likes: [{ type: Schema.Types.ObjectId, ref: "Like", default: [] }],
   published: { type: Boolean, default: false },
+  createdBy: { type: Schema.Types.ObjectId, ref: "Admin" },
   createdAt: {
     type: Date,
     default: () => Date.now(),

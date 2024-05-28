@@ -23,12 +23,12 @@ const productSchema = new Schema({
   likes: [{ type: Schema.Types.ObjectId, ref: "Like", default: [] }],
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment", default: [] }],
   published: { type: Boolean, default: false },
+  createdBy: { type: Schema.Types.ObjectId, ref: "Admin" },
   createdAt: {
     type: Date,
     default: () => Date.now(),
     immutabale: true,
   },
-  createdBy: { type: Schema.Types.ObjectId, ref: "Admin" },
 });
 
 export const Product = models?.Product || model("Product", productSchema);
