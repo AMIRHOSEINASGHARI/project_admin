@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 // providers
 import AntDesignConfigProvider from "@/providers/AntDesignConfigProvider";
 import ReactQueryClientProvider from "@/providers/ReactQueryClientProvider";
+import NextUiProvider from "@/providers/NextUiProvider";
 
 export const metadata = {
   title: {
@@ -20,10 +21,12 @@ export default function RootLayout({ children }) {
       <AntDesignConfigProvider>
         <html lang="en">
           <body>
-            {children}
-            <div>
-              <Toaster position="top-center" />
-            </div>
+            <NextUiProvider>
+              {children}
+              <div>
+                <Toaster position="top-center" />
+              </div>
+            </NextUiProvider>
           </body>
         </html>
       </AntDesignConfigProvider>

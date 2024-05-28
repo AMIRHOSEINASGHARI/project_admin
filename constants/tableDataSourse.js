@@ -1,11 +1,12 @@
 // next
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 // utils
 import { shorterText } from "@/utils/functions";
 // constants
 import { images } from ".";
 // cmp
+import { Image } from "@nextui-org/react";
 import moment from "moment";
 import OrdersActions from "@/components/pages/orders/ui/OrdersActions";
 import CommentAction from "@/components/pages/shared/CommentAction";
@@ -24,12 +25,10 @@ export const productsDataSourse = (products) =>
         <div className="w-[100px] h-[100px] flex items-center justify-center">
           <Image
             src={product.image}
-            width={70}
-            height={70}
+            as={NextImage}
+            width={100}
+            height={100}
             alt="product"
-            radius="none"
-            priority
-            className="object-cover"
           />
         </div>
         <div>
@@ -62,19 +61,24 @@ export const productsDataSourse = (products) =>
       />
     ),
     creator: (
-      <div className="flex items-center flex-col xl:flex-row gap-3">
-        <Image
-          src={product.createdBy.avatar || images.admin}
-          width={40}
-          height={40}
-          alt="admin"
-          priority
-          className="rounded-full"
-        />
+      <Link
+        href={`/account/users/${product.createdBy._id}`}
+        className="flex items-center flex-col xl:flex-row gap-3"
+      >
+        <div className="w-10 h-10">
+          <Image
+            src={product.createdBy.avatar || images.admin}
+            as={NextImage}
+            width={200}
+            height={200}
+            alt="admin"
+            className="rounded-full"
+          />
+        </div>
         <p className="text-p2 font-medium capitalize">
-          {product.createdBy.name}
+          {product.createdBy.name.split(" ")[0]}
         </p>
-      </div>
+      </Link>
     ),
     actions: <ProductActions productId={product._id} />,
   }));

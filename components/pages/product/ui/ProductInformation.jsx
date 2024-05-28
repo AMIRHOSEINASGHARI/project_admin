@@ -1,5 +1,5 @@
 // next
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 // constants
 import { images, productInformationDetails } from "@/constants";
@@ -8,12 +8,14 @@ import moment from "moment";
 import Avatars from "./Avatars";
 import CustomBadge from "@/components/shared/CustomBadge";
 import { Clock } from "@/components/icons/Icons";
+import { Image } from "@nextui-org/react";
 
 const ProductInformation = ({ info }) => {
   return (
     <div className="flex flex-col xl:flex-row gap-box">
       <div className="w-full xl:w-[50%] h-fit flex justify-center box border">
         <Image
+          as={NextImage}
           src={info?.image}
           width={500}
           height={500}
