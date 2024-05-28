@@ -6,6 +6,7 @@ import { useState } from "react";
 import CustomButton from "@/components/shared/CustomButton";
 import CustomInput from "@/components/shared/form/CustomInput";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
+import CustomSelect from "@/components/shared/form/CustomSelect";
 
 const CreateUserTab = () => {
   const [loading, setLoading] = useState(false);
@@ -95,6 +96,14 @@ const CreateUserTab = () => {
               label="Confirm Password"
               name="confirmPassword"
               value={form.confirmPassword}
+              onChange={onChange}
+              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+            />
+            <CustomSelect
+              name="roll"
+              label="Role"
+              options={["ADMIN", "USER"]}
+              value={form.roll}
               onChange={onChange}
               wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
             />
