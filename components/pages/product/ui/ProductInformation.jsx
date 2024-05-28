@@ -1,12 +1,13 @@
 // next
 import Image from "next/image";
+import Link from "next/link";
 // constants
-import { productInformationDetails } from "@/constants";
+import { images, productInformationDetails } from "@/constants";
 // components
 import moment from "moment";
 import Avatars from "./Avatars";
-import { Clock } from "@/components/icons/Icons";
 import CustomBadge from "@/components/shared/CustomBadge";
+import { Clock } from "@/components/icons/Icons";
 
 const ProductInformation = ({ info }) => {
   return (
@@ -47,6 +48,26 @@ const ProductInformation = ({ info }) => {
           condition={info?.published}
           title={info?.published ? "Published" : "Draft"}
         />
+        <div className="space-y-2">
+          <p className="text-p2">Created By:</p>
+          <Link
+            href={`/account/users/${info?.createdBy?._id}`}
+            className="flex items-center gap-3"
+          >
+            <Image
+              src={info?.createdBy.avatar || images.admin}
+              width={100}
+              height={100}
+              alt="creator"
+              priority
+              className="rounded-full w-10 h-10"
+            />
+            <div>
+              <p className="text-p1 font-medium">{info?.createdBy?.username}</p>
+              <p className="text-p2 text-darkGray">{info?.createdBy?.name}</p>
+            </div>
+          </Link>
+        </div>
         <p className="font-bold text-h3">{info?.title}</p>
         <div className="flex items-center gap-3">
           <p className="text-p1 text-darkGray">
