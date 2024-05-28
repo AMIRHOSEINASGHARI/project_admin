@@ -12,7 +12,7 @@ const List = ({ data }) => {
     <div className="tableContainer">
       <Table
         columns={adminsColumns}
-        dataSource={adminsDataSourse(data, session.userId)}
+        dataSource={adminsDataSourse(data, session.userId, session.roll)}
         pagination={false}
         scroll={{ x: true }}
       />

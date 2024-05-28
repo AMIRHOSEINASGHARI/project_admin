@@ -10,6 +10,7 @@ import moment from "moment";
 import OrdersActions from "@/components/pages/orders/ui/OrdersActions";
 import CommentAction from "@/components/pages/shared/CommentAction";
 import CustomBadge from "@/components/shared/CustomBadge";
+import AdminActions from "@/components/pages/account/ui/tabs/admins/AdminActions";
 
 export const productsDataSourse = (products) =>
   products.map((product) => ({
@@ -375,7 +376,7 @@ export const blogsDataSourse = (blogs) =>
     ),
   }));
 
-export const adminsDataSourse = (admins, currentUserID) =>
+export const adminsDataSourse = (admins, currentUserID, currentUserRoll) =>
   admins.map((admin) => ({
     key: admin._id,
     name: (
@@ -416,5 +417,7 @@ export const adminsDataSourse = (admins, currentUserID) =>
         </p>
       </div>
     ),
-    action: "",
+    action: currentUserRoll === "OWNER" && admin.roll !== "OWNER" && (
+      <AdminActions roll={admin.roll} />
+    ),
   }));
