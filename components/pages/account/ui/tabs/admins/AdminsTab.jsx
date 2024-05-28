@@ -1,4 +1,6 @@
+// actions
 import { getAdmins } from "@/actions/admin";
+// cmp
 import List from "./List";
 
 const AdminsTab = async () => {

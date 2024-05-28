@@ -55,7 +55,7 @@ const StatusBox = ({ status, taskCount, tasks }) => {
               <div className="flex justify-between items-center gap-2 w-full">
                 <div className="flex items-center gap-3">
                   <Image
-                    src={task.createdBy.avatar || images.person}
+                    src={task.createdBy.avatar || images.admin}
                     width={100}
                     height={100}
                     alt="creator"

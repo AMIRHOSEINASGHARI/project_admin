@@ -167,8 +167,8 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
               <Image
                 src={
                   data
-                    ? data?.task?.createdBy?.avatar || images.person
-                    : session?.avatar || images.person
+                    ? data?.task?.createdBy?.avatar || images.admin
+                    : session?.avatar || images.admin
                 }
                 width={100}
                 height={100}

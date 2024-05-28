@@ -54,6 +54,8 @@ export const createAdmin = async (data) => {
       roll,
     });
 
+    revalidatePath("/account");
+
     return {
       message: MESSAGES.register,
       status: MESSAGES.success,

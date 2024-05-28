@@ -375,13 +375,18 @@ export const blogsDataSourse = (blogs) =>
     ),
   }));
 
-export const adminsDataSourse = (admins) =>
+export const adminsDataSourse = (admins, currentUserID) =>
   admins.map((admin) => ({
     key: admin._id,
     name: (
       <div className="flex items-center gap-3">
+        {currentUserID === admin._id && (
+          <span className="bg-lightBlue text-darkBlue rounded-btn py-1 px-3 text-p2 font-medium border border-darkBlue">
+            YOU
+          </span>
+        )}
         <Image
-          src={admin.avatar || images.person}
+          src={admin.avatar || images.admin}
           width={100}
           height={100}
           alt="admin"

@@ -104,7 +104,7 @@ const ShowProfile = () => {
       onOpenChange={onOpenChange}
     >
       <Image
-        src={data?.session?.avatar || images.person}
+        src={data?.session?.avatar || images.admin}
         width={200}
         height={200}
         alt="user"
