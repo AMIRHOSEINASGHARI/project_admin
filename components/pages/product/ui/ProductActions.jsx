@@ -28,7 +28,7 @@ const ProductActions = ({ id }) => {
           </Link>
         </Tooltip>
         <Tooltip placement="bottom" title="Edit">
-          <Link href={`/products/${id}/edit`}>
+          <Link href={`/products/edit/${id}`}>
             <CustomButton
               icon={<Edit className="text-darkGray" />}
               classNames="iconButton"

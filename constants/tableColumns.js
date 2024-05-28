@@ -74,6 +74,16 @@ export const productsColumn = [
     key: "id",
   },
   {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+  {
+    title: "Creator",
+    dataIndex: "creator",
+    key: "creator",
+  },
+  {
     title: "Stock",
     dataIndex: "stock",
     key: "stock",
@@ -104,19 +114,14 @@ export const productsColumn = [
     key: "likes",
   },
   {
-    title: "Date",
-    dataIndex: "date",
-    key: "date",
-  },
-  {
-    title: "Creator",
-    dataIndex: "creator",
-    key: "creator",
-  },
-  {
     title: "Status",
     dataIndex: "status",
     key: "status",
+  },
+  {
+    title: "Actions",
+    dataIndex: "actions",
+    key: "actions",
   },
 ];
 

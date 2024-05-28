@@ -11,6 +11,7 @@ import OrdersActions from "@/components/pages/orders/ui/OrdersActions";
 import CommentAction from "@/components/pages/shared/CommentAction";
 import CustomBadge from "@/components/shared/CustomBadge";
 import AdminActions from "@/components/pages/account/ui/tabs/admins/AdminActions";
+import ProductActions from "@/components/pages/products/ui/ProductActions";
 
 export const productsDataSourse = (products) =>
   products.map((product) => ({
@@ -75,6 +76,7 @@ export const productsDataSourse = (products) =>
         </p>
       </div>
     ),
+    actions: <ProductActions productId={product._id} />,
   }));
 
 export const productOrdersTabDataSourse = (productOrders) =>
