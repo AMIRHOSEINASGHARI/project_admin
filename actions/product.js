@@ -38,6 +38,7 @@ export const createProduct = async (data) => {
       };
     }
 
+    const admin = await Admin.findById(session.userId);
     const {
       title,
       description,
@@ -64,6 +65,9 @@ export const createProduct = async (data) => {
       published,
       createdBy: session.userId,
     });
+
+    admin.productsCreated.push(newProduct._id);
+    await admin.save();
 
     revalidatePath("/products");
 

@@ -7,6 +7,7 @@ import connectDB from "@/utils/connectDB";
 import { getServerSession } from "@/utils/session";
 // models
 import { Blog } from "@/utils/models/blog";
+import Admin from "@/utils/models/admin";
 
 export const createBlog = async (data) => {
   try {
@@ -32,6 +33,7 @@ export const createBlog = async (data) => {
       };
     }
 
+    const admin = await Admin.findById(session.userId);
     const { title, description, image, keywords, published } = data;
 
     const newBlog = await Blog.create({
@@ -40,7 +42,11 @@ export const createBlog = async (data) => {
       image,
       keywords,
       published,
+      createdBy: session.userId,
     });
+
+    admin.blogsCreated.push(newBlog._id);
+    await admin.save();
 
     return {
       message: "Blog Created",
