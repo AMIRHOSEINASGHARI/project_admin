@@ -9,10 +9,16 @@ import useServerAction from "@/hooks/callServerAction";
 // cmp
 import CustomButton from "@/components/shared/CustomButton";
 import Loader from "@/components/shared/Loader";
-import { CircleCheck, MenuDots, Trash } from "@/components/icons/Icons";
+import {
+  CircleCheck,
+  EyeOpen,
+  MenuDots,
+  Trash,
+} from "@/components/icons/Icons";
 import { Popover } from "antd";
+import Link from "next/link";
 
-const AdminActions = ({ roll, userId }) => {
+const AdminActions = ({ roll, userId, showMore }) => {
   const [open, setOpen] = useState(false);
 
   const onOpenChange = (newOpen) => {
@@ -101,23 +107,30 @@ const AdminActions = ({ roll, userId }) => {
   );
 
   return (
-    <Popover
-      overlayInnerStyle={{
-        padding: "0",
-      }}
-      content={content}
-      open={open}
-      onOpenChange={onOpenChange}
-      trigger="click"
-      placement="leftTop"
-    >
-      <CustomButton
-        type="button"
-        icon={<MenuDots size={18} />}
-        classNames="iconButton"
-        onClick={onOpen}
-      />
-    </Popover>
+    <div className="flex items-center gap-1">
+      <Link href={`/account/users/${userId}`} className="iconButton">
+        <EyeOpen />
+      </Link>
+      {showMore && (
+        <Popover
+          overlayInnerStyle={{
+            padding: "0",
+          }}
+          content={content}
+          open={open}
+          onOpenChange={onOpenChange}
+          trigger="click"
+          placement="leftTop"
+        >
+          <CustomButton
+            type="button"
+            icon={<MenuDots size={18} />}
+            classNames="iconButton"
+            onClick={onOpen}
+          />
+        </Popover>
+      )}
+    </div>
   );
 };
 

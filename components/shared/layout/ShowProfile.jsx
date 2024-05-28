@@ -4,17 +4,17 @@
 import { useState } from "react";
 // next
 import Link from "next/link";
-import Image from "next/image";
 // hooks
 import useSession from "@/hooks/session";
 // constants
 import { images } from "@/constants";
 // cmp
-import { Exclamation, Home, Settings, Task } from "@/components/icons/Icons";
 import SignoutButton from "../SignoutButton";
 import CustomBadge from "../CustomBadge";
 import Loader from "../Loader";
+import { Exclamation, Home, Settings, Task } from "@/components/icons/Icons";
 import { Popover, Tooltip } from "antd";
+import { Avatar } from "@nextui-org/avatar";
 
 const ShowProfile = () => {
   const [open, setOpen] = useState(false);
@@ -103,13 +103,10 @@ const ShowProfile = () => {
       open={open}
       onOpenChange={onOpenChange}
     >
-      <Image
+      <Avatar
         src={data?.session?.avatar || images.admin}
-        width={200}
-        height={200}
-        alt="user"
-        priority
-        className="cursor-pointer rounded-full w-[40px] h-[40px]"
+        isBordered
+        className="cursor-pointer"
       />
     </Popover>
   );

@@ -400,27 +400,29 @@ export const blogsDataSourse = (blogs) =>
 export const adminsDataSourse = (admins, currentUserID, currentUserRoll) =>
   admins.map((admin) => ({
     key: admin._id,
-    name: (
-      <div className="flex items-center gap-3">
+    avatar: (
+      <div className="w-12 h-12">
         <Image
+          as={NextImage}
           src={admin.avatar || images.admin}
           width={100}
           height={100}
           alt="admin"
-          priority
-          className="rounded-full w-[50px] h-[50px]"
+          radius="full"
         />
-        <div>
-          <p className="text-p1 font-medium">
-            {admin.username}{" "}
-            {currentUserID === admin._id && (
-              <span className="bg-lightBlue text-darkBlue rounded-btn py-.5 px-2 text-p2 font-medium border border-darkBlue">
-                YOU
-              </span>
-            )}
-          </p>
-          {admin.name && <p className="text-p2 text-darkGray">{admin.name}</p>}
-        </div>
+      </div>
+    ),
+    name: (
+      <div>
+        <p className="text-p1 font-medium">
+          {admin.username}{" "}
+          {currentUserID === admin._id && (
+            <span className="bg-lightBlue text-darkBlue rounded-btn py-.5 px-2 text-p2 font-medium border border-darkBlue">
+              YOU
+            </span>
+          )}
+        </p>
+        {admin.name && <p className="text-p2 text-darkGray">{admin.name}</p>}
       </div>
     ),
     phone: admin.phoneNumber || "_",
@@ -438,7 +440,11 @@ export const adminsDataSourse = (admins, currentUserID, currentUserRoll) =>
         </p>
       </div>
     ),
-    action: currentUserRoll === "OWNER" && admin.roll !== "OWNER" && (
-      <AdminActions roll={admin.roll} userId={admin._id} />
+    action: (
+      <AdminActions
+        roll={admin.roll}
+        userId={admin._id}
+        showMore={currentUserRoll === "OWNER" && admin.roll !== "OWNER"}
+      />
     ),
   }));

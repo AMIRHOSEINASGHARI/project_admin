@@ -1,10 +1,12 @@
 // next
-import Image from "next/image";
+import NextImage from "next/image";
+// utils
+import { getServerSession } from "@/utils/session";
 // constants
 import { images } from "@/constants";
 // cmp
 import moment from "moment";
-import { getServerSession } from "@/utils/session";
+import { Image } from "@nextui-org/image";
 
 const AvatarSection = ({ data }) => {
   const session = getServerSession();
@@ -13,12 +15,14 @@ const AvatarSection = ({ data }) => {
     <div className="box flex flex-col items-center gap-5 w-full xl:w-[40%] h-fit">
       <div>
         <Image
+          as={NextImage}
           src={data.currentAdmin.avatar || images.admin}
           width={300}
           height={300}
           alt={data.currentAdmin.username}
-          priority
-          className="w-[150px] h-[150px] rounded-full object-cover outline outline-2 outline-offset-8 outline-gray-200"
+          className="w-[150px] h-[150px] object-cover"
+          radius="full"
+          isBlurred
         />
       </div>
       <p className="text-p2 text-darkGray">

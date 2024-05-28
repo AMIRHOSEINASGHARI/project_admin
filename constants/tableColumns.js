@@ -334,6 +334,11 @@ export const blogsColumns = [
 
 export const adminsColumns = [
   {
+    title: "Avatar",
+    dataIndex: "avatar",
+    key: "avatar",
+  },
+  {
     title: "Name",
     dataIndex: "name",
     key: "name",
@@ -344,7 +349,7 @@ export const adminsColumns = [
     key: "phone",
   },
   {
-    title: "Roll",
+    title: "Role",
     dataIndex: "roll",
     key: "roll",
   },
