@@ -137,6 +137,7 @@ export const getProducts = async (searchParams) => {
 
     const pageNumber = page || 1;
     const perPage = 8;
+    const totalProductsWithoutFilter = await Product.countDocuments();
     const totalProducts = await Product.countDocuments({
       ...query,
       ...filters,
@@ -169,6 +170,7 @@ export const getProducts = async (searchParams) => {
     return {
       products,
       totalPages,
+      totalProducts: totalProductsWithoutFilter,
       status: "success",
       code: 200,
     };

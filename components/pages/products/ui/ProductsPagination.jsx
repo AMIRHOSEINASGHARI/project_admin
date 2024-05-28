@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 // components
 import { LeftAngle, RightAngle } from "@/components/icons/Icons";
 
-const ProductsPagination = ({ totalPages, searchParams }) => {
+const ProductsPagination = ({ totalPages, searchParams, totalProducts }) => {
   const router = useRouter();
 
   const nextPage = () => {
@@ -29,34 +29,39 @@ const ProductsPagination = ({ totalPages, searchParams }) => {
   };
 
   return (
-    <div className="flex items-center gap-2 w-full justify-end p-4">
-      <p className="rounded-xl text-sm">
-        {searchParams.page || 1} / {totalPages}
+    <div className="flex items-center justify-end gap-2 p-4">
+      <p className="whitespace-nowrap text-p2 bg-dark1 text-white rounded-btn py-1 px-3">
+        {totalProducts} Products
       </p>
-      <button
-        type="button"
-        onClick={() => prevPage()}
-        disabled={searchParams.page == "1" || searchParams.page === undefined}
-        className={`${
-          searchParams.page == "1" || searchParams.page === undefined
-            ? "text-gray-400 cursor-not-allowed"
-            : "text-black"
-        } rounded-full hover:bg-lightGray p-3 Transition`}
-      >
-        <LeftAngle size={15} />
-      </button>
-      <button
-        type="button"
-        onClick={() => nextPage()}
-        disabled={searchParams.page == String(totalPages) || totalPages === 1}
-        className={`${
-          searchParams.page == String(totalPages) || totalPages === 1
-            ? "text-gray-400 cursor-not-allowed"
-            : "text-black"
-        } rounded-full hover:bg-lightGray p-3 Transition`}
-      >
-        <RightAngle size={15} />
-      </button>
+      <div className="flex items-center gap-2 w-full justify-end">
+        <p className="rounded-xl text-sm">
+          {searchParams.page || 1} / {totalPages}
+        </p>
+        <button
+          type="button"
+          onClick={() => prevPage()}
+          disabled={searchParams.page == "1" || searchParams.page === undefined}
+          className={`${
+            searchParams.page == "1" || searchParams.page === undefined
+              ? "text-gray-400 cursor-not-allowed"
+              : "text-black"
+          } rounded-full hover:bg-lightGray p-3 Transition`}
+        >
+          <LeftAngle size={15} />
+        </button>
+        <button
+          type="button"
+          onClick={() => nextPage()}
+          disabled={searchParams.page == String(totalPages) || totalPages === 1}
+          className={`${
+            searchParams.page == String(totalPages) || totalPages === 1
+              ? "text-gray-400 cursor-not-allowed"
+              : "text-black"
+          } rounded-full hover:bg-lightGray p-3 Transition`}
+        >
+          <RightAngle size={15} />
+        </button>
+      </div>
     </div>
   );
 };

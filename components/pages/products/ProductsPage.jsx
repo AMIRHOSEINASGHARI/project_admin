@@ -30,6 +30,7 @@ const ProductsPage = async ({ searchParams }) => {
               products={JSON.parse(JSON.stringify(data.products))}
             />
             <ProductsPagination
+              totalProducts={data.totalProducts}
               totalPages={data.totalPages}
               searchParams={searchParams}
             />
