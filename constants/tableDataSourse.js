@@ -380,11 +380,6 @@ export const adminsDataSourse = (admins, currentUserID) =>
     key: admin._id,
     name: (
       <div className="flex items-center gap-3">
-        {currentUserID === admin._id && (
-          <span className="bg-lightBlue text-darkBlue rounded-btn py-1 px-3 text-p2 font-medium border border-darkBlue">
-            YOU
-          </span>
-        )}
         <Image
           src={admin.avatar || images.admin}
           width={100}
@@ -394,7 +389,14 @@ export const adminsDataSourse = (admins, currentUserID) =>
           className="rounded-full w-[50px] h-[50px]"
         />
         <div>
-          <p className="text-p1 font-medium">{admin.username}</p>
+          <p className="text-p1 font-medium">
+            {admin.username}{" "}
+            {currentUserID === admin._id && (
+              <span className="bg-lightBlue text-darkBlue rounded-btn py-.5 px-2 text-p2 font-medium border border-darkBlue">
+                YOU
+              </span>
+            )}
+          </p>
           {admin.name && <p className="text-p2 text-darkGray">{admin.name}</p>}
         </div>
       </div>

@@ -71,7 +71,7 @@ const CreateUserTab = () => {
               name="username"
               value={form.username}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomInput
               type="text"
@@ -79,7 +79,7 @@ const CreateUserTab = () => {
               name="name"
               value={form.name}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomInput
               type="password"
@@ -87,7 +87,7 @@ const CreateUserTab = () => {
               name="password"
               value={form.password}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomInput
               type="password"
@@ -95,7 +95,7 @@ const CreateUserTab = () => {
               name="confirmPassword"
               value={form.confirmPassword}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomInput
               type="email"
@@ -103,7 +103,7 @@ const CreateUserTab = () => {
               name="email"
               value={form.email}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomInput
               type="text"
@@ -111,7 +111,7 @@ const CreateUserTab = () => {
               name="phoneNumber"
               value={form.phoneNumber}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomInput
               type="text"
@@ -119,7 +119,7 @@ const CreateUserTab = () => {
               name="address"
               value={form.address}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomInput
               type="text"
@@ -127,7 +127,7 @@ const CreateUserTab = () => {
               name="country"
               value={form.country}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
             <CustomSelect
               name="roll"
@@ -135,7 +135,7 @@ const CreateUserTab = () => {
               options={["ADMIN", "USER"]}
               value={form.roll}
               onChange={onChange}
-              wrapperClassName="w-full flex flex-1 min-w-[280px] h-fit"
+              wrapperClassName="w-full flex flex-1 min-w-[250px] h-fit"
             />
           </div>
           <div className="w-full flex justify-end">
