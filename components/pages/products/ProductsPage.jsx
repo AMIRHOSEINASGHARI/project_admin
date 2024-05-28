@@ -1,3 +1,5 @@
+// next
+import Link from "next/link";
 // actions
 import { getProducts } from "@/actions/product";
 // constants
@@ -8,6 +10,7 @@ import ProductsFilter from "./ui/ProductsFilter";
 import ProductsPagination from "./ui/ProductsPagination";
 import PageHeading from "@/components/shared/PageHeading";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
+import { LayerPlus } from "@/components/icons/Icons";
 
 const ProductsPage = async ({ searchParams }) => {
   try {
@@ -19,7 +22,16 @@ const ProductsPage = async ({ searchParams }) => {
 
     return (
       <>
-        <PageHeading title="Products" />
+        <div className="flex justify-between gap-1">
+          <PageHeading title="Products" />
+          <Link
+            href="/add-product"
+            className="h-fit flex items-center gap-3 p-btn rounded-btn bg-dark1 text-white"
+          >
+            <LayerPlus />
+            New
+          </Link>
+        </div>
         <CustomBreadcrumb items={productsPageBread} />
         {data.products?.length === 0 ? (
           <p>No Products!</p>

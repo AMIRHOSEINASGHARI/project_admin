@@ -159,7 +159,7 @@ export const menuLinks = [
   },
   {
     title: "Add Product",
-    image: icons.plus,
+    image: icons.layerPlus,
     link: "/add-product",
   },
   {
