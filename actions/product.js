@@ -8,6 +8,7 @@ import { Order } from "@/utils/models/order";
 import { Like } from "@/utils/models/like";
 import { User } from "@/utils/models/user";
 import { Comment } from "@/utils/models/comment";
+import Admin from "@/utils/models/admin";
 // utils
 import connectDB from "@/utils/connectDB";
 import { MESSAGES, STATUS_CODES } from "@/utils/messages";
@@ -154,6 +155,11 @@ export const getProducts = async (searchParams) => {
       })
       .skip((pageNumber - 1) * perPage)
       .limit(perPage)
+      .populate({
+        path: "createdBy",
+        model: Admin,
+        select: "username name avatar",
+      })
       .lean();
 
     return {
@@ -218,6 +224,11 @@ export const getProduct = async (id) => {
           model: User,
           select: "-password",
         },
+      })
+      .populate({
+        path: "createdBy",
+        model: Admin,
+        select: "username name avatar",
       })
       .lean();
 

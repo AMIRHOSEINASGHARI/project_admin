@@ -109,6 +109,11 @@ export const productsColumn = [
     key: "date",
   },
   {
+    title: "Creator",
+    dataIndex: "creator",
+    key: "creator",
+  },
+  {
     title: "Status",
     dataIndex: "status",
     key: "status",
