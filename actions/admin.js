@@ -9,8 +9,6 @@ import { MESSAGES, STATUS_CODES } from "@/utils/messages";
 import { hashPassword, verifyPassword } from "@/utils/functions";
 import { getServerSession } from "@/utils/session";
 import { SECRET_KEY, SESSION_EXPIRATION } from "@/utils/vars";
-// actions
-import { signOut } from "./auth";
 // models
 import Admin from "@/utils/models/admin";
 // jwt
@@ -204,43 +202,22 @@ export const deleteAdmin = async (id) => {
   try {
     await connectDB();
 
-    const session = getServerSession();
-
-    // check session
-    if (!session) {
-      return {
-        message: MESSAGES.unAuthorized,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.unAuthorized,
-      };
-    }
-
-    const currentAdmin = await Admin.findById(id);
-
-    // check admin role
-    if (currentAdmin.roll === "USER") {
-      return {
-        message: MESSAGES.forbidden,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.forbidden,
-      };
-    }
-
     // delete admin
     await Admin.findByIdAndDelete(id);
-    signOut();
+
+    revalidatePath("/account");
 
     return {
-      message: MESSAGES.delete,
-      status: MESSAGES.success,
-      code: STATUS_CODES.updated,
+      message: "User Deleted!",
+      status: "success",
+      code: 200,
     };
   } catch (error) {
     console.log(error);
     return {
-      message: MESSAGES.server,
-      status: MESSAGES.failed,
-      code: STATUS_CODES.server,
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
     };
   }
 };
@@ -357,55 +334,35 @@ export const changeRole = async (data) => {
   try {
     await connectDB();
 
-    const { role, id } = data;
+    const { role, userId } = data;
 
-    const session = getServerSession();
-
-    // check session
-    if (!session) {
-      return {
-        message: MESSAGES.unAuthorized,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.unAuthorized,
-      };
-    }
-
-    const currentAdmin = await Admin.findById(session.userId);
-
-    // check admin role
-    if (currentAdmin.roll !== "OWNER") {
-      return {
-        message: MESSAGES.forbidden,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.forbidden,
-      };
-    }
-
-    const otherAdmin = await Admin.findById(id);
+    const otherAdmin = await Admin.findById(userId);
 
     // check admin exist
     if (!otherAdmin) {
       return {
-        message: MESSAGES.userNotFound,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.not_found,
+        message: "Not Found!",
+        status: "failed",
+        code: 404,
       };
     }
 
     otherAdmin.roll = role;
     await otherAdmin.save();
 
+    revalidatePath("/account");
+
     return {
-      message: MESSAGES.update,
-      status: MESSAGES.success,
-      code: STATUS_CODES.updated,
+      message: "User Role Updated!",
+      status: "success",
+      code: 200,
     };
   } catch (error) {
     console.log(error);
     return {
-      message: MESSAGES.server,
-      status: MESSAGES.failed,
-      code: STATUS_CODES.server,
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
     };
   }
 };

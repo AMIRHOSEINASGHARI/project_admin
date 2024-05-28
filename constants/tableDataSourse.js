@@ -418,6 +418,6 @@ export const adminsDataSourse = (admins, currentUserID, currentUserRoll) =>
       </div>
     ),
     action: currentUserRoll === "OWNER" && admin.roll !== "OWNER" && (
-      <AdminActions roll={admin.roll} />
+      <AdminActions roll={admin.roll} userId={admin._id} />
     ),
   }));
