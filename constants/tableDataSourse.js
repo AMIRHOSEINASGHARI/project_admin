@@ -60,7 +60,21 @@ export const productsDataSourse = (products) =>
         title={product.published ? "Published" : "Draft"}
       />
     ),
-    // creator:
+    creator: (
+      <div className="flex items-center flex-col xl:flex-row gap-3">
+        <Image
+          src={product.createdBy.avatar || images.admin}
+          width={40}
+          height={40}
+          alt="admin"
+          priority
+          className="rounded-full"
+        />
+        <p className="text-p2 font-medium capitalize">
+          {product.createdBy.name}
+        </p>
+      </div>
+    ),
   }));
 
 export const productOrdersTabDataSourse = (productOrders) =>
