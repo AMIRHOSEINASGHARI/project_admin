@@ -253,3 +253,29 @@ export const getProduct = async (id) => {
     };
   }
 };
+
+export const changeProductStatus = async (data) => {
+  try {
+    await connectDB();
+
+    const { id, published } = data;
+
+    const product = await Product.findById(id);
+
+    product.published = published;
+    await product.save();
+
+    return {
+      message: "'Updated!",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};
