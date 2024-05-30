@@ -80,7 +80,9 @@ export const productsDataSourse = (products) =>
         </p>
       </Link>
     ),
-    actions: <ProductActions productId={product._id} />,
+    actions: (
+      <ProductActions productId={product._id} published={product.published} />
+    ),
   }));
 
 export const productOrdersTabDataSourse = (productOrders) =>
