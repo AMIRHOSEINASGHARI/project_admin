@@ -69,11 +69,6 @@ export const productsColumn = [
     key: "name",
   },
   {
-    title: "ID",
-    dataIndex: "id",
-    key: "id",
-  },
-  {
     title: "Date",
     dataIndex: "date",
     key: "date",

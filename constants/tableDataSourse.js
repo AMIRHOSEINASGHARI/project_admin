@@ -37,7 +37,6 @@ export const productsDataSourse = (products) =>
         </div>
       </Link>
     ),
-    id: <p>#{shorterText(product._id, 6)}</p>,
     stock: (
       <p
         className={`w-fit ${

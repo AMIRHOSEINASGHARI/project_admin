@@ -262,11 +262,13 @@ export const changeProductStatus = async (data) => {
 
     const product = await Product.findById(id);
 
-    product.published = published;
+    product.published = !published;
     await product.save();
 
+    revalidatePath("/products");
+
     return {
-      message: "'Updated!",
+      message: "Updated!",
       status: "success",
       code: 200,
     };
