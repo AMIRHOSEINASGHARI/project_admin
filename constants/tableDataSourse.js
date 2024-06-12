@@ -61,7 +61,7 @@ export const productsDataSourse = (products) =>
     ),
     creator: (
       <Link
-        href={`/account/users/${product.createdBy._id}`}
+        href={`/account/admins/${product.createdBy._id}`}
         className="flex items-center flex-col xl:flex-row gap-3"
       >
         <div className="w-10 h-10">

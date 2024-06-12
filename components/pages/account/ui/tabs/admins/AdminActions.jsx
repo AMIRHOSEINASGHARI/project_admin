@@ -108,7 +108,7 @@ const AdminActions = ({ roll, userId, showMore }) => {
 
   return (
     <div className="flex items-center gap-1">
-      <Link href={`/account/users/${userId}`} className="iconButton">
+      <Link href={`/account/admins/${userId}`} className="iconButton">
         <EyeOpen />
       </Link>
       {showMore && (

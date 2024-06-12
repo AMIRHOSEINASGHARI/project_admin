@@ -11,6 +11,8 @@ import { getServerSession } from "@/utils/session";
 import { SECRET_KEY, SESSION_EXPIRATION } from "@/utils/vars";
 // models
 import Admin from "@/utils/models/admin";
+import { Product } from "@/utils/models/product";
+import { Blog } from "@/utils/models/blog";
 // jwt
 import { sign } from "jsonwebtoken";
 
@@ -242,7 +244,17 @@ export const getAdmin = async (id) => {
       };
     }
 
-    const admin = await Admin.findById(id).select("-password").lean();
+    const admin = await Admin.findById(id)
+      .populate({
+        path: "productsCreated",
+        model: Product,
+      })
+      .populate({
+        path: "blogsCreated",
+        model: Blog,
+      })
+      .select("-password")
+      .lean();
 
     // check admin exist
     if (!admin) {

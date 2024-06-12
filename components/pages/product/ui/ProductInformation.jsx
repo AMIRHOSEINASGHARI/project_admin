@@ -53,7 +53,7 @@ const ProductInformation = ({ info }) => {
         <div className="space-y-2">
           <p className="text-p2">Created By:</p>
           <Link
-            href={`/account/users/${info?.createdBy?._id}`}
+            href={`/account/admins/${info?.createdBy?._id}`}
             className="flex items-center gap-3"
           >
             <Image
