@@ -148,6 +148,11 @@ export const menuLinks = [
     link: "/dashboard",
   },
   {
+    title: "Crypto",
+    image: icons.exchangeCrypto,
+    link: "/crypto",
+  },
+  {
     title: "Orders",
     image: icons.deliveryTruck,
     link: "/orders",
@@ -186,11 +191,6 @@ export const menuLinks = [
     title: "Tasks",
     image: icons.tasks,
     link: "/tasks",
-  },
-  {
-    title: "Crypto",
-    image: icons.exchangeCrypto,
-    link: "/crypto",
   },
   {
     title: "Account",
