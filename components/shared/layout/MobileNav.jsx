@@ -4,17 +4,23 @@
 import { Fragment, useState } from "react";
 // next
 import Link from "next/link";
+import NextImage from "next/image";
 import { usePathname } from "next/navigation";
+// hooks
+import useSession from "@/hooks/session";
 // constants
-import { icons, menuLinks } from "@/constants";
+import { icons, images, menuLinks } from "@/constants";
 // components
+import { Image } from "@nextui-org/react";
 import { Drawer } from "antd";
-import { Close, Logo, MenuBars } from "@/components/icons/Icons";
+import { Close, Logo, MenuBars, MenuDots } from "@/components/icons/Icons";
 import CustomButton from "../CustomButton";
+import Loader from "../Loader";
 
 const MobileNav = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { data, isError, isLoading } = useSession();
 
   const onClose = () => {
     setOpen(false);
@@ -65,30 +71,64 @@ const MobileNav = () => {
         width={250}
       >
         <nav>
+          <Link
+            href="/account"
+            className="border-2 rounded-full p-2 mx-4 flex items-center justify-between gap-2 cursor-pointer hoverable"
+          >
+            {isLoading && (
+              <div className="flex items-center justify-center w-full py-1">
+                <Loader width={20} height={20} />
+              </div>
+            )}
+            {isError && <p>Error!</p>}
+            {data?.success && (
+              <>
+                <div className="flex items-center gap-2">
+                  <Image
+                    as={NextImage}
+                    src={data?.session?.avatar || images.admin}
+                    width={100}
+                    height={100}
+                    alt="user"
+                    radius="full"
+                    className="w-[35px] h-[35px]"
+                  />
+                  <p className="text-p2 capitalize">{data?.session?.name}</p>
+                </div>
+                <MenuDots size={15} wrapperClassName="iconButton" />
+              </>
+            )}
+          </Link>
+          <div className="ml-4 mb-2 mt-5">
+            <h1 className="text-p1 text-gray-400">Overview</h1>
+          </div>
           <ul>
             {menuLinks.map((item) => (
               <Fragment key={item.title}>
                 <li
-                  onClick={() => onClose()}
-                  className={`rounded-btn mx-4 Transition mb-[2px] ${
+                  className={`rounded-l-btn ml-4 Transition mb-[2px] border-r-4 ${
                     pathname === item.link
-                      ? "bg-baseLight text-baseDark"
-                      : "bg-white text-darkGray hover:bg-lightGray"
+                      ? "bg-baseLight text-baseDark border-darkPurple"
+                      : "bg-white text-black hover:bg-lightGray border-transparent"
                   }`}
                 >
                   <Link
                     href={item.link}
-                    className="flex items-center gap-[20px] px-[10px] py-[12px]"
+                    className="flex Transition items-center gap-[20px] py-[12px] px-[10px]"
                   >
                     <div className="icon_size">{item.image}</div>
-                    <span class="text-p2">{item.title}</span>
+                    <span className="text-p1">{item.title}</span>
                   </Link>
                 </li>
-                {item.title === "Customers" && (
-                  <div class="w-full h-[1px] my-[10px] bg-gray-200" />
+                {item.title === "Crypto" && (
+                  <div className="ml-4 mb-2 mt-5">
+                    <h1 className="text-p1 text-gray-400">Management</h1>
+                  </div>
                 )}
                 {item.title === "Add Blog" && (
-                  <div class="w-full h-[1px] my-[10px] bg-gray-200" />
+                  <div className="ml-4 mb-2 mt-5">
+                    <h1 className="text-p1 text-gray-400">Settings</h1>
+                  </div>
                 )}
               </Fragment>
             ))}
@@ -98,7 +138,7 @@ const MobileNav = () => {
                 onClick={() => signOut()}
               >
                 <div className="icon_size">{icons.power}</div>
-                <span className="text-p1">Exit</span>
+                <span className="text-[17px] font-black">Exit</span>
               </button>
             </li>
           </ul>
