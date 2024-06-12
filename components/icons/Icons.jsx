@@ -7,8 +7,8 @@ export const Logo = ({
   return (
     <div className={wrapperClassName || "w-fit"}>
       <svg
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 566.85 503.89"
@@ -39,8 +39,8 @@ export const AddFolder = ({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         data-name="Layer 1"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -67,8 +67,8 @@ export const Home = ({
         x="0px"
         y="0px"
         viewBox="0 0 512.001 512.001"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -95,8 +95,8 @@ export const LayerPlus = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -120,8 +120,8 @@ export const LeftAngle = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -146,8 +146,8 @@ export const Light = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -171,8 +171,8 @@ export const Location = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -203,8 +203,8 @@ export const LockClosed = ({
         x="0px"
         y="0px"
         viewBox="0 0 508.779 508.779"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -235,8 +235,8 @@ export const LockOpen = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -261,8 +261,8 @@ export const MenuBars = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -287,8 +287,8 @@ export const MenuDots = ({
         id="Isolation_Mode"
         data-name="Isolation Mode"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <circle fill={fill} cx="12" cy="2.5" r="2.5" />
@@ -312,8 +312,8 @@ export const Paragraph = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -341,14 +341,14 @@ export const Paypal = ({
         clip-rule="evenodd"
         viewBox="0 0 24 24"
         id="paypal"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g transform="translate(-40 -40)">
           <rect
-            width={size || 20}
-            height={size || 20}
+            width={size || 18}
+            height={size || 18}
             x="40"
             y="40"
             fill="none"
@@ -379,8 +379,8 @@ export const Power = ({
         x="0px"
         y="0px"
         viewBox="0 0 512.292 512.292"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -411,8 +411,8 @@ export const Radar = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -436,8 +436,8 @@ export const RightAngle = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -464,8 +464,8 @@ export const Search = ({
         x="0px"
         y="0px"
         viewBox="0 0 513.749 513.749"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -494,8 +494,8 @@ export const Settings = ({
         x="0px"
         y="0px"
         viewBox="0 0 512 512"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -529,8 +529,8 @@ export const ShoppingBag = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -555,8 +555,8 @@ export const ShoppingBasket = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -580,8 +580,8 @@ export const ShoppingCart = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <circle fill={fill} cx="7" cy="22" r="2" />
@@ -608,8 +608,8 @@ export const Task = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -636,8 +636,8 @@ export const Trash = ({
         x="0px"
         y="0px"
         viewBox="0 0 512 512"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -672,8 +672,8 @@ export const TrendDown = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -698,8 +698,8 @@ export const TrendUp = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -724,8 +724,8 @@ export const Truck = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -749,8 +749,8 @@ export const UpAngle = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -775,8 +775,8 @@ export const UploadIcon = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -801,8 +801,8 @@ export const User = ({
         aria-hidden="true"
         role="img"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <circle fill={fill} cx="15" cy="6" r="3" opacity=".4"></circle>
@@ -827,8 +827,8 @@ export const Users = ({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         data-name="Layer 1"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -852,8 +852,8 @@ export const Headphone = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -878,8 +878,8 @@ export const Gallery = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -904,8 +904,8 @@ export const Filter = ({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         data-name="Layer 1"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -932,8 +932,8 @@ export const EyeOpen = ({
         x="0px"
         y="0px"
         viewBox="0 0 509.348 509.348"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -963,8 +963,8 @@ export const EyeClosed = ({
         x="0px"
         y="0px"
         viewBox="0 0 509.319 509.319"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -991,8 +991,8 @@ export const ExchangeCrypto = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1033,8 +1033,8 @@ export const Edit = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1058,8 +1058,8 @@ export const DownAngle = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1084,8 +1084,8 @@ export const DollarBag = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1109,8 +1109,8 @@ export const Dollar = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1135,8 +1135,8 @@ export const Document = ({
         xmlns="http://www.w3.org/2000/svg"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1161,8 +1161,8 @@ export const Date = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1187,8 +1187,8 @@ export const Dark = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1212,8 +1212,8 @@ export const CreditCard = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <circle fill={fill} cx="6.5" cy="14.5" r="1.5" />
@@ -1238,8 +1238,8 @@ export const Comment = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1271,8 +1271,8 @@ export const Close = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1297,8 +1297,8 @@ export const Clock = ({
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         data-name="Layer 1"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1335,8 +1335,8 @@ export const CircleClose = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1361,8 +1361,8 @@ export const CircleCheck = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1387,8 +1387,8 @@ export const Category = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1412,8 +1412,8 @@ export const BorderHeart = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1438,8 +1438,8 @@ export const BlogText = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1463,8 +1463,8 @@ export const Bell = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1492,8 +1492,8 @@ export const Apps = ({
         y="0px"
         viewBox="0 0 512 512"
         data-name="Layer 1"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -1534,8 +1534,8 @@ export const AddUser = ({
         x="0px"
         y="0px"
         viewBox="0 0 512.016 512.016"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -1570,8 +1570,8 @@ export const Watch = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1595,8 +1595,8 @@ export const Television = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1620,8 +1620,8 @@ export const Tablet = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1645,8 +1645,8 @@ export const Printer = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1671,8 +1671,8 @@ export const Mobile = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1696,8 +1696,8 @@ export const Speaker = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1726,8 +1726,8 @@ export const Laptop = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1752,8 +1752,8 @@ export const Gaming = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1777,8 +1777,8 @@ export const Camera = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1807,8 +1807,8 @@ export const Discount = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1833,8 +1833,8 @@ export const Stock = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1859,8 +1859,8 @@ export const Brand = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1884,8 +1884,8 @@ export const Publish = ({
         xmlns="http://www.w3.org/2000/svg"
         id="Bold"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1914,8 +1914,8 @@ export const Draft = ({
         id="Layer_1"
         data-name="Layer 1"
         viewBox="0 0 24 24"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <path
@@ -1942,8 +1942,8 @@ export const Exclamation = ({
         x="0px"
         y="0px"
         viewBox="0 0 512 512"
-        width={size || 20}
-        height={size || 20}
+        width={size || 18}
+        height={size || 18}
         {...props}
       >
         <g>
@@ -1957,6 +1957,84 @@ export const Exclamation = ({
           />
           <circle fill={fill} cx="256.107" cy="373.333" r="32" />
         </g>
+      </svg>
+    </div>
+  );
+};
+
+export const Mail = ({
+  wrapperClassName,
+  size,
+  fill = "currentColor",
+  ...props
+}) => {
+  return (
+    <div className={wrapperClassName || "w-fit"}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Layer_1"
+        data-name="Layer 1"
+        viewBox="0 0 24 24"
+        width={size || 18}
+        height={size || 18}
+        {...props}
+      >
+        <path
+          fill={fill}
+          d="M19.5,2H7.5c-2.49,0-4.5,2.01-4.5,4.5V15.5c0,2.49,2.01,4.5,4.5,4.5h12c2.49,0,4.5-2.01,4.5-4.5V6.5c0-2.49-2.01-4.5-4.5-4.5Zm0,1c.95,0,1.82,.38,2.45,1l-5.97,5.97c-1.37,1.37-3.58,1.37-4.95,0L5.05,4c.63-.62,1.5-1,2.45-1h12Zm3.5,12.5c0,1.93-1.57,3.5-3.5,3.5H7.5c-1.93,0-3.5-1.57-3.5-3.5V6.5c0-.62,.16-1.19,.44-1.7l5.88,5.88c.88,.88,2.03,1.32,3.18,1.32s2.3-.44,3.18-1.32l5.88-5.88c.28,.5,.44,1.08,.44,1.7V15.5Zm-5,7c0,.28-.22,.5-.5,.5H4.5c-2.48,0-4.5-2.02-4.5-4.5V7.5c0-.28,.22-.5,.5-.5s.5,.22,.5,.5v11c0,1.93,1.57,3.5,3.5,3.5h13c.28,0,.5,.22,.5,.5Z"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const Phone = ({
+  wrapperClassName,
+  size,
+  fill = "currentColor",
+  ...props
+}) => {
+  return (
+    <div className={wrapperClassName || "w-fit"}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Layer_1"
+        data-name="Layer 1"
+        viewBox="0 0 24 24"
+        width={size || 18}
+        height={size || 18}
+        {...props}
+      >
+        <path
+          fill={fill}
+          d="M22.27,1.77l-1.12-.98c-1.02-1.02-2.75-1.07-3.85,.05l-1.87,2.45c-1.05,1.05-1.05,2.76,0,3.8l1.49,1.53c-1.62,3.8-4.61,6.8-8.29,8.3l-1.53-1.49c-.51-.51-1.18-.79-1.9-.79s-1.39,.28-1.85,.75l-2.54,1.96c-1.05,1.05-1.05,2.76-.02,3.78l1.02,1.17c1.1,1.1,2.58,1.71,4.19,1.71,7.75,0,18.02-10.28,18.02-18.02,0-1.6-.61-3.09-1.73-4.21ZM5.98,23c-1.34,0-2.57-.5-3.46-1.39l-1.02-1.18c-.66-.66-.66-1.73-.05-2.35l2.54-1.96c.32-.32,.74-.5,1.2-.5s.88,.18,1.2,.5c0,0,1.77,1.73,1.77,1.73,.14,.14,.34,.18,.53,.11,4.17-1.59,7.56-4.98,9.29-9.28,.07-.18,.03-.39-.11-.54l-1.73-1.77c-.66-.66-.66-1.73,.04-2.44l1.87-2.45c.66-.66,1.73-.66,2.42,.02l1.12,.98c.91,.91,1.41,2.14,1.41,3.48,0,7.16-9.86,17.02-17.02,17.02Z"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const Flag = ({
+  wrapperClassName,
+  size,
+  fill = "currentColor",
+  ...props
+}) => {
+  return (
+    <div className={wrapperClassName || "w-fit"}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Layer_1"
+        data-name="Layer 1"
+        viewBox="0 0 24 24"
+        width={size || 18}
+        height={size || 18}
+        {...props}
+      >
+        <path
+          fill={fill}
+          d="m20.5,4h-5.5v-.5c0-1.93-1.57-3.5-3.5-3.5H3.5C1.439,0,0,1.698,0,4.128v19.372c0,.276.224.5.5.5s.5-.224.5-.5v-10.5h10v.5c0,1.93,1.57,3.5,3.5,3.5h6c1.93,0,3.5-1.57,3.5-3.5v-6c0-1.93-1.57-3.5-3.5-3.5Zm-19.5.128c0-1.871,1.005-3.128,2.5-3.128h8c1.378,0,2.5,1.122,2.5,2.5v6c0,1.378-1.122,2.5-2.5,2.5H1v-7.872Zm22,9.372c0,1.378-1.122,2.5-2.5,2.5h-6c-1.378,0-2.5-1.122-2.5-2.5v-.536c1.694-.243,3-1.704,3-3.464v-4.5h5.5c1.378,0,2.5,1.122,2.5,2.5v6Z"
+        />
       </svg>
     </div>
   );

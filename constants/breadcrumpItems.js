@@ -139,3 +139,16 @@ export const tasksPageBread = [
     inActive: true,
   },
 ];
+
+export const adminPageBread = [
+  {
+    title: <Link href="/dashboard">Dashboard</Link>,
+  },
+  {
+    title: "Admins",
+  },
+  {
+    title: "Details",
+    inActive: true,
+  },
+];
