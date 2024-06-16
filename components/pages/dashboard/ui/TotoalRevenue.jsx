@@ -71,8 +71,8 @@ const valueFormatter = function (number) {
 
 export default function TotoalRevenue() {
   return (
-    <div className="box">
-      <h1 className="h1">Total Revenue</h1>
+    <div className="box w-full">
+      <h1 className="h2">Total Revenue</h1>
       <AreaChart
         className="mt-4 h-72"
         data={chartdata}

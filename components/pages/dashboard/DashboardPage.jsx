@@ -1,5 +1,6 @@
 // cmp
 import DashboardBanner from "./ui/DashboardBanner";
+import RevenueCompare from "./ui/RevenueCompare";
 import Reviews from "./ui/Reviews";
 import TotoalRevenue from "./ui/TotoalRevenue";
 
@@ -8,7 +9,10 @@ const DashboardPage = () => {
     <div className="space-y-8">
       {/* <DashboardBanner /> */}
       <Reviews />
-      <TotoalRevenue />
+      <div className="xl:flex xl:gap-5">
+        <RevenueCompare />
+        <TotoalRevenue />
+      </div>
     </div>
   );
 };
