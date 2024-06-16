@@ -1,10 +1,12 @@
-const CustomBadge = ({ condition, title }) => {
+const CustomBadge = ({ condition, title, colors }) => {
   return (
     <p
       className={`py-1 px-2 text-p2 rounded-btn w-fit h-fit ${
-        condition
-          ? "text-darkGreen bg-lightGreen"
-          : "text-darkOrange bg-lightOrange"
+        colors
+          ? colors
+          : condition === false
+          ? "text-darkOrange bg-lightOrange"
+          : "text-darkGreen bg-lightGreen"
       }`}
     >
       {title}

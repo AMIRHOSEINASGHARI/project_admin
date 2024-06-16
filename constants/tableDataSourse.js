@@ -449,3 +449,22 @@ export const adminsDataSourse = (admins, currentUserID, currentUserRoll) =>
       />
     ),
   }));
+
+export const upcommingEventsDataSourse = (events) =>
+  events.map((event) => ({
+    key: event._id,
+    date: moment(event.createdAt).format("MMM Do"),
+    title: event.title,
+    status: (
+      <CustomBadge
+        title={event.status}
+        colors={
+          event.status === "Done"
+            ? "text-darkGreen bg-lightGreen"
+            : event.status === "Todo"
+            ? "text-darkBlue bg-lightBlue"
+            : "text-darkOrange bg-lightOrange"
+        }
+      />
+    ),
+  }));

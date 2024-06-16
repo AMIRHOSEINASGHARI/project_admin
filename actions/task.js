@@ -170,7 +170,7 @@ export const upcommingEvents = async () => {
       .lean();
 
     return {
-      tasks,
+      tasks: tasks.splice(0, 4),
       message: "success",
       status: "success",
       code: 200,
