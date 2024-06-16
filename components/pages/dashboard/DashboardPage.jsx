@@ -1,5 +1,6 @@
 // cmp
 import DashboardBanner from "./ui/DashboardBanner";
+import NewInvoices from "./ui/NewInvoices";
 import RevenueCompare from "./ui/RevenueCompare";
 import Reviews from "./ui/Reviews";
 import TotoalRevenue from "./ui/TotoalRevenue";
@@ -13,6 +14,7 @@ const DashboardPage = () => {
         <RevenueCompare />
         <TotoalRevenue />
       </div>
+      <NewInvoices />
     </div>
   );
 };
