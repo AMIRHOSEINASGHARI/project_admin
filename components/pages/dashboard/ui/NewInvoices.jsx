@@ -67,7 +67,7 @@ const dataSourse = [
 
 const NewInvoices = () => {
   return (
-    <div className="tableContainer border-none">
+    <div className="tableContainer border-none w-full">
       <div className="p-6">
         <h1 className="h2">New Invoices</h1>
       </div>

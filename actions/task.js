@@ -155,3 +155,32 @@ export const editTask = async (data) => {
     };
   }
 };
+
+export const upcommingEvents = async () => {
+  try {
+    await connectDB();
+
+    const tasks = await Task.find()
+      .populate({
+        path: "createdBy",
+        model: Admin,
+        select: "username name avatar roll",
+      })
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return {
+      tasks,
+      message: "success",
+      status: "success",
+      code: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Server Error!",
+      status: "failed",
+      code: 500,
+    };
+  }
+};
