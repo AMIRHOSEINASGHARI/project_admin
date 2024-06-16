@@ -81,7 +81,6 @@ export default function TotoalRevenue() {
         categories={["Phone", "Laptop"]}
         colors={["indigo", "cyan"]}
         valueFormatter={valueFormatter}
-        yAxisLabel="Revenue (USD)"
       />
     </div>
   );
