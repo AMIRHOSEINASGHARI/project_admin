@@ -40,7 +40,9 @@ const dataSourse = [
     invoiceID: "INV-1991",
     category: "Mac",
     price: "$97.14",
-    status: <CustomBadge title="Out of date" condition={false} />,
+    status: (
+      <CustomBadge title="Out of date" colors="text-darkRose bg-lightRose" />
+    ),
   },
   {
     key: 3,

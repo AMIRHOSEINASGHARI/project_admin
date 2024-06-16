@@ -24,7 +24,9 @@ const UpcommingEvents = async () => {
         </div>
         <Table
           columns={upcommingEventsCollumns}
-          dataSource={upcommingEventsDataSourse(data.tasks)}
+          dataSource={JSON.parse(
+            JSON.stringify(upcommingEventsDataSourse(data.tasks))
+          )}
           pagination={false}
           scroll={{ x: true }}
           showHeader={false}
