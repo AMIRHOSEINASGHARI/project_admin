@@ -5,7 +5,7 @@ import NextImage from "next/image";
 import { images } from "@/constants";
 // cmp
 import { Image } from "@nextui-org/react";
-import { Date, Flag, Location, Mail, Phone } from "@/components/icons/Icons";
+import { Date, Flag, Location, Mail, Mobile } from "@/components/icons/Icons";
 import CustomBadge from "@/components/shared/CustomBadge";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
 import moment from "moment";
@@ -55,7 +55,7 @@ const AdminProfile = ({
         <p className="text-p1 font-medium line-clamp-2">{email || "_"}</p>
       </div>
       <div className="flex items-center gap-5">
-        <Phone />
+        <Mobile />
         <p className="text-p1 font-medium line-clamp-2">{phoneNumber || "_"}</p>
       </div>
       <div className="flex items-center gap-5">
