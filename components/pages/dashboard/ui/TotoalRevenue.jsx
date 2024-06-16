@@ -1,6 +1,6 @@
 "use client";
 
-import { AreaChart, Card, Title } from "@tremor/react";
+import { AreaChart } from "@tremor/react";
 
 const chartdata = [
   {
@@ -71,7 +71,7 @@ const valueFormatter = function (number) {
 
 export default function TotoalRevenue() {
   return (
-    <div className="box border">
+    <div className="box">
       <h1 className="h1">Total Revenue</h1>
       <AreaChart
         className="mt-4 h-72"
@@ -81,6 +81,8 @@ export default function TotoalRevenue() {
         categories={["Phone", "Laptop"]}
         colors={["indigo", "cyan"]}
         valueFormatter={valueFormatter}
+        showAnimation={true}
+        animationDuration={1300}
       />
     </div>
   );

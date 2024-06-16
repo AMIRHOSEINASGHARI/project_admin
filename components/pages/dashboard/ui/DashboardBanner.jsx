@@ -9,7 +9,7 @@ const DashboardBanner = () => {
   const session = getServerSession();
 
   return (
-    <div className="py-[50px] px-[30px] rounded-btn bg-gradient-to-tr from-green-100 to-green-50 flex max-xl:flex-col gap-5 justify-between items-center">
+    <div className="py-[50px] px-[30px] xl:py-[60px] xl:px-[50px] rounded-btn bg-gradient-to-tr from-green-100 to-green-50 flex max-xl:flex-col gap-5 justify-between items-center">
       <div className="flex flex-col gap-5 max-xl:items-center w-full">
         <h1 className="text-h2 font-bold max-xl:text-center">
           Welcome back 👋 <span className="capitalize">{session.name}</span>

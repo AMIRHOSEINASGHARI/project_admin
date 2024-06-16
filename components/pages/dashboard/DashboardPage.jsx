@@ -6,7 +6,7 @@ import TotoalRevenue from "./ui/TotoalRevenue";
 const DashboardPage = () => {
   return (
     <div className="space-y-8">
-      <DashboardBanner />
+      {/* <DashboardBanner /> */}
       <Reviews />
       <TotoalRevenue />
     </div>

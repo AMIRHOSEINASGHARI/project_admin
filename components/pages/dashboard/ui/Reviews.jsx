@@ -1,62 +1,49 @@
-// next
-import Link from "next/link";
+"use client";
+
 // constants
 import { dashboardReviews } from "@/constants";
 // cmp
 import { TrendDown, TrendUp } from "@/components/icons/Icons";
+import { SparkAreaChart } from "@tremor/react";
 
 const Reviews = () => {
   return (
     <div className="flex flex-wrap gap-5">
       {dashboardReviews.map((el, i) => {
-        const { title, icon, count, link, profit } = el;
+        const { title, count, profit, chartData } = el;
 
         return (
-          <div
-            key={i}
-            className="flex flex-1 min-w-[280px] border hover:shadow-inner bg-white rounded-3xl group transition-all duration-150"
-          >
-            <Link
-              href={link}
-              className="flex flex-col flex-1 w-full justify-between"
-            >
-              <div className="flex justify-between p-5 pb-8">
+          <div key={i} className="box flex flex-1 min-w-[280px]">
+            <div className="w-full">
+              <p className="text-p1 mb-7">{title}</p>
+              <div className="flex justify-between w-full">
                 <div>
-                  <h1 className="font-light text-[14px]">{title}</h1>
-                  <span className="font-bold text-[30px] text-gray-500">
-                    {count.toLocaleString()}
-                  </span>
-                </div>
-                <div className="w-[50px] h-[50px] rounded-full flex items-center justify-center cardShadow transform group-hover:-rotate-45 Transition">
-                  {icon}
-                </div>
-              </div>
-              <div className="w-full h-[1px] bg-gray-200" />
-              <div className="px-5 py-3">
-                {profit > 0 && (
-                  <div className="flex items-center gap-1">
-                    <div className="text-green-500">
-                      <TrendUp />
+                  <p className="h2">{count.toLocaleString()}</p>
+                  <div className="flex items-center gap-1 mt-2">
+                    <div
+                      className={profit > 0 ? "text-green-500" : "text-red-500"}
+                    >
+                      {profit > 0 ? <TrendUp /> : <TrendDown />}
                     </div>
-                    <span className="text-green-500">{profit}%</span>
-                    <p className="text-[14px] font-light">
-                      increase vs last month
-                    </p>
+                    <span
+                      className={profit > 0 ? "text-green-500" : "text-red-500"}
+                    >
+                      {profit}%
+                    </span>
+                    <p className="text-[14px] font-light">last month</p>
                   </div>
-                )}
-                {profit < 0 && (
-                  <div className="flex items-center gap-1">
-                    <div className="text-red-500">
-                      <TrendDown />
-                    </div>
-                    <span className="text-red-500">{profit}%</span>
-                    <p className="text-[14px] font-light">
-                      decrease vs last month
-                    </p>
-                  </div>
-                )}
+                </div>
+                <SparkAreaChart
+                  data={chartData}
+                  categories={["Performance"]}
+                  index={"month"}
+                  colors={profit > 0 ? ["#22c55e"] : ["#e11d48"]}
+                  className="h-10 w-[70px]"
+                  showAnimation={true}
+                  animationDuration={1300}
+                />
               </div>
-            </Link>
+            </div>
           </div>
         );
       })}
