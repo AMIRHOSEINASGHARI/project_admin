@@ -12,7 +12,6 @@ for (let s in salesValues) {
     name: categories[s].title,
   });
 }
-console.log(sales);
 
 const RevenueCompare = () => {
   const dataFormatter = (number) =>

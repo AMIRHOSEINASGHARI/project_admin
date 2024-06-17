@@ -74,6 +74,7 @@ const MobileNav = () => {
           <Link
             href="/account"
             className="border-2 rounded-full p-2 mx-4 flex items-center justify-between gap-2 cursor-pointer hoverable"
+            onClick={() => onClose()}
           >
             {isLoading && (
               <div className="flex items-center justify-center w-full py-1">
@@ -115,6 +116,7 @@ const MobileNav = () => {
                   <Link
                     href={item.link}
                     className="flex Transition items-center gap-[20px] py-[12px] px-[10px]"
+                    onClick={() => onClose()}
                   >
                     <div className="icon_size">{item.image}</div>
                     <span className="text-p1">{item.title}</span>

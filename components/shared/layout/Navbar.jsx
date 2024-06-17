@@ -1,8 +1,10 @@
 // components
+import { Bell } from "@/components/icons/Icons";
 import SignoutButton from "../SignoutButton";
 import MobileNav from "./MobileNav";
 import ShowProfile from "./ShowProfile";
 import NavbarSearchBox from "../search/NavbarSearchBox";
+import CustomButton from "../CustomButton";
 
 const Navbar = () => {
   return (
@@ -13,9 +15,10 @@ const Navbar = () => {
             <MobileNav />
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
           <SignoutButton style="p-2 hover:bg-gray-100 rounded-full Transition text-darkGray text-[22px] flex items-center gap-btn" />
           <NavbarSearchBox />
+          <CustomButton icon={<Bell />} classNames="iconButton" />
           <ShowProfile />
         </div>
       </div>

@@ -17,7 +17,6 @@ const UploadImage = ({ form, setForm }) => {
 
   const onChange = (e) => {
     const files = e.fileList.map((item) => item.originFileObj);
-    console.log(e);
 
     setForm({
       ...form,

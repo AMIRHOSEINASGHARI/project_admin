@@ -28,8 +28,8 @@ const DashboardBanner = () => {
       <div>
         <Image
           src={images.authLogin}
-          width={300}
-          height={300}
+          width={150}
+          height={150}
           alt="user"
           priority
         />

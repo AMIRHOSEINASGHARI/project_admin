@@ -80,7 +80,6 @@ const ProfileForm = (props) => {
 
     if (form.image.length !== 0) {
       const uploadResult = await uploadImage(form.image[0]);
-      console.log(uploadResult);
       newForm = {
         ...form,
         image: uploadResult.imageUrl,

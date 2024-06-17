@@ -106,7 +106,7 @@ const ShowProfile = () => {
       <Avatar
         src={data?.session?.avatar || images.admin}
         isBordered
-        className="cursor-pointer"
+        className="cursor-pointer ml-2"
       />
     </Popover>
   );
