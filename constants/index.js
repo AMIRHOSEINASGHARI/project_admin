@@ -448,7 +448,7 @@ export const dashboardReviews = [
   },
   {
     title: "Total Orders",
-    count: 3650,
+    count: 4500,
     profit: -8,
     chartData: [
       {
@@ -483,7 +483,7 @@ export const dashboardReviews = [
   },
   {
     title: "Blogs",
-    count: 3650,
+    count: 2000,
     profit: 10,
     chartData: [
       {
@@ -518,7 +518,7 @@ export const dashboardReviews = [
   },
   {
     title: "Exchanges",
-    count: 3650,
+    count: 3760,
     profit: -19,
     chartData: [
       {
@@ -553,7 +553,7 @@ export const dashboardReviews = [
   },
   {
     title: "Tickets",
-    count: 3650,
+    count: 6805,
     profit: 50,
     chartData: [
       {

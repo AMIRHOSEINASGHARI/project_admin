@@ -9,7 +9,7 @@ import UpcommingEvents from "./ui/UpcommingEvents";
 const DashboardPage = () => {
   return (
     <div className="space-y-8">
-      <DashboardBanner />
+      {/* <DashboardBanner /> */}
       <Reviews />
       <div className="xl:flex xl:gap-5">
         <RevenueCompare />
