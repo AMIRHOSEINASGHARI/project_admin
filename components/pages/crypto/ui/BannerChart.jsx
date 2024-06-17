@@ -14,8 +14,8 @@ const BannerChart = ({ coinId }) => {
     queryFn: fetchCoin,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
-    cacheTime: 7 * 24 * 60 * 60,
-    staleTime: 7 * 24 * 60 * 60,
+    cacheTime: 365 * 24 * 60 * 60,
+    staleTime: 365 * 24 * 60 * 60,
   });
 
   if (isLoading) {

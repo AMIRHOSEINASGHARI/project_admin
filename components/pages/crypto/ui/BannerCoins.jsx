@@ -1,7 +1,5 @@
 // next
 import NextImage from "next/image";
-// axios
-import axios from "axios";
 // cmp
 import BannerChart from "./BannerChart";
 import { Image } from "@nextui-org/image";
@@ -11,11 +9,15 @@ const getCoins = async () => {
   const URL = process.env.NEXT_PUBLIC_COIN_API_URL;
   const KEY = process.env.NEXT_PUBLIC_COIN_API_KEY;
 
-  const data = await axios.get(
-    `${URL}/coins/markets?vs_currency=usd&x_cg_demo_api_key=${KEY}`
+  const res = await fetch(
+    `${URL}/coins/markets?vs_currency=usd&x_cg_demo_api_key=${KEY}`,
+    {
+      cache: "force-cache",
+    }
   );
+  const data = await res.json();
 
-  return data?.data.splice(0, 4);
+  return data?.splice(0, 4);
 };
 
 const BannerCoins = async () => {
