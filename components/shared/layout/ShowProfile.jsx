@@ -4,6 +4,7 @@
 import { useState } from "react";
 // next
 import Link from "next/link";
+import NextImage from "next/image";
 // hooks
 import useSession from "@/hooks/session";
 // constants
@@ -12,73 +13,28 @@ import { images } from "@/constants";
 import SignoutButton from "../SignoutButton";
 import CustomBadge from "../CustomBadge";
 import Loader from "../Loader";
-import { Exclamation, Home, Settings, Task } from "@/components/icons/Icons";
-import { Popover, Tooltip } from "antd";
+import {
+  Close,
+  Exclamation,
+  Home,
+  LayerPlus,
+  Settings,
+  ShoppingBasket,
+  Task,
+  User,
+} from "@/components/icons/Icons";
+import { Drawer, Popover, Tooltip } from "antd";
 import { Avatar } from "@nextui-org/avatar";
+import CustomButton from "../CustomButton";
+import { Image } from "@nextui-org/react";
 
 const ShowProfile = () => {
   const [open, setOpen] = useState(false);
   const { data, isError, isLoading } = useSession();
 
-  const onOpenChange = (newOpen) => {
-    setOpen(newOpen);
-  };
   const onClose = () => {
     setOpen(false);
   };
-  const content = (
-    <div className="min-w-[250px]">
-      <div className="p-5">
-        <p className="text-h4 font-bold">{data?.session?.username}</p>
-        <p className="capitalize text-p2 text-darkGray">
-          {data?.session?.name}
-        </p>
-        <div className="flex justify-end">
-          <CustomBadge
-            condition={
-              data?.session?.roll === "OWNER" || data?.session?.roll === "ADMIN"
-            }
-            title={data?.session?.roll}
-          />
-        </div>
-      </div>
-      <hr />
-      <div className="p-3 space-y-1">
-        <Link
-          onClick={onClose}
-          href="/dashboard"
-          className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
-        >
-          <Home className="text-darkGray" size={17} />
-          <p>Dashboard</p>
-        </Link>
-        <Link
-          onClick={onClose}
-          href="/tasks"
-          className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
-        >
-          <Task className="text-darkGray" size={17} />
-          <p>Tasks</p>
-        </Link>
-        <Link
-          onClick={onClose}
-          href="/account"
-          className="flex items-center gap-btn rounded-btn hover:bg-lightGray Transition px-2 py-1.5"
-        >
-          <Settings className="text-darkGray" size={17} />
-          <p>Account</p>
-        </Link>
-      </div>
-      <hr />
-      <div className="p-3">
-        <SignoutButton
-          onClick={onClose}
-          title="Logout"
-          style="flex items-center gap-btn text-darkRose w-full rounded-btn hover:bg-lightRose Transition px-2 py-1.5"
-        />
-      </div>
-    </div>
-  );
 
   if (isLoading) {
     return <Loader height={20} width={20} />;
@@ -92,23 +48,134 @@ const ShowProfile = () => {
     );
   }
 
-  return (
-    <Popover
-      overlayInnerStyle={{
-        padding: "0",
-      }}
-      content={content}
-      trigger="click"
-      placement="bottomLeft"
-      open={open}
-      onOpenChange={onOpenChange}
-    >
-      <Avatar
-        src={data?.session?.avatar || images.admin}
-        isBordered
-        className="cursor-pointer ml-2"
+  const _drawer = {
+    styles: {
+      body: { padding: "0px", margin: "10px 0px" },
+      header: { padding: "10px" },
+    },
+    title: (
+      <CustomButton
+        onClick={() => onClose()}
+        icon={<Close />}
+        classNames="p-3 rounded-full hoverable"
       />
-    </Popover>
+    ),
+  };
+
+  const links = [
+    {
+      icon: <Home />,
+      name: "Home",
+      href: "/dashboard",
+    },
+    {
+      icon: <User />,
+      name: "Profile",
+      href: "/account",
+    },
+    {
+      icon: <Task />,
+      name: "Tasks",
+      href: "/tasks",
+    },
+    {
+      icon: <ShoppingBasket />,
+      name: "Products",
+      href: "/products",
+    },
+    {
+      icon: <LayerPlus />,
+      name: "New Product",
+      href: "/add-product",
+    },
+  ];
+
+  return (
+    <>
+      <CustomButton
+        onClick={() => setOpen(true)}
+        classNames="flex"
+        title={
+          <Avatar
+            src={data?.session?.avatar || images.admin}
+            isBordered
+            className="cursor-pointer ml-2"
+          />
+        }
+      />
+      <Drawer
+        placement="right"
+        onClose={onClose}
+        open={open}
+        closeIcon={false}
+        styles={{
+          body: {
+            padding: "0px",
+            margin: "10px 0px",
+          },
+          wrapper: {
+            boxShadow: "-15px 0px 15px rgba(0,0,0,0.05)",
+          },
+          content: {
+            backgroundColor: "white",
+            backdropFilter: "blur(10px)",
+          },
+          header: { padding: "10px", border: "none" },
+          mask: {
+            background: "none",
+          },
+        }}
+        title={_drawer.title}
+        width={320}
+      >
+        <div className="pb-[80px]">
+          <div className="flex flex-col items-center justify-center">
+            <Image
+              src={data?.session?.avatar || images.admin}
+              width={200}
+              height={200}
+              alt="user"
+              radius="full"
+              className="w-[100px] h-[100px] mb-2"
+            />
+            <p className="font-medium">{data?.session?.username}</p>
+            <p className="text-darkGray mb-2">{data?.session?.name}</p>
+            <CustomBadge
+              title={data?.session?.roll}
+              colors={
+                data?.session?.roll === "OWNER"
+                  ? "bg-lightGreen text-darkGreen"
+                  : data?.session?.roll === "ADMIN"
+                  ? "bg-lightBlue text-darkBlue"
+                  : "bg-lightRose text-darkRose"
+              }
+            />
+          </div>
+          <div className="w-full h-[1px] bg-gray-300 my-5" />
+          <ul className="px-[20px] space-y-2">
+            {links.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-5 px-2 py-3 rounded-btn hoverable"
+                  onClick={() => onClose()}
+                >
+                  <div>{link.icon}</div>
+                  <p>{link.name}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="bg-white absolute bottom-0 right-0 left-0 p-3">
+          <SignoutButton
+            title="Logout"
+            btnClassName="w-full bg-rose-100 hover:bg-rose-200 Transition font-bold text-darkRose p-3 rounded-btn"
+            onClick={() => onClose()}
+          />
+        </div>
+      </Drawer>
+    </>
   );
 };
 
