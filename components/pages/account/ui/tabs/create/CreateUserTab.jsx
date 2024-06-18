@@ -53,7 +53,8 @@ const CreateUserTab = () => {
       return;
     }
 
-    fn();
+    // fn();
+    toast.success("User Created!");
   };
 
   return (

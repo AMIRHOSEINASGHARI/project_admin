@@ -71,7 +71,7 @@ const AdminActions = ({ roll, userId, showMore }) => {
               makeUserLoading ||
               deleteAdminLoading
             }
-            onClick={() => makeAdminFN()}
+            // onClick={() => makeAdminFN()}
           />
           <CustomButton
             title={
@@ -91,7 +91,7 @@ const AdminActions = ({ roll, userId, showMore }) => {
               makeUserLoading ||
               deleteAdminLoading
             }
-            onClick={() => makeUserFN()}
+            // onClick={() => makeUserFN()}
           />
           <div className="bg-gray-200 w-full h-[1px]" />
           <CustomButton
@@ -99,7 +99,7 @@ const AdminActions = ({ roll, userId, showMore }) => {
             icon={<Trash />}
             classNames="popButton text-darkRose hover:bg-lightRose Transition"
             disabled={makeAdminLoading || makeUserLoading || deleteAdminLoading}
-            onClick={() => deleteAdminFN()}
+            // onClick={() => deleteAdminFN()}
           />
         </>
       )}
