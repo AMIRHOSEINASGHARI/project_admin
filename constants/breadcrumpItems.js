@@ -152,3 +152,16 @@ export const adminPageBread = [
     inActive: true,
   },
 ];
+
+export const coinPageBread = [
+  {
+    title: <Link href="/dashboard">Dashboard</Link>,
+  },
+  {
+    title: <Link href="/crypto">Coins</Link>,
+  },
+  {
+    title: "Details",
+    inActive: true,
+  },
+];
