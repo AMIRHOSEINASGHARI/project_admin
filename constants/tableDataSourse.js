@@ -4,7 +4,7 @@ import Link from "next/link";
 // utils
 import { shorterText } from "@/utils/functions";
 // constants
-import { images } from ".";
+import { images, last7DaysDownChartSeries, last7DaysGrowChartSeries } from ".";
 // cmp
 import { Image } from "@nextui-org/image";
 import moment from "moment";
@@ -13,6 +13,8 @@ import CommentAction from "@/components/pages/shared/CommentAction";
 import CustomBadge from "@/components/shared/CustomBadge";
 import AdminActions from "@/components/pages/account/ui/tabs/admins/AdminActions";
 import ProductActions from "@/components/pages/products/ui/ProductActions";
+import { TrendDown, TrendUp } from "@/components/icons/Icons";
+import { SparkAreaChart } from "@tremor/react";
 
 export const productsDataSourse = (products) =>
   products.map((product) => ({
@@ -475,3 +477,93 @@ export const upcommingEventsDataSourse = (events) =>
       />
     ),
   }));
+
+export const coinsListDataSourse = (coins) =>
+  coins.map((coin) => {
+    const {
+      id,
+      name,
+      image,
+      symbol,
+      total_volume,
+      market_cap,
+      market_cap_rank,
+      current_price,
+      circulating_supply,
+      price_change_percentage_24h: priceChange,
+      market_cap_change_percentage_24h: marketChange,
+    } = coin;
+    return {
+      key: id,
+      index: market_cap_rank,
+      name: (
+        <Link
+          href={`/crypto/${id}`}
+          className="flex items-center gap-2 mn-w-fit"
+        >
+          <div className="w-[50px] h-[50px] flex items-center justify-center">
+            <Image
+              as={NextImage}
+              src={image}
+              width={30}
+              height={30}
+              alt="coin"
+              radius="full"
+            />
+          </div>
+          <p className="text-p2 font-medium line-clamp-none">
+            {name} <span className="uppercase text-gray-400">{symbol}</span>
+          </p>
+        </Link>
+      ),
+      price: <p>${current_price.toLocaleString()}</p>,
+      price_last_24h: (
+        <div
+          className={`flex items-center gap-2 w-[100px] ${
+            priceChange < 0 ? "text-red-500" : "text-green-500"
+          }`}
+        >
+          {priceChange >= 0 ? <TrendUp /> : <TrendDown />}
+          <p>% {priceChange.toFixed(2)}</p>
+        </div>
+      ),
+      market: (
+        <div className="w-[150px]">
+          <p>$ {market_cap.toLocaleString()}</p>
+        </div>
+      ),
+      volume: (
+        <div className="w-[150px]">
+          <p>$ {total_volume.toLocaleString()}</p>
+        </div>
+      ),
+      circulating_supply: <p>{circulating_supply.toLocaleString()}</p>,
+      market_last_24h: (
+        <div
+          className={`flex items-center gap-2 w-[100px] ${
+            marketChange < 0 ? "text-red-500" : "text-green-500"
+          }`}
+        >
+          {marketChange >= 0 ? <TrendUp /> : <TrendDown />}
+          <p>% {marketChange.toFixed(2)}</p>
+        </div>
+      ),
+      last_7: (
+        <div className="w-[100px]">
+          <SparkAreaChart
+            data={
+              marketChange >= 0
+                ? last7DaysGrowChartSeries
+                : last7DaysDownChartSeries
+            }
+            categories={["Price"]}
+            index={"day"}
+            colors={marketChange >= 0 ? ["green"] : ["red"]}
+            className="h-[40px] w-full"
+            showAnimation={true}
+            animationDuration={1300}
+          />
+        </div>
+      ),
+    };
+  });

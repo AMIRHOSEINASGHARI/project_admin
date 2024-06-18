@@ -377,3 +377,56 @@ export const upcommingEventsCollumns = [
     key: "status",
   },
 ];
+
+export const coinsColumns = [
+  {
+    title: "#",
+    dataIndex: "index",
+    key: "index",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+    render: (text) => <div className="min-w-[200px]">{text}</div>,
+  },
+  {
+    title: "Price",
+    dataIndex: "price",
+    key: "price",
+  },
+  {
+    title: "Price 24h %",
+    dataIndex: "price_last_24h",
+    key: "price_last_24h",
+    render: (text) => <div className="min-w-[100px]">{text}</div>,
+  },
+  {
+    title: "Market Cap",
+    dataIndex: "market",
+    key: "market",
+    render: (text) => <div>{text}</div>,
+  },
+  {
+    title: "Market 24h %",
+    dataIndex: "market_last_24h",
+    key: "market_last_24h",
+    render: (text) => <div className="min-w-[100px]">{text}</div>,
+  },
+  {
+    title: "Last 7 days",
+    dataIndex: "last_7",
+    key: "last_7",
+  },
+  {
+    title: "Volume",
+    dataIndex: "volume",
+    key: "volume",
+    render: (text) => <div>{text}</div>,
+  },
+  {
+    title: "Circulating Supply",
+    dataIndex: "circulating_supply",
+    key: "circulating_supply",
+  },
+];

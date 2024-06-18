@@ -744,3 +744,61 @@ export const totalRevenueChartSeries = [
     data: [95, 84, 72, 44, 108, 108, 47],
   },
 ];
+
+export const last7DaysGrowChartSeries = [
+  {
+    day: "1",
+    Price: 3000,
+  },
+  {
+    day: "2",
+    Price: 3100,
+  },
+  {
+    day: "3",
+    Price: 2500,
+  },
+  {
+    day: "4",
+    Price: 2780,
+  },
+  {
+    day: "5",
+    Price: 1890,
+  },
+  {
+    day: "6",
+    Price: 3000,
+  },
+];
+
+export const last7DaysDownChartSeries = [
+  {
+    day: "1",
+    Price: 1000,
+  },
+  {
+    day: "2",
+    Price: 2000,
+  },
+  {
+    day: "3",
+    Price: 2000,
+  },
+  {
+    day: "4",
+    Price: 2780,
+  },
+  {
+    day: "5",
+    Price: 1890,
+  },
+  {
+    day: "6",
+    Price: 2390,
+  },
+  {
+    day: "7",
+    Price: 2000,
+  },
+];

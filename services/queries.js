@@ -21,3 +21,9 @@ export const fetchCoin = ({ queryKey }) => {
     )
     .then((res) => res.data);
 };
+
+export const fetchCoins = () => {
+  return api
+    .get(`${URL}/coins/markets?vs_currency=usd&x_cg_demo_api_key=${KEY}`)
+    .then((res) => res.data);
+};
