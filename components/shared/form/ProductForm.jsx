@@ -115,27 +115,27 @@ const ProductForm = ({ type, form, setForm, onChange }) => {
 
     setLoading(true);
 
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   toast.success("Product Created!");
-    //   router.push("/products");
-    // }, 1000);
-
-    const uploadResult = await uploadImage(form.image[0]);
-
-    const result = await createProduct({
-      ...form,
-      image: uploadResult.imageUrl,
-    });
-
-    setLoading(false);
-
-    if (result.code !== 200) {
-      toast.error(result.message);
-    } else {
-      toast.success(result.message);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Product Created!");
       router.push("/products");
-    }
+    }, 1000);
+
+    // const uploadResult = await uploadImage(form.image[0]);
+
+    // const result = await createProduct({
+    //   ...form,
+    //   image: uploadResult.imageUrl,
+    // });
+
+    // setLoading(false);
+
+    // if (result.code !== 200) {
+    //   toast.error(result.message);
+    // } else {
+    //   toast.success(result.message);
+    //   router.push("/products");
+    // }
   };
 
   return (
