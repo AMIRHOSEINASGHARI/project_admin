@@ -29,7 +29,7 @@ const BannerChart = ({ coinId }) => {
   if (isError) {
     return (
       <div className="my-2">
-        <p>Error!</p>
+        <p className="text-center">Error!</p>
       </div>
     );
   }

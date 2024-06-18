@@ -31,7 +31,7 @@ const CryptoList = () => {
           <Loader width={30} height={30} />
         </div>
       )}
-      {isError && <p>Error!</p>}
+      {isError && <p className="text-center">Error!</p>}
       {!isLoading && !isError && (
         <Table
           columns={coinsColumns}

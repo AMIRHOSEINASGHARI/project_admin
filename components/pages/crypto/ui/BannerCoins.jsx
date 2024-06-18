@@ -78,6 +78,7 @@ const BannerCoins = async () => {
       </div>
     );
   } catch (error) {
+    console.log(error);
     return <p className="text-white">Error!</p>;
   }
 };
