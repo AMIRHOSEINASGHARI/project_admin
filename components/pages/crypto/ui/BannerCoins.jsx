@@ -38,7 +38,7 @@ const BannerCoins = async () => {
           return (
             <div
               key={id}
-              className="rounded-xl cardShadow3 flex flex-col gap-3"
+              className="rounded-box cardShadow flex flex-col gap-3 border"
             >
               <div className="p-5">
                 <p>

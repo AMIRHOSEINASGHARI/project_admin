@@ -22,7 +22,7 @@ const CryptoList = () => {
   });
 
   return (
-    <div className="tableContainer">
+    <div className="rounded-box cardShadow3 border">
       <div className="p-6">
         <h1 className="h2">Cryptocurrencies Prices</h1>
       </div>
