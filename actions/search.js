@@ -18,7 +18,13 @@ export const searchDashboard = async (searchQuery) => {
 
     const products = await Product.find(query).lean();
     const blogs = await Blog.find(query).lean();
-    const tasks = await Task.find(query).lean();
+    const tasks = await Task.find(query)
+      .populate({
+        path: "createdBy",
+        model: Admin,
+        select: "username name avatar",
+      })
+      .lean();
     const users = await User.find(query).lean();
     const admins = await Admin.find(query).lean();
     const comments = await Comment.find(query)
