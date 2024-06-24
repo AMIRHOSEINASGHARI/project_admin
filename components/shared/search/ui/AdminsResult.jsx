@@ -6,6 +6,7 @@ import { images } from "@/constants";
 // cmp
 import { Image } from "@nextui-org/react";
 import { EyeOpen } from "@/components/icons/Icons";
+import CustomBadge from "../../CustomBadge";
 
 const AdminsResult = ({ admins, closeModal }) => {
   return (
@@ -30,7 +31,20 @@ const AdminsResult = ({ admins, closeModal }) => {
             />
             <div>
               <p className="text-p1 font-medium">{admin.username}</p>
-              <p className="text-p2 text-darkGray">{admin.name}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-p2 text-darkGray">{admin.name}</p>
+                <p
+                  className={`text-p3 py-.5 px-2 rounded-md w-fit ${
+                    admin.roll === "OWNER"
+                      ? "bg-lightGreen text-darkGreen"
+                      : admin.roll === "ADMIN"
+                      ? "bg-lightBlue text-darkBlue"
+                      : "bg-lightRose text-darkRose"
+                  }`}
+                >
+                  {admin.roll}
+                </p>
+              </div>
             </div>
           </div>
           <EyeOpen />

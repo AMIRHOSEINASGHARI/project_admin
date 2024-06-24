@@ -1,5 +1,7 @@
+// cmp
 import { Alert } from "antd";
 import AdminsResult from "./ui/AdminsResult";
+import ProductsResult from "./ui/ProductsResult";
 
 const SearchResults = ({ error, result, closeModal }) => {
   console.log({ error, result });
@@ -32,9 +34,17 @@ const SearchResults = ({ error, result, closeModal }) => {
               <span className="font-medium">"{result?.searchQuery}"</span>
             </p>
             <hr className="mt-2 mb-5" />
-            {result?.admins?.length !== 0 && (
-              <AdminsResult admins={result?.admins} closeModal={closeModal} />
-            )}
+            <div className="space-y-5">
+              {result?.admins?.length !== 0 && (
+                <AdminsResult admins={result?.admins} closeModal={closeModal} />
+              )}
+              {result?.products?.length !== 0 && (
+                <ProductsResult
+                  products={result?.products}
+                  closeModal={closeModal}
+                />
+              )}
+            </div>
           </>
         )}
       </div>
