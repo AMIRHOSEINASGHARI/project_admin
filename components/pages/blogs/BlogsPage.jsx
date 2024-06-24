@@ -22,7 +22,7 @@ const BlogsPage = async () => {
         {data.blogs.length === 0 ? (
           <p>No Blogs!</p>
         ) : (
-          <BlogsList blogs={JSON.parse(JSON.stringify(data.blogs))} />
+          <BlogsList blogs={data.blogs} />
         )}
       </>
     );

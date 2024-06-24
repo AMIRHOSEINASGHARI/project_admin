@@ -87,7 +87,12 @@ export const getBlogs = async () => {
       };
     }
 
-    const blogs = await Blog.find().lean();
+    const blogs = await Blog.find()
+      .populate({
+        path: "createdBy",
+        model: Admin,
+      })
+      .lean();
 
     return {
       blogs,
