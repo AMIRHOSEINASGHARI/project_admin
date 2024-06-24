@@ -21,7 +21,13 @@ export const searchDashboard = async (searchQuery) => {
     const tasks = await Task.find(query).lean();
     const users = await User.find(query).lean();
     const admins = await Admin.find(query).lean();
-    const comments = await Comment.find(query).lean();
+    const comments = await Comment.find(query)
+      .populate({
+        path: "senderId",
+        model: User,
+        select: "username displayName avatar",
+      })
+      .lean();
 
     return {
       result: {

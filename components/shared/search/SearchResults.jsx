@@ -3,6 +3,7 @@ import { Alert } from "antd";
 import AdminsResult from "./ui/AdminsResult";
 import ProductsResult from "./ui/ProductsResult";
 import BlogsResult from "./ui/BlogsResult";
+import CommentsResult from "./ui/CommentsResult";
 
 const SearchResults = ({ error, result, closeModal }) => {
   console.log({ error, result });
@@ -47,6 +48,12 @@ const SearchResults = ({ error, result, closeModal }) => {
               )}
               {result?.blogs?.length !== 0 && (
                 <BlogsResult blogs={result?.blogs} closeModal={closeModal} />
+              )}
+              {result?.comments?.length !== 0 && (
+                <CommentsResult
+                  comments={result?.comments}
+                  closeModal={closeModal}
+                />
               )}
             </div>
           </>
