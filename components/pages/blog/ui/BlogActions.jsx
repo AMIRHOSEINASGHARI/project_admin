@@ -67,7 +67,7 @@ const BlogActions = ({ id, isPublished }) => {
       <div className="flex items-center gap-3">
         <Tooltip placement="bottom" title="Go Live">
           <Link
-            href={`https://store-onlineshop.liara.run/blogs/${id}`}
+            href={`${process.env.NEXT_PUBLIC_LIVE_URL}/blogs/${id}`}
             target="_blank"
           >
             <CustomButton
@@ -77,7 +77,7 @@ const BlogActions = ({ id, isPublished }) => {
           </Link>
         </Tooltip>
         <Tooltip placement="bottom" title="Edit">
-          <Link href={`/blogs/${id}/edit`}>
+          <Link href={`/blogs/edit/${id}`}>
             <CustomButton
               icon={<Edit className="text-darkGray" />}
               classNames="iconButton"

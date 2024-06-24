@@ -54,7 +54,10 @@ const BlogCard = ({
         <p className="font-medium text-p1">{title}</p>
         <p className="text-p1 text-darkGray">{shorterText(description, 150)}</p>
         <div className="flex items-center gap-2 flex-wrap justify-between">
-          <BlogCardActions />
+          <BlogCardActions
+            blogId={JSON.parse(JSON.stringify(_id))}
+            published={JSON.parse(JSON.stringify(published))}
+          />
           <div className="flex items-center gap-3 flex-wrap">
             <div className="flex items-center gap-1 text-darkGray">
               <BorderHeart size={15} />
