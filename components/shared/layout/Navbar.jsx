@@ -5,6 +5,7 @@ import MobileNav from "./MobileNav";
 import ShowProfile from "./ShowProfile";
 import NavbarSearchBox from "../search/NavbarSearchBox";
 import CustomButton from "../CustomButton";
+import NotificationBox from "../notification/NotificationBox";
 
 const Navbar = () => {
   return (
@@ -18,7 +19,7 @@ const Navbar = () => {
         <div className="flex items-center gap-1">
           <SignoutButton style="p-2 hover:bg-gray-100 rounded-full Transition text-darkGray text-[22px] flex items-center gap-btn" />
           <NavbarSearchBox />
-          <CustomButton icon={<Bell />} classNames="iconButton" />
+          <NotificationBox />
           <ShowProfile />
         </div>
       </div>
