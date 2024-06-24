@@ -5,7 +5,6 @@ import NextImage from "next/image";
 import { shorterText } from "@/utils/functions";
 // cmp
 import { Image } from "@nextui-org/react";
-import { EyeOpen } from "@/components/icons/Icons";
 
 const ProductsResult = ({ products, closeModal }) => {
   return (
@@ -15,7 +14,7 @@ const ProductsResult = ({ products, closeModal }) => {
         <Link
           href={`/products/${product._id}`}
           key={product._id}
-          className="flex items-center gap-3 flex-wrap justify-between hoverable rounded-btn py-2 px-3"
+          className="flex items-center gap-3 justify-between hoverable rounded-btn py-2 px-3"
           onClick={closeModal}
         >
           <div className="flex items-center gap-4">
@@ -29,7 +28,7 @@ const ProductsResult = ({ products, closeModal }) => {
               className="w-[50px] h-[50px]"
             />
             <div>
-              <p className="text-p1 font-medium">
+              <p className="text-p1 font-medium line-clamp-4">
                 {shorterText(product.title, 30)}
               </p>
               <p className="text-p2 text-darkGray">
@@ -38,7 +37,6 @@ const ProductsResult = ({ products, closeModal }) => {
               </p>
             </div>
           </div>
-          <EyeOpen />
         </Link>
       ))}
     </div>

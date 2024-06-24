@@ -10,8 +10,8 @@ const CommentsResult = ({ comments }) => {
       <h1 className="text-h3 font-medium mb-2">Comments</h1>
       {comments.map((comment) => (
         <div key={comment._id} className="rounded-btn py-2 px-3 border mb-1">
-          <p className="font-medium">{comment.title}</p>
-          <p className="text-p3">{comment.description}</p>
+          <p className="font-medium line-clamp-4">{comment.title}</p>
+          <p className="text-p3 line-clamp-4">{comment.description}</p>
           <div className="flex items-center flex-wrap gap-2 mt-4">
             <CustomBadge
               title={comment.status}

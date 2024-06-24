@@ -5,7 +5,6 @@ import NextImage from "next/image";
 import { images } from "@/constants";
 // cmp
 import { Image } from "@nextui-org/react";
-import { EyeOpen } from "@/components/icons/Icons";
 
 const UsersResult = ({ users, closeModal }) => {
   return (
@@ -15,7 +14,7 @@ const UsersResult = ({ users, closeModal }) => {
         <Link
           href={`/users/${user._id}`}
           key={user._id}
-          className="flex items-center gap-3 flex-wrap justify-between hoverable rounded-btn py-2 px-3"
+          className="flex items-center gap-3 justify-between hoverable rounded-btn py-2 px-3"
           onClick={closeModal}
         >
           <div className="flex items-center gap-4">
@@ -35,7 +34,6 @@ const UsersResult = ({ users, closeModal }) => {
               )}
             </div>
           </div>
-          <EyeOpen />
         </Link>
       ))}
     </div>

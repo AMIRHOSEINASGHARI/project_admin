@@ -5,8 +5,6 @@ import NextImage from "next/image";
 import { images } from "@/constants";
 // cmp
 import { Image } from "@nextui-org/react";
-import { EyeOpen } from "@/components/icons/Icons";
-import CustomBadge from "../../CustomBadge";
 
 const AdminsResult = ({ admins, closeModal }) => {
   return (
@@ -16,7 +14,7 @@ const AdminsResult = ({ admins, closeModal }) => {
         <Link
           href={`/account/admins/${admin._id}`}
           key={admin._id}
-          className="flex items-center gap-3 flex-wrap justify-between hoverable rounded-btn py-2 px-3"
+          className="flex items-center gap-3 justify-between hoverable rounded-btn py-2 px-3"
           onClick={closeModal}
         >
           <div className="flex items-center gap-4">
@@ -30,24 +28,23 @@ const AdminsResult = ({ admins, closeModal }) => {
               className="w-[40px] h-[40px]"
             />
             <div>
-              <p className="text-p1 font-medium">{admin.username}</p>
-              <div className="flex items-center gap-2">
-                <p className="text-p2 text-darkGray">{admin.name}</p>
-                <p
-                  className={`text-p3 py-.5 px-2 rounded-md w-fit ${
-                    admin.roll === "OWNER"
-                      ? "bg-lightGreen text-darkGreen"
-                      : admin.roll === "ADMIN"
-                      ? "bg-lightBlue text-darkBlue"
-                      : "bg-lightRose text-darkRose"
-                  }`}
-                >
-                  {admin.roll}
-                </p>
-              </div>
+              <p className="text-p1 font-medium line-clamp-4">
+                {admin.username}
+              </p>
+              <p className="text-p2 text-darkGray line-clamp-4">{admin.name}</p>
+              <p
+                className={`text-p3 py-.5 px-2 rounded-md w-fit ${
+                  admin.roll === "OWNER"
+                    ? "bg-lightGreen text-darkGreen"
+                    : admin.roll === "ADMIN"
+                    ? "bg-lightBlue text-darkBlue"
+                    : "bg-lightRose text-darkRose"
+                }`}
+              >
+                {admin.roll}
+              </p>
             </div>
           </div>
-          <EyeOpen />
         </Link>
       ))}
     </div>
