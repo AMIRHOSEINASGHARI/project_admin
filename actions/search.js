@@ -25,7 +25,9 @@ export const searchDashboard = async (searchQuery) => {
         select: "username name avatar",
       })
       .lean();
-    const users = await User.find(query).lean();
+    const users = await User.find(query)
+      .select("avatar username displayName")
+      .lean();
     const admins = await Admin.find(query).lean();
     const comments = await Comment.find(query)
       .populate({

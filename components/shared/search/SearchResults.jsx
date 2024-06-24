@@ -5,6 +5,7 @@ import ProductsResult from "./ui/ProductsResult";
 import BlogsResult from "./ui/BlogsResult";
 import CommentsResult from "./ui/CommentsResult";
 import TasksResult from "./ui/TasksResult";
+import UsersResult from "./ui/UsersResult";
 
 const SearchResults = ({ error, result, closeModal }) => {
   console.log({ error, result });
@@ -58,6 +59,9 @@ const SearchResults = ({ error, result, closeModal }) => {
               )}
               {result?.tasks?.length !== 0 && (
                 <TasksResult tasks={result?.tasks} closeModal={closeModal} />
+              )}
+              {result?.users?.length !== 0 && (
+                <UsersResult users={result?.users} closeModal={closeModal} />
               )}
             </div>
           </>
