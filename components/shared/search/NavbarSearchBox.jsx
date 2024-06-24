@@ -2,21 +2,32 @@
 
 // react
 import { useState } from "react";
+// actions
+import { searchDashboard } from "@/actions/search";
 // cmp
+import toast from "react-hot-toast";
 import CustomButton from "../CustomButton";
 import CustomInput from "../form/CustomInput";
+import Loader from "../Loader";
+import SearchResults from "./SearchResults";
 import { Close, Light, Search } from "@/components/icons/Icons";
 import { Modal } from "antd";
 
 const NavbarSearchBox = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [searchResult, setSearchResult] = useState(null);
+  const [error, setError] = useState("");
 
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
+    setError("");
+    setSearchTerm("");
+    setSearchResult(null);
     setIsModalOpen(false);
   };
 
@@ -37,8 +48,24 @@ const NavbarSearchBox = () => {
     },
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+
+    if (!searchTerm) {
+      toast.error("Search something!");
+      return;
+    }
+
+    setLoading(() => true);
+    setError(() => "");
+    const result = await searchDashboard(searchTerm);
+    setLoading(() => false);
+
+    if (result.code !== 200) {
+      setError(result.error.message);
+    } else {
+      setSearchResult(result.result);
+    }
   };
 
   const modlaContent = (
@@ -60,6 +87,17 @@ const NavbarSearchBox = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
+      {loading ? (
+        <div className="w-full flex justify-center my-5">
+          <Loader width={20} height={20} />
+        </div>
+      ) : (
+        <SearchResults
+          error={JSON.parse(JSON.stringify(error))}
+          result={JSON.parse(JSON.stringify(searchResult))}
+          closeModal={closeModal}
+        />
+      )}
     </div>
   );
 

@@ -1,3 +1,5 @@
+"use server";
+
 // utils
 import connectDB from "@/utils/connectDB";
 // models
@@ -29,6 +31,7 @@ export const searchDashboard = async (searchQuery) => {
         users,
         admins,
         comments,
+        searchQuery,
       },
       status: "success",
       code: 200,
