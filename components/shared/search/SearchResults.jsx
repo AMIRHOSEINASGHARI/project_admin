@@ -2,6 +2,7 @@
 import { Alert } from "antd";
 import AdminsResult from "./ui/AdminsResult";
 import ProductsResult from "./ui/ProductsResult";
+import BlogsResult from "./ui/BlogsResult";
 
 const SearchResults = ({ error, result, closeModal }) => {
   console.log({ error, result });
@@ -43,6 +44,9 @@ const SearchResults = ({ error, result, closeModal }) => {
                   products={result?.products}
                   closeModal={closeModal}
                 />
+              )}
+              {result?.blogs?.length !== 0 && (
+                <BlogsResult blogs={result?.blogs} closeModal={closeModal} />
               )}
             </div>
           </>
