@@ -1,5 +1,5 @@
 // next
-import Image from "next/image";
+import NextImage from "next/image";
 // utils
 import { shorterText } from "@/utils/functions";
 // cmp
@@ -9,6 +9,7 @@ import CustomButton from "@/components/shared/CustomButton";
 import moment from "moment";
 import { Tooltip } from "antd";
 import FullScreenImage from "./FullScreenImage";
+import { Image } from "@nextui-org/react";
 
 const BlogContent = ({
   _id,
@@ -42,14 +43,14 @@ const BlogContent = ({
       </div>
       <div className="relative rounded-btn overflow-hidden bg-black">
         <Image
+          as={NextImage}
           src={image}
           width={2300}
           height={1080}
           alt={title}
-          priority
           className="w-full h-[60vh] object-none object-center"
         />
-        <div className="w-full py-12 p-8 h-full bg-gradient-to-r flex flex-col justify-between from-black to-transparent absolute inset-0">
+        <div className="w-full py-12 p-8 h-full bg-gradient-to-r flex flex-col justify-between from-black to-transparent absolute z-10 inset-0">
           <h1 className="h1 text-white lg:w-[60%] ">{title}</h1>
           <FullScreenImage
             image={JSON.parse(JSON.stringify(image))}

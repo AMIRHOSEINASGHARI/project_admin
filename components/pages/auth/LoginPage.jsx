@@ -3,7 +3,7 @@
 // react
 import { useState } from "react";
 // next
-import Image from "next/image";
+import NextImage from "next/image";
 import { useRouter } from "next/navigation";
 // actions
 import { login } from "@/actions/auth";
@@ -18,6 +18,7 @@ import CustomInput from "@/components/shared/form/CustomInput";
 import CustomButton from "@/components/shared/CustomButton";
 import Loader from "@/components/shared/Loader";
 import CustomBadge from "@/components/shared/CustomBadge";
+import { Image } from "@nextui-org/react";
 
 const LoginPage = () => {
   const [form, setForm] = useState({
@@ -55,11 +56,11 @@ const LoginPage = () => {
     >
       <div className="max-xl:hidden bg-gray-100 rounded-3xl h-screen w-1/2 flex items-center justify-center">
         <Image
+          as={NextImage}
           src={images.authLogin}
           width={450}
           height={450}
           alt="auth-login"
-          priority
         />
       </div>
       <div className="max-xl:flex max-xl:justify-center max-xl:mt-16 max-xl:w-full">
@@ -67,11 +68,11 @@ const LoginPage = () => {
           <div className="mb-[20px]">
             <div className="mb-[30px]">
               <Image
+                as={NextImage}
                 src={images.logo}
                 width={40}
                 height={40}
                 alt="logo"
-                priority
               />
             </div>
             <h1 className="font-medium text-gray-600 text-[30px] mb-[10px]">

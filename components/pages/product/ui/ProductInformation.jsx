@@ -56,11 +56,11 @@ const ProductInformation = ({ info }) => {
             className="flex items-center gap-3"
           >
             <Image
+              as={NextImage}
               src={info?.createdBy.avatar || images.admin}
               width={100}
               height={100}
               alt="creator"
-              priority
               className="rounded-full w-10 h-10"
             />
             <div>

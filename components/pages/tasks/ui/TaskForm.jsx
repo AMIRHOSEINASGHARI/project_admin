@@ -2,8 +2,6 @@
 
 // react
 import { useEffect, useState } from "react";
-// next
-import Image from "next/image";
 // actions
 import { createTask, editTask } from "@/actions/task";
 // react query
@@ -24,6 +22,7 @@ import Loader from "@/components/shared/Loader";
 import toast from "react-hot-toast";
 import moment from "moment";
 import { DatePicker, Modal } from "antd";
+import { Avatar } from "@nextui-org/react";
 
 const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
   const [form, setForm] = useState({
@@ -164,17 +163,12 @@ const TaskForm = ({ type, taskID, isModalOpen, closeModal, session }) => {
           <div className="space-y-2">
             <p className="font-medium text-p1">Created by</p>
             <div className="flex items-center gap-3">
-              <Image
+              <Avatar
                 src={
                   data
                     ? data?.task?.createdBy?.avatar || images.admin
                     : session?.avatar || images.admin
                 }
-                width={100}
-                height={100}
-                alt="creator"
-                priority
-                className="w-[40px] h-[40px] rounded-full"
               />
               <p className="font-medium text-p1">
                 {data ? data?.task?.createdBy?.username : session?.username}

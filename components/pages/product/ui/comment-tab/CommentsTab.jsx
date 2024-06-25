@@ -1,7 +1,7 @@
 // react
 import { Fragment } from "react";
 // next
-import Image from "next/image";
+import NextImage from "next/image";
 // constants
 import { images } from "@/constants";
 // cmp
@@ -9,6 +9,7 @@ import moment from "moment";
 import { Empty } from "antd";
 import CommentAction from "@/components/pages/shared/CommentAction";
 import CustomBadge from "@/components/shared/CustomBadge";
+import { Image } from "@nextui-org/react";
 
 const CommentsTab = ({ comments }) => {
   if (comments.length === 0) {
@@ -35,11 +36,11 @@ const CommentsTab = ({ comments }) => {
               <div className="flex gap-box lg:flex-col lg:items-center lg:w-[20%]">
                 <div className="flex justify-center">
                   <Image
+                    as={NextImage}
                     src={avatar || images.person}
                     width={70}
                     height={70}
                     alt="user"
-                    priority
                     className="max-lg:w-[60px] max-lg:h-[60px]"
                   />
                 </div>

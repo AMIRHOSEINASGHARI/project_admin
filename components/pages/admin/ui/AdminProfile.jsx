@@ -4,7 +4,7 @@ import NextImage from "next/image";
 // constants
 import { images } from "@/constants";
 // cmp
-import { Image } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
 import { Date, Flag, Location, Mail, Mobile } from "@/components/icons/Icons";
 import CustomBadge from "@/components/shared/CustomBadge";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
@@ -29,6 +29,7 @@ const AdminProfile = ({
     <div className="w-full box border flex flex-col items-center gap-1">
       <div className="flex justify-center w-full mb-4">
         <Image
+          as={NextImage}
           src={avatar || images.admin}
           width={200}
           height={200}

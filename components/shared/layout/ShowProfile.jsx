@@ -131,6 +131,7 @@ const ShowProfile = () => {
         <div className="pb-[80px]">
           <div className="flex flex-col items-center justify-center">
             <Image
+              as={NextImage}
               src={data?.session?.avatar || images.admin}
               width={200}
               height={200}

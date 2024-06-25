@@ -1,11 +1,12 @@
 // next
-import Image from "next/image";
+import NextImage from "next/image";
 // utils
 import { shorterText } from "@/utils/functions";
 // constants
 import { images } from "@/constants";
 // cmp
 import { Empty } from "antd";
+import { Image } from "@nextui-org/react";
 
 const LikesTab = ({ likes }) => {
   if (likes.length === 0) {
@@ -20,11 +21,11 @@ const LikesTab = ({ likes }) => {
         return (
           <div key={_id} className="flex flex-col items-center">
             <Image
+              as={NextImage}
               src={user.avatar || images.person}
               width={60}
               height={60}
               alt={shorterText(user.displayName, 10)}
-              priority
               className="mb-2 rounded-full"
             />
             <p className="font-medium">{user.displayName || user.username}</p>

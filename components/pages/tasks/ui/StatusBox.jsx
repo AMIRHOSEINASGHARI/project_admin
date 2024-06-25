@@ -1,5 +1,3 @@
-// next
-import Image from "next/image";
 // utils
 import { getServerSession } from "@/utils/session";
 // constants
@@ -10,6 +8,7 @@ import { Badge, Empty } from "antd";
 import moment from "moment";
 import TaskActions from "./TaskActions";
 import EditTask from "./EditTask";
+import { Avatar } from "@nextui-org/react";
 
 const StatusBox = ({ status, taskCount, tasks }) => {
   const session = getServerSession();
@@ -54,14 +53,7 @@ const StatusBox = ({ status, taskCount, tasks }) => {
               </div>
               <div className="flex justify-between items-center gap-2 w-full">
                 <div className="flex items-center gap-3">
-                  <Image
-                    src={task.createdBy.avatar || images.admin}
-                    width={100}
-                    height={100}
-                    alt="creator"
-                    priority
-                    className="rounded-full w-[40px] h-[40px]"
-                  />
+                  <Avatar src={task.createdBy.avatar || images.admin} />
                   <div>
                     <p className="text-p1 font-medium">
                       {task.createdBy.username}

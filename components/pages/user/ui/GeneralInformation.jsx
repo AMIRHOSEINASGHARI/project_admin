@@ -1,9 +1,10 @@
 // cmp
-import Image from "next/image";
+import NextImage from "next/image";
 // constants
 import { images } from "@/constants";
 // cmp
 import CustomInput from "@/components/shared/form/CustomInput";
+import { Image } from "@nextui-org/react";
 
 const GeneralInformation = ({
   avatar,
@@ -35,12 +36,13 @@ const GeneralInformation = ({
     <div className="box w-full flex flex-col gap-7">
       <div className="w-full flex justify-center">
         <Image
+          as={NextImage}
           src={avatar || images.person}
           width={300}
           height={300}
           alt={username}
-          priority
-          className="w-[100px] h-[100px] xl:w-[150px] xl:h-[150px] rounded-full outline outline-2 outline-offset-8 outline-lightGray"
+          className="w-[100px] h-[100px] xl:w-[150px] xl:h-[150px] outline outline-2 outline-offset-8 outline-lightGray"
+          radius="full"
         />
       </div>
       <div className="flex flex-wrap gap-5 w-full">
