@@ -93,8 +93,8 @@ const NavbarSearchBox = () => {
         </div>
       ) : (
         <SearchResults
-          error={JSON.parse(JSON.stringify(error))}
-          result={JSON.parse(JSON.stringify(searchResult))}
+          error={error}
+          result={searchResult}
           closeModal={closeModal}
         />
       )}

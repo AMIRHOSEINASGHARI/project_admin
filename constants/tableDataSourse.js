@@ -26,8 +26,8 @@ export const productsDataSourse = (products) =>
       >
         <div className="w-[100px] h-[100px] flex items-center justify-center">
           <Image
-            src={product.image}
             as={NextImage}
+            src={product.image}
             width={100}
             height={100}
             alt="product"
@@ -68,8 +68,8 @@ export const productsDataSourse = (products) =>
       >
         <div className="w-10 h-10">
           <Image
-            src={product.createdBy.avatar || images.admin}
             as={NextImage}
+            src={product.createdBy.avatar || images.admin}
             width={200}
             height={200}
             alt="admin"
@@ -109,11 +109,11 @@ export const ordersListDataSourse = (orders) =>
       <Link href={`/users/${order.userId._id}`}>
         <div className="flex items-center gap-3">
           <Image
+            as={NextImage}
             src={order.userId.avatar || images.person}
             width={35}
             height={35}
             alt={shorterText(order.userId.username, 8)}
-            priority
           />
           <div>
             <p className="text-p1 font-medium line-clamp-3">
@@ -151,11 +151,11 @@ export const ordersListDataSourse = (orders) =>
         <div className="flex items-center gap-4">
           <div className="w-[50px] h-[50px]">
             <Image
+              as={NextImage}
               src={item.productId.image}
               width={50}
               height={50}
               alt="product image"
-              priority
               className="rounded-lg object-cover w-full h-full"
             />
           </div>
@@ -174,11 +174,11 @@ export const orderCheckoutSummaryDataSourse = (items) =>
     key: item.productId._id,
     product: (
       <Image
+        as={NextImage}
         src={item.productId.image}
         width={50}
         height={50}
         alt={shorterText(item.productId.title, 20)}
-        priority
       />
     ),
     qty: item.quantity,
@@ -196,11 +196,11 @@ export const commentsDataSourse = (comments) =>
         className="flex items-center gap-3"
       >
         <Image
+          as={NextImage}
           src={comment.senderId.avatar || images.person}
           width={40}
           height={40}
           alt="user"
-          priority
         />
         <div>
           <p className="text-p1 font-medium">{comment.senderId.username}</p>
@@ -241,11 +241,11 @@ export const usersDataSourse = (users) =>
     name: (
       <Link href={`/users/${user._id}`} className="flex items-center gap-3">
         <Image
+          as={NextImage}
           src={user.avatar || images.person}
           width={40}
           height={40}
           alt="user"
-          priority
         />
         <div>
           <p className="text-p1 font-medium">{user.username}</p>
@@ -343,11 +343,11 @@ export const userLikesDataSourse = (likes) =>
         <Link href={`/products/${like.product._id}`}>
           <div className="flex items-center gap-3">
             <Image
+              as={NextImage}
               src={like.product.image}
               width={50}
               height={50}
               alt="product"
-              priority
               className="rounded-lg w-[50px] h-[50px]"
             />
             <p>{shorterText(like.product.title, 15)}</p>
@@ -357,14 +357,14 @@ export const userLikesDataSourse = (likes) =>
         <Link href={`/blogs/${like.blog._id}`}>
           <div className="flex items-center gap-3">
             <Image
+              as={NextImage}
               src={like.blog.image}
               width={50}
               height={50}
               alt="product"
-              priority
               className="rounded-lg w-[50px] h-[50px]"
             />
-            <p>{shorterText(like.product.title, 15)}</p>
+            <p>{shorterText(like.blog.title, 15)}</p>
           </div>
         </Link>
       ),

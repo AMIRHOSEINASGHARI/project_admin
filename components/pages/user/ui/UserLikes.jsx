@@ -1,3 +1,5 @@
+"use client";
+
 // constants
 import { userLikesColumns } from "@/constants/tableColumns";
 import { userLikesDataSourse } from "@/constants/tableDataSourse";

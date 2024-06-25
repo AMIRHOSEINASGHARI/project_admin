@@ -8,8 +8,6 @@ import TasksResult from "./ui/TasksResult";
 import UsersResult from "./ui/UsersResult";
 
 const SearchResults = ({ error, result, closeModal }) => {
-  console.log({ error, result });
-
   if (error.length !== 0) {
     return <Alert message={error} type="error" showIcon />;
   } else if (result !== null) {
@@ -40,28 +38,40 @@ const SearchResults = ({ error, result, closeModal }) => {
             <hr className="mt-2 mb-5" />
             <div className="space-y-5">
               {result?.admins?.length !== 0 && (
-                <AdminsResult admins={result?.admins} closeModal={closeModal} />
+                <AdminsResult
+                  admins={JSON.parse(JSON.stringify(result?.admins))}
+                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                />
               )}
               {result?.products?.length !== 0 && (
                 <ProductsResult
-                  products={result?.products}
-                  closeModal={closeModal}
+                  products={JSON.parse(JSON.stringify(result?.products))}
+                  closeModal={JSON.parse(JSON.stringify(closeModal))}
                 />
               )}
               {result?.blogs?.length !== 0 && (
-                <BlogsResult blogs={result?.blogs} closeModal={closeModal} />
+                <BlogsResult
+                  blogs={JSON.parse(JSON.stringify(result?.blogs))}
+                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                />
               )}
               {result?.comments?.length !== 0 && (
                 <CommentsResult
-                  comments={result?.comments}
-                  closeModal={closeModal}
+                  comments={JSON.parse(JSON.stringify(result?.comments))}
+                  closeModal={JSON.parse(JSON.stringify(closeModal))}
                 />
               )}
               {result?.tasks?.length !== 0 && (
-                <TasksResult tasks={result?.tasks} closeModal={closeModal} />
+                <TasksResult
+                  tasks={JSON.parse(JSON.stringify(result?.tasks))}
+                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                />
               )}
               {result?.users?.length !== 0 && (
-                <UsersResult users={result?.users} closeModal={closeModal} />
+                <UsersResult
+                  users={JSON.parse(JSON.stringify(result?.users))}
+                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                />
               )}
             </div>
           </>

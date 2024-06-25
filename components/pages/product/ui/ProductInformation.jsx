@@ -20,7 +20,6 @@ const ProductInformation = ({ info }) => {
           width={500}
           height={500}
           alt={info?.title}
-          priority
           className="rounded-box"
         />
       </div>
