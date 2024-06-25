@@ -5,8 +5,8 @@ import Loader from "@/components/shared/Loader";
 
 const Loading = () => {
   return (
-    <div className="flex w-full justify-center">
-      <Loader />
+    <div className="flex w-full min-h-[50vh] items-center justify-center">
+      <div className="loader" />
     </div>
   );
 };
