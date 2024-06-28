@@ -14,6 +14,8 @@ import CustomInput from "@/components/shared/form/CustomInput";
 import Loader from "@/components/shared/Loader";
 import { Image } from "@nextui-org/image";
 import { Alert } from "antd";
+import NotFound from "./NotFound";
+import CoinItem from "./CoinItem";
 
 // .env vars
 const COIN_API_URL = process.env.NEXT_PUBLIC_COIN_API_URL;
@@ -77,43 +79,13 @@ const SearchCrypto = () => {
                 <p>{data?.coins?.length} Results found</p>
                 <div className="space-y-1">
                   {data?.coins?.map((coin, index) => (
-                    <Link
-                      key={coin.id}
-                      href={`/crypto/${coin.id}`}
-                      className="flex items-center gap-6 hover:bg-gray-200 rounded-lg p-2 Transition"
-                    >
-                      <p className="text-p1">{index + 1}.</p>
-                      <Image
-                        as={NextImage}
-                        src={coin?.large || coin?.thumb || images.person}
-                        width={100}
-                        height={100}
-                        alt="coin"
-                        radius="none"
-                        className="w-[40px] h-[40px]"
-                      />
-                      <p className="text-p1 flex gap-2">
-                        <span className="text-darkGray">
-                          #{coin.market_cap_rank}
-                        </span>
-                        <span className="font-bold">{coin.name}</span>
-                      </p>
-                    </Link>
+                    <CoinItem data={coin} index={index} key={coin.id} />
                   ))}
                 </div>
               </>
             )}
             {data?.coins?.length === 0 && isFetching === false && (
-              <div className="text-center flex flex-col justify-center items-center w-full h-full">
-                <h1 className="font-medium text-h4">Not found</h1>
-                <p className="text-p1">
-                  No results found for{" "}
-                  <span className="font-medium">"{searchTerm}".</span>
-                </p>
-                <p className="text-p1">
-                  Try checking for typos or using complete words.
-                </p>
-              </div>
+              <NotFound searchTerm={searchTerm} />
             )}
             {isError && error?.name !== "AbortError" && (
               <Alert message={error.message} type="error" showIcon />
