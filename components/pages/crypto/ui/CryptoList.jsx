@@ -9,6 +9,7 @@ import { coinsColumns } from "@/constants/tableColumns";
 import { coinsListDataSourse } from "@/constants/tableDataSourse";
 // cmp
 import Loader from "@/components/shared/Loader";
+import SearchCrypto from "./search/SearchCrypto";
 import { Table } from "antd";
 
 const CryptoList = () => {
@@ -33,11 +34,14 @@ const CryptoList = () => {
       )}
       {isError && <p className="text-center">Error!</p>}
       {!isLoading && !isError && (
-        <Table
-          columns={coinsColumns}
-          dataSource={coinsListDataSourse(data)}
-          scroll={{ x: true }}
-        />
+        <>
+          <SearchCrypto />
+          <Table
+            columns={coinsColumns}
+            dataSource={coinsListDataSourse(data)}
+            scroll={{ x: true }}
+          />
+        </>
       )}
     </div>
   );

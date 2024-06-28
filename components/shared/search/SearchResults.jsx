@@ -40,37 +40,37 @@ const SearchResults = ({ error, result, closeModal }) => {
               {result?.admins?.length !== 0 && (
                 <AdminsResult
                   admins={JSON.parse(JSON.stringify(result?.admins))}
-                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                  closeModal={closeModal}
                 />
               )}
               {result?.products?.length !== 0 && (
                 <ProductsResult
                   products={JSON.parse(JSON.stringify(result?.products))}
-                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                  closeModal={closeModal}
                 />
               )}
               {result?.blogs?.length !== 0 && (
                 <BlogsResult
                   blogs={JSON.parse(JSON.stringify(result?.blogs))}
-                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                  closeModal={closeModal}
                 />
               )}
               {result?.comments?.length !== 0 && (
                 <CommentsResult
                   comments={JSON.parse(JSON.stringify(result?.comments))}
-                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                  closeModal={closeModal}
                 />
               )}
               {result?.tasks?.length !== 0 && (
                 <TasksResult
                   tasks={JSON.parse(JSON.stringify(result?.tasks))}
-                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                  closeModal={closeModal}
                 />
               )}
               {result?.users?.length !== 0 && (
                 <UsersResult
                   users={JSON.parse(JSON.stringify(result?.users))}
-                  closeModal={JSON.parse(JSON.stringify(closeModal))}
+                  closeModal={closeModal}
                 />
               )}
             </div>
