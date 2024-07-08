@@ -2,17 +2,11 @@
 
 // react
 import { useEffect, useState } from "react";
-// next
-import Link from "next/link";
-import NextImage from "next/image";
 // react query
 import { useQuery } from "@tanstack/react-query";
-// constants
-import { images } from "@/constants";
 // cmp
 import CustomInput from "@/components/shared/form/CustomInput";
 import Loader from "@/components/shared/Loader";
-import { Image } from "@nextui-org/image";
 import { Alert } from "antd";
 import NotFound from "./NotFound";
 import CoinItem from "./CoinItem";

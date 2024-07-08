@@ -14,7 +14,12 @@ import useSession from "@/hooks/session";
 import { icons, images, menuLinks } from "@/constants";
 // cmp
 import { Image } from "@nextui-org/image";
-import { BorderHeart, Logo, MenuDots } from "@/components/icons/Icons";
+import {
+  BorderHeart,
+  LayerPlus,
+  Logo,
+  MenuDots,
+} from "@/components/icons/Icons";
 import Loader from "../Loader";
 
 const Sidebar = () => {
@@ -83,7 +88,7 @@ const Sidebar = () => {
                   href={item.link}
                   className="flex Transition items-center gap-[20px] py-[12px] px-[10px]"
                 >
-                  <div className="icon_size">{item.image}</div>
+                  <div>{item.image}</div>
                   <span className="text-p1">{item.title}</span>
                 </Link>
               </li>
@@ -99,14 +104,16 @@ const Sidebar = () => {
               )}
             </Fragment>
           ))}
-          <li className="rounded-btn mx-4 hover:bg-lightRose text-darkRose transition duration-75 ease-in-out">
-            <button
-              className="flex items-center w-full gap-[20px] p-[10px]"
-              onClick={() => signOut()}
+          <li className="rounded-btn mx-4 bg-gradient-to-br mt-2 from-gray-200 to-transparent transition duration-75 ease-in-out">
+            <Link
+              href="/tasks"
+              className="flex flex-col Transition items-center gap-[10px] py-[12px] px-[10px]"
             >
-              <div className="icon_size">{icons.power}</div>
-              <span className="text-[17px] font-black">Exit</span>
-            </button>
+              <div className="rounded-2xl p-3 bg-gradient-to-tr from-darkPurple to-purple-300 text-white">
+                <LayerPlus />
+              </div>
+              <span className="text-p1 font-medium">Create New Task</span>
+            </Link>
           </li>
         </ul>
       </nav>

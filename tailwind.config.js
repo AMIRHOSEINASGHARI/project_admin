@@ -70,7 +70,7 @@ module.exports = {
         input: "16.5px 14px",
       },
       borderRadius: {
-        box: "30px",
+        box: "10px",
         btn: "8px",
         input: "10px",
         "tremor-small": "0.375rem",
