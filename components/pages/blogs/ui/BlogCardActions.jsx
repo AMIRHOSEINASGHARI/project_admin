@@ -33,7 +33,7 @@ const BlogCardActions = ({ blogId, published }) => {
     () => setOpen(false)
   );
 
-  const content = (
+  const popoverContent = (
     <div className="popContainer w-[150px]">
       {loading ? (
         <div className="h-[185px] flex items-center justify-center">
@@ -63,7 +63,7 @@ const BlogCardActions = ({ blogId, published }) => {
                 published ? "text-darkGreen bg-lightGreen" : "hoverable"
               }`}
               onClick={() => updateBlog()}
-              disabled={loading}
+              disabled={loading || published}
             />
             <CustomButton
               icon={<Draft />}
@@ -72,7 +72,7 @@ const BlogCardActions = ({ blogId, published }) => {
                 !published ? "text-darkGray bg-lightGray" : "hoverable"
               }`}
               onClick={() => updateBlog()}
-              disabled={loading}
+              disabled={loading || !published}
             />
           </div>
           <hr />
@@ -94,7 +94,7 @@ const BlogCardActions = ({ blogId, published }) => {
     <Popover
       open={open}
       onOpenChange={onOpenChange}
-      content={content}
+      content={popoverContent}
       placement="rightTop"
       trigger="click"
       overlayInnerStyle={{

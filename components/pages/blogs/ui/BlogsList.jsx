@@ -1,5 +1,6 @@
-// cmp
+// next
 import Link from "next/link";
+// cmp
 import BlogCard from "./BlogCard";
 import { LayerPlus } from "@/components/icons/Icons";
 
