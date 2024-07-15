@@ -35,7 +35,7 @@ const ProductsPagination = ({ totalPages, searchParams, totalProducts }) => {
       </p>
       <div className="flex items-center gap-2 w-full justify-end">
         <p className="rounded-xl text-sm">
-          {searchParams.page || 1} / {totalPages}
+          {searchParams.page || 1} / {totalPages || 1}
         </p>
         <button
           type="button"
@@ -52,9 +52,15 @@ const ProductsPagination = ({ totalPages, searchParams, totalProducts }) => {
         <button
           type="button"
           onClick={() => nextPage()}
-          disabled={searchParams.page == String(totalPages) || totalPages === 1}
+          disabled={
+            searchParams.page == String(totalPages) ||
+            totalPages === 1 ||
+            totalPages === 0
+          }
           className={`${
-            searchParams.page == String(totalPages) || totalPages === 1
+            searchParams.page == String(totalPages) ||
+            totalPages === 1 ||
+            totalPages === 0
               ? "text-gray-400 cursor-not-allowed"
               : "text-black"
           } rounded-full hover:bg-lightGray p-3 Transition`}

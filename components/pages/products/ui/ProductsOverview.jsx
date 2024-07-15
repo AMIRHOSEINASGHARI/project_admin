@@ -13,20 +13,15 @@ const ProductsOverview = async ({ searchParams }) => {
   }
 
   return (
-    <div>
-      {data.products?.length === 0 ? (
-        <p>No Products!</p>
-      ) : (
-        <div className="cardShadow3 rounded-2xl border overflow-hidden">
-          <ProductsFilter />
-          <ProductsList products={JSON.parse(JSON.stringify(data.products))} />
-          <ProductsPagination
-            totalProducts={data.totalProducts}
-            totalPages={data.totalPages}
-            searchParams={searchParams}
-          />
-        </div>
-      )}
+    <div className="cardShadow3 rounded-2xl border overflow-hidden">
+      <ProductsFilter />
+      <ProductsList products={JSON.parse(JSON.stringify(data.products))} />
+      <ProductsPagination
+        totalProducts={data.totalProducts}
+        totalProductsWithoutFilter={data.totalProductsWithoutFilter}
+        totalPages={data.totalPages}
+        searchParams={searchParams}
+      />
     </div>
   );
 };
