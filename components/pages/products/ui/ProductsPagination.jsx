@@ -1,31 +1,22 @@
 "use client";
 
-// next
-import { useRouter } from "next/navigation";
+// custom hook
+import { useSetSearchParams } from "@/hooks/setSearchQuery";
 // components
 import { LeftAngle, RightAngle } from "@/components/icons/Icons";
 
-const ProductsPagination = ({ totalPages, searchParams, totalProducts }) => {
-  const router = useRouter();
+const ProductsPagination = ({ totalPages, totalProducts, searchParams }) => {
+  const { setSearchParams } = useSetSearchParams();
+  const currentPage = Number(searchParams?.page) || 1;
 
   const nextPage = () => {
-    const search = new URLSearchParams(window.location.search);
-    const newPage = Number(searchParams.page) + 1 || 2;
-
-    search.set("page", String(newPage));
-
-    const newPathName = `${window.location.pathname}?${search.toString()}`;
-    router.push(newPathName);
+    const newPage = currentPage + 1;
+    setSearchParams("page", String(newPage));
   };
 
   const prevPage = () => {
-    const search = new URLSearchParams(window.location.search);
-    const newPage = Number(searchParams.page) - 1;
-
-    search.set("page", String(newPage));
-
-    const newPathName = `${window.location.pathname}?${search.toString()}`;
-    router.push(newPathName);
+    const newPage = currentPage - 1;
+    setSearchParams("page", String(newPage));
   };
 
   return (
@@ -40,9 +31,11 @@ const ProductsPagination = ({ totalPages, searchParams, totalProducts }) => {
         <button
           type="button"
           onClick={() => prevPage()}
-          disabled={searchParams.page == "1" || searchParams.page === undefined}
+          disabled={
+            searchParams?.page == "1" || searchParams?.page === undefined
+          }
           className={`${
-            searchParams.page == "1" || searchParams.page === undefined
+            searchParams?.page == "1" || searchParams?.page === undefined
               ? "text-gray-400 cursor-not-allowed"
               : "text-black"
           } rounded-full hover:bg-lightGray p-3 Transition`}
@@ -53,12 +46,12 @@ const ProductsPagination = ({ totalPages, searchParams, totalProducts }) => {
           type="button"
           onClick={() => nextPage()}
           disabled={
-            searchParams.page == String(totalPages) ||
+            searchParams?.page == String(totalPages) ||
             totalPages === 1 ||
             totalPages === 0
           }
           className={`${
-            searchParams.page == String(totalPages) ||
+            searchParams?.page == String(totalPages) ||
             totalPages === 1 ||
             totalPages === 0
               ? "text-gray-400 cursor-not-allowed"

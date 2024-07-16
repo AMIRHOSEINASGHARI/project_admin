@@ -11,12 +11,10 @@ const useSetSearchParams = () => {
 
   const setSearchParams = (queryName, value) => {
     if (value) {
-      if (searchParams.get("page")) {
-        params.delete("page");
-      }
-      params.set(queryName, value);
+      params.set(queryName, String(value));
     } else {
       params.delete(queryName);
+      params.delete("page");
     }
 
     push(`${pathname}?${params.toString()}`);

@@ -10,7 +10,7 @@ import { useDebouncedCallback } from "use-debounce";
 import CustomInput from "@/components/shared/form/CustomInput";
 
 const ProductsFilter = () => {
-  const { searchParams, setSearchParams } = useSetSearchParams();
+  const { searchParams, setSearchParams, params } = useSetSearchParams();
   const [form, setForm] = useState({
     has_selling_stock: false,
     sort: "",
@@ -19,6 +19,7 @@ const ProductsFilter = () => {
   });
 
   const handleSearchQuery = useDebouncedCallback((query) => {
+    setSearchParams("page", "1");
     setSearchParams("search", query);
   }, 300);
 
