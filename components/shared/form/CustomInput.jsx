@@ -8,7 +8,6 @@ const CustomInput = ({
   name,
   label,
   value,
-  defaultValue,
   onChange,
   wrapperClassName,
   min,
@@ -42,7 +41,6 @@ const CustomInput = ({
         type={type || "text"}
         name={name || "input"}
         value={value}
-        defaultValue={defaultValue || ""}
         onChange={onChange}
         className="input w-full"
         onFocus={onFocus}
