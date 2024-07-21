@@ -15,6 +15,11 @@ import ProductsFilter from "./ui/ProductsFilter";
 const ProductsPage = async ({ searchParams }) => {
   const search = searchParams?.search || "";
   const page = Number(searchParams?.page) || 1;
+  const category = searchParams?.category || "";
+  const stock = searchParams?.stock || "";
+  const discount = searchParams?.discount || "";
+  const sort = searchParams?.sort || "";
+  const published = searchParams?.published || "";
 
   return (
     <>
@@ -32,7 +37,7 @@ const ProductsPage = async ({ searchParams }) => {
       <div className="cardShadow3 rounded-2xl border overflow-hidden">
         <ProductsFilter />
         <Suspense
-          key={search + page}
+          key={search + page + category + stock + discount + sort + published}
           fallback={
             <div className="box w-full h-[400px] flex items-center justify-center">
               <Loader />

@@ -110,7 +110,7 @@ export const getProducts = async (searchParams) => {
       };
     }
 
-    const { page, search, has_selling_stock, has_discount, sort, category } =
+    const { page, search, stock, discount, sort, category, published } =
       searchParams;
 
     let query = {};
@@ -121,18 +121,24 @@ export const getProducts = async (searchParams) => {
       query = { $text: { $search: search } };
     }
     // product stock filter
-    if (has_selling_stock) {
-      filters.stock = { $gt: 0 };
+    if (stock) {
+      stock == "in-stock" ? (filters.stock = { $gt: 0 }) : (filters.stock = 0);
     }
     // product discount filter
-    if (has_discount) {
-      has_discount == 1
+    if (discount) {
+      discount == "has-discount"
         ? (filters.discount = { $gt: 0 })
         : (filters.discount = 0);
     }
     // product category filter
     if (category) {
       filters.category = category;
+    }
+    // product publish status filter
+    if (published) {
+      published === "true"
+        ? (filters.published = true)
+        : (filters.published = false);
     }
 
     const pageNumber = page || 1;
