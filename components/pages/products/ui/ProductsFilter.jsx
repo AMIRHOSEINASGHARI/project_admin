@@ -21,6 +21,8 @@ const ProductsFilter = () => {
   const { searchParams, setSearchParams, params } = useSetSearchParams();
   const [filters, setFilters] = useState([]);
 
+  console.log(searchParams.get("category"));
+
   const handleSearchQuery = useDebouncedCallback((query) => {
     setSearchParams("page", "1");
     setSearchParams("search", query);
@@ -44,9 +46,12 @@ const ProductsFilter = () => {
   }, [searchParams]);
 
   const clearFilters = () => {
-    params.delete("search");
     router.replace("/products");
     router.refresh("/products");
+  };
+
+  const deleteFilter = (queryName) => {
+    setSearchParams(queryName, "");
   };
 
   const selectFilters = [
@@ -121,7 +126,11 @@ const ProductsFilter = () => {
         ))}
       </div>
       {filters.length !== 0 && (
-        <PageFilters filters={filters} clearFilters={clearFilters} />
+        <PageFilters
+          filters={filters}
+          clearFilters={clearFilters}
+          deleteFilter={deleteFilter}
+        />
       )}
     </div>
   );
@@ -129,7 +138,7 @@ const ProductsFilter = () => {
 
 export default ProductsFilter;
 
-const PageFilters = ({ filters, clearFilters }) => {
+const PageFilters = ({ filters, clearFilters, deleteFilter }) => {
   return (
     <div className="flex gap-2 items-center flex-wrap mt-3">
       {filters.map((filter) => {
@@ -153,6 +162,7 @@ const PageFilters = ({ filters, clearFilters }) => {
                   />
                 </>
               }
+              onClick={() => deleteFilter(filter[0])}
             />
           </div>
         );
