@@ -1,6 +1,8 @@
 // next
 import Link from "next/link";
 import NextImage from "next/image";
+// actions
+import { getAdmin } from "@/actions/admin";
 // constants
 import { images } from "@/constants";
 // cmp
@@ -10,8 +12,10 @@ import CustomBadge from "@/components/shared/CustomBadge";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
 import moment from "moment";
 
-const AdminProfile = ({
-  data: {
+const AdminProfile = async ({ id }) => {
+  const data = await getAdmin(id);
+
+  const {
     username,
     name,
     email,
@@ -23,8 +27,8 @@ const AdminProfile = ({
     createdAt,
     productsCreated,
     blogsCreated,
-  },
-}) => {
+  } = data.admin;
+
   const overviewContent = (
     <div className="w-full box border flex flex-col items-center gap-1">
       <div className="flex justify-center w-full mb-4">
@@ -79,6 +83,7 @@ const AdminProfile = ({
       <div className="flex flex-wrap gap-6 box border w-full">
         {productsCreated.map((product) => (
           <Link
+            key={product._id}
             href={`/products/${product._id}`}
             className="flex flex-col gap-2 items-center flex-1 min-w-[200px] box border hoverable"
           >
@@ -103,6 +108,7 @@ const AdminProfile = ({
       <div className="flex flex-wrap gap-6 box border w-full">
         {blogsCreated.map((blog) => (
           <Link
+            key={blog._id}
             href={`/blogs/${blog._id}`}
             className="flex flex-col gap-2 items-center flex-1 min-w-[200px] box border hoverable"
           >

@@ -1,20 +1,15 @@
-// actions
-import { getOrder } from "@/actions/order";
+// react
+import { Suspense } from "react";
 // cmp
 import Order from "./ui/Order";
+import LoaderBar from "@/components/shared/LoaderBar";
 
 const OrderDetailsPage = async ({ id }) => {
-  try {
-    const data = await getOrder(id);
-
-    if (data.code !== 200) {
-      return <p>Error!</p>;
-    }
-
-    return <Order order={data.order} />;
-  } catch (error) {
-    <p>Error!</p>;
-  }
+  return (
+    <Suspense fallback={<LoaderBar />}>
+      <Order id={id} />
+    </Suspense>
+  );
 };
 
 export default OrderDetailsPage;

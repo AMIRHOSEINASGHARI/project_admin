@@ -1,5 +1,7 @@
 // utils
 import { shorterText } from "@/utils/functions";
+// actions
+import { getOrder } from "@/actions/order";
 // cmp
 import { Document, LeftAngle, ShoppingCart } from "@/components/icons/Icons";
 import DetailedBox from "@/components/shared/layout/DetailedBox";
@@ -9,7 +11,9 @@ import CustomLink from "@/components/shared/CustomLink";
 import moment from "moment";
 import CustomBadge from "@/components/shared/CustomBadge";
 
-const Order = ({ order }) => {
+const Order = async ({ id }) => {
+  const data = await getOrder(id);
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex gap-2">
@@ -21,15 +25,15 @@ const Order = ({ order }) => {
         <div>
           <div className="flex items-center gap-2">
             <h3 className="text-h3 font-bold">
-              Order #{shorterText(order._id, 5)}
+              Order #{shorterText(data.order._id, 5)}
             </h3>
             <CustomBadge
-              condition={order.status === "Completed"}
-              title={order.status}
+              condition={data.order.status === "Completed"}
+              title={data.order.status}
             />
           </div>
           <p className="text-p2 text-darkGray">
-            {moment(order.createdAt).format("LLL")}
+            {moment(data.order.createdAt).format("LLL")}
           </p>
         </div>
       </div>
@@ -40,11 +44,13 @@ const Order = ({ order }) => {
         }
         content={
           <OrderInformationTable
-            address={JSON.parse(JSON.stringify(order?.deliveryAddress))}
-            customer={JSON.parse(JSON.stringify(order?.userId))}
-            date={JSON.parse(JSON.stringify(order?.createdAt))}
-            paymentMethod={JSON.parse(JSON.stringify(order?.paymentMethod))}
-            status={JSON.parse(JSON.stringify(order?.status))}
+            address={JSON.parse(JSON.stringify(data?.order?.deliveryAddress))}
+            customer={JSON.parse(JSON.stringify(data?.order?.userId))}
+            date={JSON.parse(JSON.stringify(data?.order?.createdAt))}
+            paymentMethod={JSON.parse(
+              JSON.stringify(data?.order?.paymentMethod)
+            )}
+            status={JSON.parse(JSON.stringify(data?.order?.status))}
           />
         }
       />
@@ -58,8 +64,8 @@ const Order = ({ order }) => {
         }
         content={
           <CheckoutTable
-            items={JSON.parse(JSON.stringify(order?.items))}
-            summary={JSON.parse(JSON.stringify(order?.summary))}
+            items={JSON.parse(JSON.stringify(data?.order?.items))}
+            summary={JSON.parse(JSON.stringify(data?.order?.summary))}
           />
         }
       />

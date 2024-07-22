@@ -1,20 +1,15 @@
-// action
-import { getBlog } from "@/actions/blog";
+// react
+import { Suspense } from "react";
 // cmp
 import Blog from "./ui/Blog";
+import LoaderBar from "@/components/shared/LoaderBar";
 
 const BlogDetailsPage = async ({ id }) => {
-  try {
-    const data = await getBlog(id);
-
-    if (data.code !== 200) {
-      return <p>Error!</p>;
-    }
-
-    return <Blog blog={data.blog} />;
-  } catch (error) {
-    return <p>Error!</p>;
-  }
+  return (
+    <Suspense fallback={<LoaderBar />}>
+      <Blog id={id} />
+    </Suspense>
+  );
 };
 
 export default BlogDetailsPage;
