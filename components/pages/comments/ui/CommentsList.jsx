@@ -1,18 +1,26 @@
 // constants
+import { getComments } from "@/actions/comment";
 import { commentsColumns } from "@/constants/tableColumns";
 import { commentsDataSourse } from "@/constants/tableDataSourse";
 // cmp
-import { Table } from "antd";
+import { Empty, Table } from "antd";
 
-const CommentsList = ({ comments }) => {
+const CommentsList = async () => {
+  const data = await getComments();
+
   return (
     <div className="tableContainer">
-      <Table
-        columns={commentsColumns}
-        dataSource={commentsDataSourse(comments)}
-        pagination={false}
-        scroll={{ x: true }}
-      />
+      {data.comments.length === 0 && <Empty description="No Comments!" />}
+      {data.comments.length !== 0 && (
+        <Table
+          columns={commentsColumns}
+          dataSource={commentsDataSourse(
+            JSON.parse(JSON.stringify(data.comments))
+          )}
+          pagination={false}
+          scroll={{ x: true }}
+        />
+      )}
     </div>
   );
 };

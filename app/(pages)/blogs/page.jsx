@@ -1,7 +1,5 @@
 import BlogsPage from "@/components/pages/blogs/BlogsPage";
 
-export const dynamic = "force-dynamic";
-
 const Blogs = () => {
   return <BlogsPage />;
 };

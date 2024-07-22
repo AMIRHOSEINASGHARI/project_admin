@@ -9,8 +9,8 @@ import { LayerPlus } from "@/components/icons/Icons";
 import PageHeading from "@/components/shared/PageHeading";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import ProductsOverview from "./ui/ProductsOverview";
-import Loader from "@/components/shared/Loader";
 import ProductsFilter from "./ui/ProductsFilter";
+import LoaderBar from "@/components/shared/LoaderBar";
 
 const ProductsPage = async ({ searchParams }) => {
   const search = searchParams?.search || "";
@@ -38,11 +38,7 @@ const ProductsPage = async ({ searchParams }) => {
         <ProductsFilter />
         <Suspense
           key={search + page + category + stock + discount + sort + published}
-          fallback={
-            <div className="box w-full h-[400px] flex items-center justify-center">
-              <Loader />
-            </div>
-          }
+          fallback={<LoaderBar />}
         >
           <ProductsOverview searchParams={searchParams} />
         </Suspense>

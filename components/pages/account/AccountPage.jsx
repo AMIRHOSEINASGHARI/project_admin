@@ -1,3 +1,5 @@
+// react
+import { Suspense } from "react";
 // constants
 import { accountPageBread } from "@/constants/breadcrumpItems";
 // cmp
@@ -6,6 +8,7 @@ import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 import GeneralTab from "./ui/tabs/general/GeneralTab";
 import AdminsTab from "./ui/tabs/admins/AdminsTab";
 import CreateUserTab from "./ui/tabs/create/CreateUserTab";
+import LoaderBar from "@/components/shared/LoaderBar";
 import { AddUser, Settings, Users } from "@/components/icons/Icons";
 import { Tabs } from "antd";
 
@@ -19,7 +22,11 @@ const AccountPage = () => {
           <p className="text-h4">General</p>
         </div>
       ),
-      children: <GeneralTab />,
+      children: (
+        <Suspense fallback={<LoaderBar />}>
+          <GeneralTab />
+        </Suspense>
+      ),
     },
     {
       key: "admins",
@@ -29,7 +36,11 @@ const AccountPage = () => {
           <p className="text-h4">Admins</p>
         </div>
       ),
-      children: <AdminsTab />,
+      children: (
+        <Suspense fallback={<LoaderBar />}>
+          <AdminsTab />
+        </Suspense>
+      ),
     },
     {
       key: "create",

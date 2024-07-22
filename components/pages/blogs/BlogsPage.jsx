@@ -1,34 +1,35 @@
-// actions
-import { getBlogs } from "@/actions/blog";
+// react
+import { Suspense } from "react";
+// next
+import Link from "next/link";
 // constants
 import { blogsPageBread } from "@/constants/breadcrumpItems";
 // cmp
 import BlogsList from "./ui/BlogsList";
 import PageHeading from "@/components/shared/PageHeading";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
+import LoaderBar from "@/components/shared/LoaderBar";
+import { LayerPlus } from "@/components/icons/Icons";
 
-const BlogsPage = async () => {
-  try {
-    const data = await getBlogs();
-
-    if (data.code !== 200) {
-      return <p>Error!</p>;
-    }
-
-    return (
-      <>
-        <PageHeading title="Blogs" />
-        <CustomBreadcrumb items={blogsPageBread} />
-        {data.blogs.length === 0 ? (
-          <p>No Blogs!</p>
-        ) : (
-          <BlogsList blogs={data.blogs} />
-        )}
-      </>
-    );
-  } catch (error) {
-    return <p>Error!</p>;
-  }
+const BlogsPage = () => {
+  return (
+    <>
+      <PageHeading title="Blogs" />
+      <CustomBreadcrumb items={blogsPageBread} />
+      <div className="flex w-full justify-end mb-3">
+        <Link
+          href="/add-blog"
+          className="flex items-center gap-2 bg-dark1 text-white p-btn rounded-btn"
+        >
+          <LayerPlus />
+          <span>New Blog</span>
+        </Link>
+      </div>
+      <Suspense fallback={<LoaderBar />}>
+        <BlogsList />
+      </Suspense>
+    </>
+  );
 };
 
 export default BlogsPage;
