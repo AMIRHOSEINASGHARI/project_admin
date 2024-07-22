@@ -66,11 +66,7 @@ export const getTasks = async () => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      message: "Server Error!",
-      status: "failed",
-      code: 500,
-    };
+    throw new Error(error);
   }
 };
 
@@ -177,10 +173,6 @@ export const upcommingEvents = async () => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      message: "Server Error!",
-      status: "failed",
-      code: 500,
-    };
+    throw new Error(error);
   }
 };

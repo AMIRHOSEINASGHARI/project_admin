@@ -14,25 +14,6 @@ export const getComments = async () => {
   try {
     await connectDB();
 
-    const session = getServerSession();
-
-    // check session
-    if (!session) {
-      return {
-        message: "Un Authorized",
-        status: "failed",
-        code: 401,
-      };
-    }
-    // check user roll
-    if (session.roll === "USER") {
-      return {
-        message: "Access Denied!",
-        status: "failed",
-        code: 403,
-      };
-    }
-
     const comments = await Comment.find()
       .populate({
         path: "productId",
@@ -53,11 +34,7 @@ export const getComments = async () => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      message: "Server Error!",
-      status: "failed",
-      code: 500,
-    };
+    throw new Error(error);
   }
 };
 

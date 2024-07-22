@@ -20,24 +20,6 @@ export const createProduct = async (data) => {
 
     const session = getServerSession();
 
-    // check session
-    if (!session) {
-      return {
-        message: MESSAGES.unAuthorized,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.unAuthorized,
-      };
-    }
-
-    // check user roll
-    if (session.roll === "USER") {
-      return {
-        message: MESSAGES.forbidden,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.forbidden,
-      };
-    }
-
     const admin = await Admin.findById(session.userId);
     const {
       title,
@@ -89,26 +71,6 @@ export const createProduct = async (data) => {
 export const getProducts = async (searchParams) => {
   try {
     await connectDB();
-
-    const session = getServerSession();
-
-    // check session
-    if (!session) {
-      return {
-        message: MESSAGES.unAuthorized,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.unAuthorized,
-      };
-    }
-
-    // check user roll
-    if (session.roll === "USER") {
-      return {
-        message: MESSAGES.forbidden,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.forbidden,
-      };
-    }
 
     const { page, search, stock, discount, sort, category, published } =
       searchParams;
@@ -183,37 +145,13 @@ export const getProducts = async (searchParams) => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      products: null,
-      status: "failed",
-      code: 500,
-    };
+    throw new Error(error);
   }
 };
 
 export const getProduct = async (id) => {
   try {
     await connectDB();
-
-    const session = getServerSession();
-
-    // check session
-    if (!session) {
-      return {
-        message: "Un Authorized",
-        status: "failed",
-        code: 401,
-      };
-    }
-
-    // check user roll
-    if (session.roll === "USER") {
-      return {
-        message: "Access Denied!",
-        status: "failed",
-        code: 403,
-      };
-    }
 
     const product = await Product.findById(id)
       .populate({
@@ -253,11 +191,7 @@ export const getProduct = async (id) => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      message: "Server Error!",
-      status: "failed",
-      code: 500,
-    };
+    throw new Error(error);
   }
 };
 

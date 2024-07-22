@@ -90,15 +90,6 @@ export const updateProfile = async (data) => {
 
     const session = getServerSession();
 
-    // check session
-    if (!session) {
-      return {
-        message: MESSAGES.unAuthorized,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.unAuthorized,
-      };
-    }
-
     const admin = await Admin.findById(session.userId);
 
     // check admin exist
@@ -233,17 +224,6 @@ export const getAdmin = async (id) => {
   try {
     await connectDB();
 
-    const session = getServerSession();
-
-    // check session
-    if (!session) {
-      return {
-        message: MESSAGES.unAuthorized,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.unAuthorized,
-      };
-    }
-
     const admin = await Admin.findById(id)
       .populate({
         path: "productsCreated",
@@ -256,13 +236,8 @@ export const getAdmin = async (id) => {
       .select("-password")
       .lean();
 
-    // check admin exist
     if (!admin) {
-      return {
-        message: MESSAGES.userNotFound,
-        status: MESSAGES.failed,
-        code: STATUS_CODES.not_found,
-      };
+      throw new Error("No admin found with this ID!");
     }
 
     return {
@@ -273,11 +248,7 @@ export const getAdmin = async (id) => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      message: MESSAGES.server,
-      status: MESSAGES.failed,
-      code: STATUS_CODES.server,
-    };
+    throw new Error(error);
   }
 };
 
@@ -295,11 +266,7 @@ export const getAdmins = async () => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      message: "Server Error!",
-      status: "failed",
-      code: 500,
-    };
+    throw new Error(error);
   }
 };
 
@@ -339,11 +306,7 @@ export const getCurrentAdmin = async () => {
     };
   } catch (error) {
     console.log(error);
-    return {
-      message: "Server Error!",
-      status: "failed",
-      code: 500,
-    };
+    throw new Error(error);
   }
 };
 

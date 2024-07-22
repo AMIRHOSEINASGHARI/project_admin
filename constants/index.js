@@ -77,6 +77,7 @@ export const images = {
   admin3: "/images/admin-3.jpg",
   notFound: "/images/404.svg",
   notAllowed: "/images/not-allowed.png",
+  error: "/images/sad.png",
 };
 
 export const icons = {
