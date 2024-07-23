@@ -1,3 +1,5 @@
+// next
+import { notFound } from "next/navigation";
 // utils
 import { shorterText } from "@/utils/functions";
 // actions
@@ -13,6 +15,10 @@ import CustomBadge from "@/components/shared/CustomBadge";
 
 const Order = async ({ id }) => {
   const data = await getOrder(id);
+
+  if (!data.order) {
+    notFound();
+  }
 
   return (
     <div className="flex flex-col gap-5">

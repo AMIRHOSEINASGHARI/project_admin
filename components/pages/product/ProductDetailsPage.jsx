@@ -1,20 +1,18 @@
+// next
+import { notFound } from "next/navigation";
 // action
 import { getProduct } from "@/actions/product";
 // cmp
 import Product from "./ui/Product";
 
 const ProductDetailsPage = async ({ id }) => {
-  try {
-    const data = await getProduct(id);
+  const data = await getProduct(id);
 
-    if (data.code !== 200) {
-      return <p>Error!</p>;
-    }
-
-    return <Product product={data.product} />;
-  } catch (error) {
-    return <p>Error!</p>;
+  if (!data.product) {
+    notFound();
   }
+
+  return <Product product={data.product} />;
 };
 
 export default ProductDetailsPage;

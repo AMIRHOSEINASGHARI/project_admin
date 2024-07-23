@@ -1,3 +1,5 @@
+// next
+import { notFound } from "next/navigation";
 // actions
 import { getUser } from "@/actions/user";
 // utils
@@ -11,29 +13,25 @@ import PageHeading from "@/components/shared/PageHeading";
 import CustomBreadcrumb from "@/components/shared/CustomBreadcrumb";
 
 const UserDetailsPage = async ({ id }) => {
-  try {
-    const data = await getUser(id);
+  const data = await getUser(id);
 
-    if (data.code !== 200) {
-      return <p>Error!</p>;
-    }
-
-    return (
-      <>
-        <PageHeading title={`User #${shorterText(id, 8)}`} />
-        <CustomBreadcrumb items={userPageBread} />
-        {!data.user ? (
-          <div className="box border">
-            <Empty description="No User!" />
-          </div>
-        ) : (
-          <User user={data.user} />
-        )}
-      </>
-    );
-  } catch (error) {
-    return <p>Error!</p>;
+  if (!data.user) {
+    notFound();
   }
+
+  return (
+    <>
+      <PageHeading title={`User #${shorterText(id, 8)}`} />
+      <CustomBreadcrumb items={userPageBread} />
+      {!data.user ? (
+        <div className="box border">
+          <Empty description="No User!" />
+        </div>
+      ) : (
+        <User user={data.user} />
+      )}
+    </>
+  );
 };
 
 export default UserDetailsPage;

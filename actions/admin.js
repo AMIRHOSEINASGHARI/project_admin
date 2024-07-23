@@ -236,10 +236,6 @@ export const getAdmin = async (id) => {
       .select("-password")
       .lean();
 
-    if (!admin) {
-      throw new Error("No admin found with this ID!");
-    }
-
     return {
       admin,
       message: MESSAGES.success,

@@ -1,6 +1,7 @@
 // next
 import Link from "next/link";
 import NextImage from "next/image";
+import { notFound } from "next/navigation";
 // actions
 import { getAdmin } from "@/actions/admin";
 // constants
@@ -14,6 +15,10 @@ import moment from "moment";
 
 const AdminProfile = async ({ id }) => {
   const data = await getAdmin(id);
+
+  if (!data.admin) {
+    notFound();
+  }
 
   const {
     username,

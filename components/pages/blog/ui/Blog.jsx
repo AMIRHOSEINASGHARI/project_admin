@@ -1,3 +1,5 @@
+// next
+import { notFound } from "next/navigation";
 // actions
 import { getBlog } from "@/actions/blog";
 // cmp
@@ -6,6 +8,10 @@ import BlogContent from "./BlogContent";
 
 const Blog = async ({ id }) => {
   const data = await getBlog(id);
+
+  if (!data.blog) {
+    notFound();
+  }
 
   return (
     <div className="space-y-5">
